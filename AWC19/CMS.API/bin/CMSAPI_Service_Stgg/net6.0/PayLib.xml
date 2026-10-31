@@ -1,0 +1,1401 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PayLib</name>
+    </assembly>
+    <members>
+        <member name="M:PayLib.AxPay.AXPayInr.ReqOrderV(PayLib.Models.OrderResquestModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            下单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.AxPay.AXPayInr.CheckCallBackV(System.String)">
+            <summary>
+            平台到账通知回调
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.AxPay.AXPayInr.ReqDaiFuV(System.Collections.Generic.Dictionary{System.String,System.String},LogLib.Helper.WriteToFile)">
+            <summary>
+            代付
+            </summary>
+            <param name="daiFumodel"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PayLib.AxPay.AXPayInrCallbackModel.status">
+            <summary>
+            状态1=处理中,3=失败,4=成功
+            </summary>
+        </member>
+        <member name="P:PayLib.AxPay.AXPayInrDaiFuRequestModel.order_number">
+            <summary>
+            调用时必传
+            </summary>
+        </member>
+        <member name="P:PayLib.AxPay.AXPayInrDaiFuRequestModel.order_amount">
+            <summary>
+            调用时必传
+            </summary>
+        </member>
+        <member name="P:PayLib.AxPay.AXPayInrDaiFuRequestModel.account">
+            <summary>
+            调用时必传  银行卡账号
+            </summary>
+        </member>
+        <member name="P:PayLib.AxPay.AXPayInrDaiFuRequestModel.name">
+            <summary>
+            调用时必传 姓名，纯英文
+            </summary>
+        </member>
+        <member name="P:PayLib.AxPay.AXPayInrDaiFuRequestModel.ifsc">
+            <summary>
+            调用时必传
+            </summary>
+        </member>
+        <member name="P:PayLib.AxPay.DaiFuCallbackModel.status">
+            <summary>
+            状态:1=处理中,2=拒绝,3=失败,4=成功,5=撤销
+            </summary>
+        </member>
+        <member name="M:PayLib.BaoinPay.BaoinPayINR.ReqOrderV(PayLib.Models.OrderResquestModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            下单 请求数据整理
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.BaoinPay.BaoinPayINR.ReqDaiFuV(System.Collections.Generic.Dictionary{System.String,System.String},LogLib.Helper.WriteToFile)">
+            <summary>
+            代付
+            </summary>
+            <param name="daiFumodel"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayCallBackModel.system_id">
+            <summary>
+            系統單号
+            [*預設關閉]由商戶通知平台開啟，開啟後會發送 系統單號
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayCallBackModel.merchant">
+            <summary>
+            商户签约时，支付平台分配的唯一商户号。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayCallBackModel.order_id">
+            <summary>
+            支付请求传送的商户订单号，若无则为空。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayCallBackModel.amount">
+            <summary>
+            提交金额  支付请求金额。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayCallBackModel.status">
+            <summary>
+            支付结果：5 - 成功 : 3 – 失败。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayCallBackModel.message">
+            <summary>
+            支付结果 : 成功 、拒绝
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayCallBackModel.sign">
+            <summary>
+            Md5签名结果
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayDaiFuModel.merchant">
+            <summary>
+            商户号 String 必填 商户签约时，支付平台分配的唯一商 户号。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayDaiFuModel.total_amount">
+            <summary>
+            提交金额 Number 必填 代付请求金额。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayDaiFuModel.callback_url">
+            <summary>
+            回调位址 String 必填 异步通知商戶回調位址，用以通知結果。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayDaiFuModel.order_id">
+            <summary>
+            订单号 String 必填 商户系统里的订单号
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayDaiFuModel.bank">
+            <summary>
+             银行代码 String 必填
+             印度】会员代付时使用的出款银行(若無請填ICIC)
+             【菲律賓】会员代付时使用的出款银行 「Gcash請填gcash」，若是代付至銀行 請填入正確銀行代碼，文檔最後有提
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayDaiFuModel.bank_card_name">
+            <summary>
+            收款人姓名 String 必填 收款人姓名，【菲律賓接口】可傳收款帳號即可
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayDaiFuModel.bank_card_account">
+            <summary>
+            bank_card_account 
+            收款人账号 Number 必填 收款人账号
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayDaiFuModel.bank_card_remark">
+            <summary>
+            IFSC String 必填
+            【印度】收款人 IFSC
+            【菲律賓接口】可傳收款帳號即可
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayDaiFuModel.sign">
+            <summary>
+            签名 String 必填 MD5 签名结果，请参阅支付结果通知接口的 签名算法。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayReqOrderResponse.status">
+            <summary>
+            取值为1 表示校验成功，其他錯誤碼为0。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayReqOrderResponse.message">
+            <summary>
+            支付请求成功回传success，错误则传回错误资讯。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayReqOrderResponse.order_id">
+            <summary>
+            由商户送入的订单号
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayReqOrderResponse.amount">
+            <summary>
+            支付金额，带有小数点下两位。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayReqOrderResponse.redirect_url">
+            <summary>
+            支付地址。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayReqOrderResponse.qrcode_url">
+            <summary>
+            【與redirect_url相同】支付地址。
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayReqOrderResponse.upi">
+            <summary>
+            【印度接口回傳】收款upi帳號
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayReqOrderResponse.qrcode">
+            <summary>
+            【印度接口回傳】收款upi圖片格式 內容(需自行包裝成 Qrcode)
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayReqOrderResponse.paytm_link">
+            <summary>
+            paytm收款連結
+            【印度接口回傳】拉起paytm的連結
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayReqOrderResponse.remark">
+            <summary>
+            會員輸入的附言
+            支付時建議會員輸入的附言，若未輸入掉單率較高
+            </summary>
+        </member>
+        <member name="P:PayLib.BaoinPay.Model.BaoinPayReqOrderResponse.gcash_qr_url">
+            <summary>
+            支付地址2
+            【菲律賓接口回傳】若接入 Maya直連渠道該參數選項預設開 啟的頁面改為掃碼
+            </summary>
+        </member>
+        <member name="M:PayLib.EPay.EPayINR.ReqOrderV(PayLib.Models.OrderResquestModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            下单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.EPay.EPayINR.CheckCallBackV(System.String)">
+            <summary>
+            平台到账通知回调
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.EPay.EPayINR.QueryOrder(PayLib.Models.QueryOrderModel)">
+            <summary>
+            定单核对
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PayLib.G9.G9CallBackModel.mch_id">
+            <summary>
+            商户号
+            </summary>
+        </member>
+        <member name="P:PayLib.G9.G9CallBackModel.nonce_str">
+            <summary>
+            随机串
+            </summary>
+        </member>
+        <member name="P:PayLib.G9.G9CallBackModel.timeStamp">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="P:PayLib.G9.G9CallBackModel.orderNo">
+            <summary>
+            商户订单号
+            </summary>
+        </member>
+        <member name="P:PayLib.G9.G9CallBackModel.userName">
+            <summary>
+            商户姓名
+            </summary>
+        </member>
+        <member name="P:PayLib.G9.G9CallBackModel.score">
+            <summary>
+            实际金额（元）
+            </summary>
+        </member>
+        <member name="P:PayLib.G9.G9CallBackModel.payUserName">
+            <summary>
+            付款人姓名
+            </summary>
+        </member>
+        <member name="P:PayLib.G9.G9CallBackModel.tradeNo">
+            <summary>
+            交易号
+            </summary>
+        </member>
+        <member name="P:PayLib.G9.G9CallBackModel.tradeState">
+            <summary>
+            WAIT/SUCCESS/FAIL
+            </summary>
+        </member>
+        <member name="P:PayLib.G9.G9QueryData.tradeState">
+            <summary>
+            WAIT/SUCCESS/FAIL
+            </summary>
+        </member>
+        <member name="M:PayLib.G9.G9Pay.ReqOrder(PayLib.Models.OrderResquestModel)">
+            <summary>
+            下单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.G9.G9Pay.CheckCallBack(PayLib.G9.G9CallBackModel)">
+            <summary>
+            平台到账通知回调
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.G9.G9Pay.QueryOrder(PayLib.Models.QueryOrderModel)">
+            <summary>
+            定单核对
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PayLib.GetPayChanel">
+            <summary>
+            获取支付通道类型
+            </summary>
+        </member>
+        <member name="M:PayLib.GetPayChanel.GetPayBaseById(System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.Net.Http.IHttpClientFactory)">
+            <summary>
+            动态支付渠道
+            </summary>
+            <param name="account"></param>
+            <param name="thirdpayId"></param>
+            <param name="merchantKey"></param>
+            <param name="merchantName"></param>
+            <param name="notify_url"></param>
+            <param name="api_url"></param>
+            <param name="writeToFile"></param>
+            <param name="ipaddress"></param>
+            <param name="clientFactory"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PayLib.HeXin.HeXinOrderResponseModel.http_status_code">
+            <summary>
+            201表示成功
+            </summary>
+        </member>
+        <member name="T:PayLib.HeXin.CardData">
+            <summary>
+            收款卡数据
+            </summary>
+        </member>
+        <member name="P:PayLib.HeXin.CardData.order_number">
+            <summary>
+            商户订单号
+            </summary>
+        </member>
+        <member name="P:PayLib.HeXin.CardData.receiver_account">
+            <summary>
+            收款方帐号
+            </summary>
+        </member>
+        <member name="P:PayLib.HeXin.CardData.receiver_bank_branch">
+            <summary>
+            分行地址，可能为空，小银行可能需要
+            </summary>
+        </member>
+        <member name="P:PayLib.HeXin.CardData.receiver_bank_name">
+            <summary>
+            收款方银行名称
+            </summary>
+        </member>
+        <member name="P:PayLib.HeXin.CardData.receiver_name">
+            <summary>
+            收款方帐号
+            </summary>
+        </member>
+        <member name="P:PayLib.HeXin.CardData.status">
+            <summary>
+            订单状态 1、2、3 皆为处理中 4、5 皆为成功 6、7 、8 皆为失败
+            </summary>
+        </member>
+        <member name="P:PayLib.HeXin.CardData.system_order_number">
+            <summary>
+            系统订单号
+            </summary>
+        </member>
+        <member name="T:PayLib.HeXin.HeXinPay">
+            <summary>
+            合鑫支付
+            </summary>
+        </member>
+        <member name="M:PayLib.HeXin.HeXinPay.ReqOrder(PayLib.Models.OrderResquestModel)">
+            <summary>
+            下单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.HeXin.HeXinPay.CheckCallBack(PayLib.HeXin.HeXinOrderResponseModel)">
+            <summary>
+            平台到账通知回调
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.HeXin.HeXinPay.QueryOrder(PayLib.Models.QueryOrderModel)">
+            <summary>
+            定单核对
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PayLib.HHPay.HHPayCallBackModel">
+            <summary>
+            代收通知数据
+            </summary>
+        </member>
+        <member name="T:PayLib.HHPay.HHPayCallBackHeaderModel">
+            <summary>
+            请求头中的数据 
+            </summary>
+        </member>
+        <member name="T:PayLib.HHPay.HHPayINR">
+            <summary>
+            inr 充值
+            </summary>
+        </member>
+        <member name="F:PayLib.HHPay.HHPayINR.accessSecret">
+            <summary>
+            签名时的加密 key
+            </summary>
+        </member>
+        <member name="M:PayLib.HHPay.HHPayINR.ReqOrderV(PayLib.Models.OrderResquestModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            下单 请求数据整理
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.HHPay.HHPayINR.ReqDaiFuV(System.Collections.Generic.Dictionary{System.String,System.String},LogLib.Helper.WriteToFile)">
+            <summary>
+            代付
+            </summary>
+            <param name="daiFumodel"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PayLib.JDPay.JDPayINR">
+            <summary>
+            金鼎
+            </summary>
+        </member>
+        <member name="M:PayLib.JDPay.JDPayINR.ReqOrderV(PayLib.Models.OrderResquestModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            下单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.JDPay.JDPayINR.CheckCallBackV(System.String)">
+            <summary>
+            平台到账通知回调
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.JDPay.JDPayINR.QueryOrder(PayLib.Models.QueryOrderModel)">
+            <summary>
+            定单核对
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.JDPay.JDPayINR.ReqDaiFuV(System.Collections.Generic.Dictionary{System.String,System.String},LogLib.Helper.WriteToFile)">
+            <summary>
+            代付
+            </summary>
+            <param name="daiFumodel"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.ApiCode">
+            <summary>
+            API編號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.OrderId">
+            <summary>
+            商戶自訂訂單編號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.OrderAmount">
+            <summary>
+            訂單金額 支援至小數點2位
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.PaymentMethod">
+            <summary>
+            訂單支付類型
+            UPI, Bank
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.Country">
+            <summary>
+             國家
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.BankId">
+            <summary>
+            銀行編號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.BankCode">
+            <summary>
+            銀行代碼
+            範例 SIBL0000038
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.BankAccountName">
+            <summary>
+            銀行賬戶名稱
+            如：Jack
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.BankAccountNumber">
+            <summary>
+            銀行賬戶號碼
+            範例 1234567890123456
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.NotifyUrl">
+            <summary>
+            回調網址
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.UnixTimestamp">
+            <summary>
+            UNIX時間
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuRequestModel.Signture">
+            <summary>
+            MD5資料雜湊加密驗證
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuResponseModel.OrderId">
+            <summary>
+            商戶自訂訂單編號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuResponseModel.SystemOrderId">
+            <summary>
+            公司產生唯一訂單編號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuResponseModel.OrderAmount">
+            <summary>
+            訂單金額 支援至小數點2位
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuResponseModel.Status">
+            <summary>
+            回應要求狀態 SUCCESS 成功,FAILED 失败
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuResponseModel.Message">
+            <summary>
+            錯誤訊息
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuResponseModel.UnixTimestamp">
+            <summary>
+            UNIX時間
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrDaiFuResponseModel.Signture">
+            <summary>
+            MD5資料雜湊加密驗證
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.OrderId">
+            <summary>
+            商戶自訂訂單編號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.SystemOrderId">
+            <summary>
+            公司產生唯一訂單編號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.OrderAmount">
+            <summary>
+            訂單金額 支援至小數點2位
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.PaymentBankId">
+            <summary>
+            公司收款銀行編號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.PaymentBankName">
+            <summary>
+            公司收款銀行名稱
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.PaymentBankCode">
+            <summary>
+            公司收款銀行代碼
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.PaymentBankAccountName">
+            <summary>
+            公司收款銀行戶名
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.PaymentBankAccountNumber">
+            <summary>
+            公司收款銀行帳號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.PaymentIdentifyCode">
+            <summary>
+            支付驗證碼(附言)
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.Status">
+            <summary>
+            回應要求狀態 SUCCESS 成功,FAILED 失败
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.Message">
+            <summary>
+            錯誤訊息
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.UnixTimestamp">
+            <summary>
+            UNIX時間
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JDPayInrOrderResponseModel.Signture">
+            <summary>
+            MD5資料雜湊加密驗證
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JPPayInrCallbackModel.ApiCode">
+            <summary>
+            商戶API編號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JPPayInrCallbackModel.OrderId">
+            <summary>
+            商戶自訂訂單編號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JPPayInrCallbackModel.SystemOrderId">
+            <summary>
+            公司產生唯一訂單編號
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JPPayInrCallbackModel.OrderType">
+            <summary>
+            訂單類型
+            DepositCustomer, WithdrawCustomer, WithdrawMerchant
+            分別為客戶存款, 客戶提款, 商戶下發
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JPPayInrCallbackModel.OrderAmount">
+            <summary>
+            訂單金額 支援至小數點2位
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JPPayInrCallbackModel.OrderFee">
+            <summary>
+            訂單手續費 支援至小數點2位
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JPPayInrCallbackModel.OrderAmountActual">
+            <summary>
+            訂單實際完成金額 支援至小數點2位
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JPPayInrCallbackModel.OrderStatus">
+            <summary>
+            訂單狀態
+            NONE, COMPLETED, PENDING, PROCESSING, CANCELED, ERROR
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JPPayInrCallbackModel.OrderMessage">
+            <summary>
+            訂單訊息
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JPPayInrCallbackModel.UnixTimestamp">
+            <summary>
+            UNIX時間
+            </summary>
+        </member>
+        <member name="P:PayLib.JDPay.JPPayInrCallbackModel.Signture">
+            <summary>
+            MD5資料雜湊加密驗證
+            </summary>
+        </member>
+        <member name="M:PayLib.KingsPay.KpINR.ReqOrderV(PayLib.Models.OrderResquestModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            下单 请求数据整理
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.KingsPay.KpINR.QueryOrder(PayLib.Models.QueryOrderModel)">
+            <summary>
+            定单核对
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PayLib.KingsPay.Model.KPReqOrderResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PayLib.KingsPay.Model.KPReqOrderResponse.status">
+            <summary>
+            success = 成功，error = 不成功
+            </summary>
+        </member>
+        <member name="P:PayLib.KingsPay.Model.KPReqOrderResponse.msg">
+            <summary>
+            请求返回内容描述
+            </summary>
+        </member>
+        <member name="P:PayLib.KingsPay.Model.KPReqOrderResponse.url">
+            <summary>
+            订单url
+            </summary>
+        </member>
+        <member name="P:PayLib.KingsPay.Model.KPReqOrderResponse.orderid">
+            <summary>
+            订单号
+            </summary>
+        </member>
+        <member name="P:PayLib.KingsPay.Model.KPReqOrderResponse.amount">
+            <summary>
+            金额
+            </summary>
+        </member>
+        <member name="P:PayLib.KingsPay.Model.KPReqOrderResponse.account">
+            <summary>
+            upi account
+            </summary>
+        </member>
+        <member name="M:PayLib.MegaPay.MegaPayINR.ReqOrderV(PayLib.Models.OrderResquestModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            下单 请求数据整理
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.MegaPay.MegaPayINR.ReqDaiFuV(System.Collections.Generic.Dictionary{System.String,System.String},LogLib.Helper.WriteToFile)">
+            <summary>
+            代付
+            </summary>
+            <param name="daiFumodel"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PayLib.Models.CheckOrderModel">
+            <summary>
+            定单核对数据输入
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.CheckOrderModel.order_number">
+            <summary>
+            交易定单号
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.QueryOrderModel">
+            <summary>
+            定单查询
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.QueryOrderModel.platform">
+            <summary>
+            支付平台id
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.OrderDataBase">
+            <summary>
+            返回定单基本数据
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.OrderDataBase.mustterminate">
+            <summary>
+            定单是否可被撤回 0：否， 1：是
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.OrderDataBase.method">
+            <summary>
+            JSON【显示银行卡方式】或URL或 CRYPTO 【显示虚拟币钱包】
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.CryptOrder">
+            <summary>
+            订单数据(虚拟卡收款)
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.CryptOrder.wallet">
+            <summary>
+            钱包地址
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.CryptOrder.xrate">
+            <summary>
+            汇率 例如 6.3 就是 6.3RMB = 1USDT
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.CryptOrder.value">
+            <summary>
+            虚拟币金额
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.CryptOrder.currency">
+            <summary>
+            虚拟币名称
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.CryptOrder.orderno">
+            <summary>
+            存款定单号
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.OrderModel`1">
+            <summary>
+            下单返回数据
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:PayLib.Models.OrderModel`1.responseData">
+            <summary>
+            平台返回数据
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.PayQRUrlOrder">
+            <summary>
+            订单收款码
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.PayQRUrlOrder.realname">
+            <summary>
+            收款人名
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.PayQRUrlOrder.amount">
+            <summary>
+            收款金额
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.PayQRUrlOrder.qrcode_img">
+            <summary>
+            收款码URl
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.PayQRUrlOrder.orderno">
+            <summary>
+            订单号
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.PayQRUrlOrder.rules">
+            <summary>
+            注意事项
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.PayQRUrlOrder.warnings">
+            <summary>
+            特别提示
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.PayQRUrlOrder.topic">
+            <summary>
+            标提说明
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.BankPendingOrder">
+            <summary>
+            订单数据(银行卡收款)
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.BankPendingOrder.bank_card_num">
+            <summary>
+            收款卡号
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.BankPendingOrder.bank_acc_name">
+            <summary>
+            收款人姓名
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.BankPendingOrder.collection_bank_id">
+            <summary>
+            收款银行
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.BankPendingOrder.amount">
+            <summary>
+            定单金额
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.BankPendingOrder.note">
+            <summary>
+            备注 附言（可空）
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.BankPendingOrder.orderno">
+            <summary>
+            存款定单号
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.ThirdpayOrder">
+            <summary>
+            三方收款平台跳转URL
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.ThirdpayOrder.link">
+            <summary>
+            跳转地址
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.ThirdpayOrder.orderno">
+            <summary>
+            存款定单号
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.ThirdpayOrder.jumpToBrowser">
+            <summary>
+            当前链接要跳出app 使用浏览器
+            0：否，1：是
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.DepositTimesByPlatform">
+            <summary>
+            每个平台存款的次数
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.DepositTimePlatform">
+            <summary>
+            每个平台存款的和下单时间
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.RespResult.note">
+            <summary>
+            开户行地址
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.RespResult.amount">
+            <summary>
+            充值金额
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.RespResult.bank_acc_name">
+            <summary>
+            持卡人
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.RespResult.collection_bank_id">
+            <summary>
+            银行名
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.RespResult.bank_card_num">
+            <summary>
+            收款卡号
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.FeeModel">
+            <summary>
+            手续费数据
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.FeeModel.feecent">
+            <summary>
+            手续费比例 , 存款金额*feecent = 手续费
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.FeeModel.times">
+            <summary>
+            最低收款次数，如3 第三次就要收手续费用
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.OrderResquestModel">
+            <summary>
+            定单请求输入
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.OrderResquestModel.amount">
+            <summary>
+            定单金额
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.OrderResquestModel.real_name">
+            <summary>
+            视通道状况，开启实名制时必填
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.OrderResquestModel.vRate">
+            <summary>
+            兑换 usdt 汇率
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.OrderResquestModel.device_id">
+            <summary>
+            设计id， 4：pc,  其它都为app或h5
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.OfDepositMiscModel">
+            <summary>
+            存款数据记录
+            </summary>
+        </member>
+        <member name="T:PayLib.Models.UrlPayResponse">
+            <summary>
+            支付直接跳转回应客户端数据
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.UrlPayResponse.status">
+            <summary>
+            0: 失败，1：成功
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.UrlPayResponse.message">
+            <summary>
+            消息描述
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.UrlPayResponse.url">
+            <summary>
+            如果成功，这里是跳转地址
+            </summary>
+        </member>
+        <member name="P:PayLib.Models.UrlPayResponse.src">
+            <summary>
+            平台回应原始数据
+            </summary>
+        </member>
+        <member name="M:PayLib.PayBase.CheckCallBackV(System.String)">
+            <summary>
+            到账定单通知
+            </summary>
+            <param name="queryParamsString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.PayBase.CheckCallBackV(System.String,LogLib.Helper.WriteToFile)">
+            <summary>
+            到账定单通知
+            </summary>
+            <param name="queryParamsString"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PayLib.PayTool">
+            <summary>
+            支付工具类
+            </summary>
+        </member>
+        <member name="M:PayLib.PayTool.ToUnixTimestamp">
+            <summary>
+              时间转时间戳转
+            </summary> 
+        </member>
+        <member name="M:PayLib.PayTool.SetValue(System.String,System.Object)">
+            <summary>
+            设置某个字段的值 有序集
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:PayLib.PayTool.SetWxKey(System.String)">
+            <summary>
+            设置密钥
+            </summary>
+            <param name="wxkey"></param>
+        </member>
+        <member name="M:PayLib.PayTool.ToUrl(System.String)">
+            <summary>
+            Dictionary格式转化成url参数格式
+            </summary>
+            <returns>url格式串, 该串不包含sign字段值</returns>
+        </member>
+        <member name="M:PayLib.PayTool.GetValues">
+            <summary>
+            Dictionary格式转化成 value字串如 value1value2
+            </summary>
+            <returns>url格式串, 该串不包含sign字段值</returns>
+        </member>
+        <member name="M:PayLib.PayTool.GetKeyValues">
+            <summary>
+            获取数据结构
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.PayTool.ToUrlIncludeSign">
+            <summary>
+            Dictionary格式转化成url参数格式
+            </summary>
+            <returns>url格式串, 该串不包含sign字段值</returns>
+        </member>
+        <member name="M:PayLib.PayTool.MakeSign(System.String)">
+            <summary>
+            生成签名，详见签名生成算法
+            </summary>
+            <param name="keyString"></param>
+            <returns>签名, sign字段不参加签名</returns>
+        </member>
+        <member name="M:PayLib.PayTool.MakeValueSign">
+            <summary>
+            所有 value 生成签名，详见签名生成算法
+            </summary>
+            <returns>签名, sign字段不参加签名</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:PayLib.PayTool.MakeValueAndSign" -->
+        <member name="P:PayLib.SimplyPay.SimplyPayDaiFuReqModel.amount">
+            <summary>
+            2位小数
+            </summary>
+        </member>
+        <member name="P:PayLib.SimplyPay.SimplyPayDaiFuResModel.code">
+            <summary>
+            0为成功
+            </summary>
+        </member>
+        <member name="M:PayLib.SimplyPay.SimplyPayINR.ReqOrderV(PayLib.Models.OrderResquestModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            下单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.SimplyPay.SimplyPayINR.CheckCallBackV(System.String)">
+            <summary>
+            平台到账通知回调
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.SimplyPay.SimplyPayINR.ReqDaiFuV(System.Collections.Generic.Dictionary{System.String,System.String},LogLib.Helper.WriteToFile)">
+            <summary>
+            代付
+            </summary>
+            <param name="daiFumodel"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PayLib.Titok.TiTokPay">
+            <summary>
+            抖音
+            </summary>
+        </member>
+        <member name="M:PayLib.Titok.TiTokPay.ReqOrder(PayLib.Models.OrderResquestModel)">
+            <summary>
+            下单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.Titok.TiTokPay.CheckCallBack(PayLib.Titok.TiTokCallBackModel)">
+            <summary>
+            平台到账通知回调
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.Titok.TiTokPay.QueryOrder(PayLib.Models.QueryOrderModel)">
+            <summary>
+            定单核对
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PayLib.Titok.TiTokPayResponseModel.code">
+            <summary>
+            200 成功
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokData.merchantOrderNo">
+            <summary>
+            商户订单号
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokData.orderStatus">
+            <summary>
+            订单状态 1：处理中，2：处理成功，3：处理失败
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokData.orderMessage">
+            <summary>
+            订单描述
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokData.merchantNo">
+            <summary>
+            商户号
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokData.orderAmount">
+            <summary>
+            订单金额 元
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokData.actualAmount">
+            <summary>
+            实际到账金额 元
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokData.platOrderNo">
+            <summary>
+            平台订单号
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokCallBackModel.merchantNo">
+            <summary>
+            商户号
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokCallBackModel.merchantOrderNo">
+            <summary>
+            商户订单号
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokCallBackModel.orderStatus">
+            <summary>
+            订单状态 1：处理中，2：处理成功，3：处理失败
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokCallBackModel.platOrderNo">
+            <summary>
+            平台订单号
+            </summary>
+        </member>
+        <member name="P:PayLib.Titok.TiTokCallBackModel.orderAmount">
+            <summary>
+            订单金额 元
+            </summary>
+        </member>
+        <member name="M:PayLib.TPPay.TPPayINR.ReqOrderV(PayLib.Models.OrderResquestModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            下单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.TPPay.TPPayINR.CheckCallBackV(System.String)">
+            <summary>
+            平台到账通知回调
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.TPPay.TPPayINR.ReqDaiFuV(System.Collections.Generic.Dictionary{System.String,System.String},LogLib.Helper.WriteToFile)">
+            <summary>
+            代付
+            </summary>
+            <param name="daiFumodel"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.TYPay.TYPayINR.ReqOrderV(PayLib.Models.OrderResquestModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            下单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.TYPay.TYPayINR.CheckCallBackV(System.String)">
+            <summary>
+            平台到账通知回调
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.TYPay.TYPayINR.ReqDaiFuV(System.Collections.Generic.Dictionary{System.String,System.String},LogLib.Helper.WriteToFile)">
+            <summary>
+            代付
+            </summary>
+            <param name="daiFumodel"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PayLib.TYPay.TYPayInrCallbackModel">
+            <summary>
+            代付或代收成功通知
+            </summary>
+        </member>
+        <member name="P:PayLib.TYPay.TYPayInrCallbackModel.tradestatus">
+            <summary>
+            PAYMENT_SUCCESS: 代收成功
+            WITHDRAWAL_SUCCESS：代付成功
+            </summary>
+        </member>
+        <member name="P:PayLib.TYPay.TYPayInrDaiFuRequestModel.bankcode">
+            <summary>
+            固定INR
+            </summary>
+        </member>
+        <member name="P:PayLib.TYPay.TYPayInrDaiFuRequestModel.bankname">
+            <summary>
+            固定 INRBANK
+            </summary>
+        </member>
+        <member name="P:PayLib.XunFei.XunFeiCallBackModel.trade_status">
+            <summary>
+            交易状态:1成功,-1处理中,2失败
+            </summary>
+        </member>
+        <member name="P:PayLib.XunFei.XunFeiCallBackModel.time">
+            <summary>
+            当前请求秒级时间戳 10位
+            </summary>
+        </member>
+        <member name="M:PayLib.XunFei.XunFeiPay.ReqOrder(PayLib.Models.OrderResquestModel)">
+            <summary>
+            下单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.XunFei.XunFeiPay.CheckCallBack(PayLib.XunFei.XunFeiCallBackModel)">
+            <summary>
+            平台到账通知回调
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.XunFei.XunFeiPay.QueryOrder(PayLib.Models.QueryOrderModel)">
+            <summary>
+            定单核对
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.YiYuan.YYTrc20.ReqCryptOrderV(PayLib.Models.OrderResquestModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            下单 请求数据整理
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.YiYuan.YYTrc20.CheckCallBackV(System.String,LogLib.Helper.WriteToFile)">
+            <summary>
+            到账通知数据
+            </summary>
+            <param name="queryParamsString"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayLib.YiYuan.YYTrc20.QueryOrder(PayLib.Models.QueryOrderModel)">
+            <summary>
+            定单核对
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PayLib.YiYuan.YYTrc20CallBackModel">
+            <summary>
+            yiyuan callback数据模型
+            </summary>
+        </member>
+        <member name="P:PayLib.YiYuan.YYTrc20CallBackModel.orderno">
+            <summary>
+            商户定单号
+            </summary>
+        </member>
+        <member name="P:PayLib.YiYuan.YYTrc20CallBackModel.awcOrderNo">
+            <summary>
+            渠道定单号
+            </summary>
+        </member>
+        <member name="P:PayLib.YiYuan.YYTrc20CallBackModel.realAmount">
+            <summary>
+            到账金额
+            </summary>
+        </member>
+        <member name="P:PayLib.YiYuan.YYTrc20CallBackModel.bankCardNo">
+            <summary>
+            付款地址
+            </summary>
+        </member>
+        <member name="P:PayLib.YiYuan.YYTrc20CallBackModel.bankId">
+            <summary>
+            银行id
+            </summary>
+        </member>
+        <member name="P:PayLib.YiYuan.YYTrc20CallBackModel.currencyType">
+            <summary>
+             0：rmb, 1：usdt，2：btc
+            </summary>
+        </member>
+        <member name="P:PayLib.YiYuan.YYTrc20CallBackModel.chainId">
+            <summary>
+            链路id
+            </summary>
+        </member>
+        <member name="P:PayLib.YiYuan.YYTrc20CallBackModel.sign">
+            <summary>
+            签名
+            </summary>
+        </member>
+    </members>
+</doc>

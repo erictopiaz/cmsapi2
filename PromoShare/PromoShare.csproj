@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ching.DistributedTransaction.EFModel\Ching.DistributedTransaction.EFModel.csproj" />
+    <ProjectReference Include="..\ShareEntity\ShareEntity.csproj" />
+    <ProjectReference Include="..\shareLib\DBLibs\DBLibs.csproj" />
+    <ProjectReference Include="..\ShareSql\ShareSql.csproj" />
+  </ItemGroup>
+
+</Project>

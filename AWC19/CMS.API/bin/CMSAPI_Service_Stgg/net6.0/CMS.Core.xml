@@ -1,0 +1,4135 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CMS.Core</name>
+    </assembly>
+    <members>
+        <member name="M:CMS.Core.Application.Account.Queries.AccountBase.QueryAccountById(System.Int64)">
+            <summary>
+            获取会员账号根据id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.Core.Application.Account.Queries.AccountBase.QueryUserWDReport(System.Collections.Generic.List{System.String})">
+            <summary>
+            查询会员充值数据统计 , 返回充、提总金额+充、提总次数
+            </summary>
+            <param name="accounts"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.Account.Queries.GetOutboundRecordQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.Account.Queries.GetOutboundRecordValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.Account.Queries.GetOutboundRecordHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Queries.BonusPromoAuto">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Queries.BonusPromoAutoQueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Queries.BonusPromoAutoHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Queries.周周挑战详细">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Queries.周周挑战详细Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Queries.红利优惠列表">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Queries.红利优惠列表QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Queries.红利优惠列表Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CMS.Core.Application.优惠管理.Queries.红包雨讯息" -->
+        <member name="T:CMS.Core.Application.优惠管理.Queries.红包雨讯息Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Queries.红包雨讯息Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Transact.配置存款优惠">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Transact.配置存款优惠Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.优惠管理.Transact.配置存款优惠Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.红包雨设置Update">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.红包雨设置UpdateValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.红包雨设置UpdateHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppBanner">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppBannerValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppBannerHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppConfig">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppConfigValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppConfigHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPayMaxAmountList">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPayMaxAmountListValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPayMaxAmountListHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaymentGatewayList">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaymentGatewayListValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaymentGatewayListHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaymentGatewayUsdtList">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaymentGatewayUsdtListReturn.DirectPaymentGatewayUsdtListValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaymentGatewayUsdtListReturn.DirectPaymentGatewayUsdtListHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingList">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingListValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingListHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingListINR">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingListINRValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingListINRHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPayTypeSwitch">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPayTypeSwitchValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPayTypeSwitchHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DomainAuthModel">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DomainAuthModelValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DomainAuthModelHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ExchangeRate">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ExchangeRateValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ExchangeRateHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.GameControl">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.GameControlValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.GameControlHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.MessageRecord">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.MessageRecord.Status">
+            <summary>
+            0 = 没开启
+            1 = 有开启
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.MessageRecordReturn.accountType">
+            <summary>
+            0:会员，1：代理
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.MessageRecordValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.MessageRecordHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankRecord">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankRecordValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankRecordHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.PaymentGatewaySwitchV2INR">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.PaymentGatewaySwitchV2INRValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.PaymentGatewaySwitchV2INRHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.SetExchangeRate">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.SetExchangeRateValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.SetExchangeRateHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayDetail">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayDetailValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayDetailHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayRecord">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.ThirdpayRecordReturn.merchantAccount">
+            <summary>
+            会员的品牌
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayRecordValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayRecordHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ValidateCodeRecord">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ValidateCodeRecordValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ValidateCodeRecordHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebLinks">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebLinksValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebLinksHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeRecord">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.WebNoticeRecord.Status">
+            <summary>
+            0 = 没开启
+            1 = 有开启
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.WebNoticeRecord.Type">
+            <summary>
+            0 = 普通公告
+            2 = 提示
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.WebNoticeRecord.merchantAccount">
+            <summary>
+            品牌
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.WebNoticeRecordReturn.merchantAccount">
+            <summary>
+            会员的品牌
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeRecordValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeRecordHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebVariables">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebVariablesValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebVariablesHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppBannerUpdate">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppBannerUpdateValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppBannerUpdateHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppConfigUpdate">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppConfigUpdateValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.AppConfigUpdateHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingsUpdate">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingsUpdateValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingsUpdateHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingsUpdateV2">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingsUpdateV2Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.DirectPaySettingsUpdateV2Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ImportWithdrawRestrictedAcct">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ImportWithdrawRestrictedAcctValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ImportWithdrawRestrictedAcctHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.MessageAdd">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.MessageAdd.Type">
+            <summary>
+            0 = 留言讯息
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.MessageAdd.AccountList">
+            <summary>
+            Comma Separated accounts
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.MessageAddValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.MessageAddHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankAdd">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankAddValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankAddHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankDisable">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankDisableValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankDisableHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankEdit">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankEditValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankEditHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankSwitch">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankSwitchValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.NetBankSwitchHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.PaymentGatewaySwitch">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.PaymentGatewaySwitchValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.PaymentGatewaySwitchHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.PaymentGatewaySwitchV2">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.PaymentGatewaySwitchV2Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.PaymentGatewaySwitchV2Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.SetDirectPayMaxAmount">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.SetDirectPayMaxAmountValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.SetDirectPayMaxAmountHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.SetDirectPayMaxAmountV2">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.SetDirectPayMaxAmountV2Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.SetDirectPayMaxAmountV2Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayDisable">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayDisableValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayDisableHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayEdit">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayEditValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayEditHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayEdit_DepositLimitOnly">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayEdit_DepositLimitOnlyValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayEdit_DepositLimitOnlyHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayGroupSwitch">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayGroupSwitchValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayGroupSwitchHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayNewUserSwitch">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayNewUserSwitchValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpayNewUserSwitchHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpaySwitch">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpaySwitchValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.ThirdpaySwitchHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebLinksUpdate">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebLinksUpdateValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebLinksUpdateHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeAdd">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.WebNoticeAdd.Type">
+            <summary>
+            0 = 普通公告
+            2 = 代理，
+            100 提示
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.WebNoticeAdd.merchantAccount">
+            <summary>
+            品牌
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeAddValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeAddHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeEdit">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Queries.WebNoticeEdit.merchantAccount">
+            <summary>
+            品牌
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeEditValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeEditHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeSwitch">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeSwitchValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebNoticeSwitchHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebVariablesUpdate">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebVariablesUpdateValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Queries.WebVariablesUpdateHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Transact.LMessageReply">
+            <summary>
+            客人留言回复
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.网站管理.Transact.LMessageReply.reply">
+            <summary>
+            回复的内容
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.网站管理.Transact.LMessageReplyHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.CrossTransactList">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.CrossTransactListValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.CrossTransactListHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.CrossTransactListAlipay">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.CrossTransactListAlipayValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.CrossTransactListAlipayHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.CrossTransactListWechat">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.CrossTransactListWechatValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.CrossTransactListWechatHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.内充列表">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.内充QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.内充Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方QueryBase">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方代理QueryBase">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方代理QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方代理Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方平台">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方平台Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方平台Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方超一个月">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方超一个月Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.第三方超一个月Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.网银列表">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.网银QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Queries.网银Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.CancelDepositRequest">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.CancelDepositRequestValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.CancelDepositRequestHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.CrossTransactCancel">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.CrossTransactCancelValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.CrossTransactCancelHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.CrossTransactVerify">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.CrossTransactVerifyValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.CrossTransactVerifyHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.存款管理.Transact.CrossTransactVerifyHandler.SendWithdrawMessageAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            互转审核后，发送短信通知
+            </summary>
+            <param name="telephone">电话号</param>
+            <param name="merchantAccount">品牌</param>
+            <param name="account">会员账号</param>
+            <param name="sqlConnectString"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.GetThirdpayLinkRequest">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.GetThirdpayLinkRequestValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.GetThirdpayLinkRequestHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.ResizeAmount">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.存款管理.Transact.ResizeAmount.remarks">
+            <summary>
+            订单备注
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.WalletModel">
+            <summary>
+            会员总钱包
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.存款管理.Transact.WalletModel.amountactive">
+            <summary>
+            主账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.存款管理.Transact.WalletModel.wallet">
+            <summary>
+            游戏钱包
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.存款管理.Transact.WalletModel.uid">
+            <summary>
+            会员id
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.ResizeAmountValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.ResizeAmountHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.VerifyDepositRequest">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.VerifyDepositRequestValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.VerifyDepositRequestHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.VerifyFailedDepositRequest">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.VerifyFailedDepositRequestValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.VerifyFailedDepositRequestHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.VerifyFailedDepositRequestWithAlterAmount">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.VerifyFailedDepositRequestWithAlterAmountValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.存款管理.Transact.VerifyFailedDepositRequestWithAlterAmountHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.提款管理.BaseWithdraw`2._DirectPayStartAmount">
+            <summary>
+            代付上线
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.提款管理.BaseWithdraw`2.isWithdrawNoSearchDateLimitAllowed(System.String,System.DateTime,System.String,ShareEntity.OutputModels.ResponseModel{CMS.Core.ViewModel.PagingModel{CMS.Core.Application.提款管理.BaseWithdrawReturn}}@)">
+            <summary>
+            Check WithdrawSearch if it's beyond 31 days
+            </summary>
+            <param name="adminAccess"></param>
+            <param name="starttime"></param>
+            <param name="password"></param>
+            <param name="response"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.Core.Application.提款管理.BaseWithdraw`2.GetWithdrawDetails(System.Int64)">
+            <summary>
+            Get Withdraw Details By ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.BaseWithdrawReturn.paystat">
+            <summary>
+            未到账状态
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.BaseWithdrawReturn.paystatreason">
+            <summary>
+            未到账原因
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.提款管理.BaseWithdraw._DirectPayStartAmount">
+            <summary>
+            代付上线
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.提款管理.BaseWithdraw.GetWithdrawDetails(System.Int64)">
+            <summary>
+            Get Withdraw Details By ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.AllAgentPlayerRecord">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.Queries.AllAgentPlayerRecordReturn.crosstransact">
+            <summary>
+            提款分类： 3：极速提款
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.Queries.AllAgentPlayerRecordReturn.reward">
+            <summary>
+            极速提款确认到账
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.Queries.AllAgentPlayerRecordReturn.alreadyReturnTimes">
+            <summary>
+            是否被回撤过定单(次数)
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.AllAgentPlayerRecordValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.AllAgentPlayerRecordHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.AllRecord">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.Queries.AllRecordReturn.crosstransact">
+            <summary>
+            提款分类： 3：极速提款
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.Queries.AllRecordReturn.reward">
+            <summary>
+            极速提款确认到账
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.Queries.AllRecordReturn.alreadyReturnTimes">
+            <summary>
+            是否被回撤过定单(次数)
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.Queries.AllRecordReturn.userMisc">
+            <summary>
+            ofUserMisc
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.Queries.AllRecordReturn.tags">
+            <summary>
+            付款标记，从 userMisc中解析出来
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.AllRecordValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.AllRecordHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.CrossTransactAlipayPendingQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.CrossTransactAlipayPendingQueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.CrossTransactAlipayPendingHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.CrossTransactPendingQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.CrossTransactPendingQueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.CrossTransactPendingHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.CrossTransactWechatPendingQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.CrossTransactWechatPendingQueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.CrossTransactWechatPendingHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ManualPayQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ManualPayQueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ManualPayQueryHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ReturnFunds">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.Queries.ReturnFunds.remarks">
+            <summary>
+            回退订单备注
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ReturnFundsValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ReturnFundsHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.RiskMgmtRecord">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.RiskMgmtRecordValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.RiskMgmtRecordHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.SplitWithdrawOrder">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.Queries.SplitWithdrawOrder.amounts">
+            <summary>
+            切割金额 #分割
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.SplitWithdrawOrderValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.提款管理.Queries.BankWithdrawTextSql.UpdateUserAmountSql">
+            <summary>
+            更新主账号余额
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.提款管理.Queries.BankWithdrawTextSql.InsertWithdrawSql">
+            <summary>
+            记录提款记录
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.提款管理.Queries.BankWithdrawTextSql.UpdateWithdrawSql">
+            <summary>
+            更新被拆提款定单状态
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.SplitWithdrawOrderHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.TransferToFix">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.TransferToFixValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.TransferToFixHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.USDTDirectPayQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.USDTDirectPayQueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.USDTDirectPayQueryHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP1Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP1QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP1Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP2DirectPayQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP2DirectPayQueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP2DirectPayQueryHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP2Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP2QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP2Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP3DirectPayQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP3DirectPayQueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP3DirectPayQueryHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP3Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP3QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP3Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP4Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP4QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP4Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP提款列表Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP提款列表QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VIP提款列表Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.WithdrawOrders">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.提款管理.Queries.WithdrawOrders.type">
+            <summary>
+            0:提款审核，等审核的人数
+            1：新会员  代付人数
+            2：普通会员，代付人数
+            3：vip     代付人数
+            4：vip3 代付人数
+            5：usdt 代付人数
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.WithdrawOrdersValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.WithdrawOrdersHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.提款管理.Queries.WithdrawOrdersHandler.WithdrawalXFVerify(System.Collections.Generic.IList{CMS.Core.Application.提款管理.Queries.WaittingOrders})">
+            <summary>
+            提款风控页面，等审核定单
+            </summary>
+            <param name="waittingOrders"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.Core.Application.提款管理.Queries.WithdrawOrdersHandler.WaitDirectPay(System.Collections.Generic.IList{CMS.Core.Application.提款管理.Queries.WaittingOrders},System.Int32)">
+            <summary>
+            等代付的定单
+            </summary>
+            <param name="waittingOrders"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.Core.Application.提款管理.Queries.WithdrawOrdersHandler.WithdrawalVerify(System.Collections.Generic.IList{CMS.Core.Application.提款管理.Queries.WaittingOrders})">
+            <summary>
+            提款审核页面，等审核定单
+            </summary>
+            <param name="waittingOrders"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.万象会员Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.万象会员QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.万象会员Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付申请VIPQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付申请VIPQueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付申请VIPHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付列表所有Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付列表所有QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付列表所有Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付申请普通Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付申请普通QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付申请普通Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付详细列表">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付详细列表Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.代付详细列表Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.大额VIP3列表">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.大额VIP3列表Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.大额VIP3列表Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.大额VIP列表">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.大额VIP列表Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.大额VIP列表Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.大额普通列表">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.大额普通列表Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.大额普通列表Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款卡号查询">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款卡号查询Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款卡号查询Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款流水详细Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.VerifyWithdrawDataModel">
+            <summary>
+            存款金额      红利金额      返水金额       要求流水，实际投注流水    起始时间       结束时间
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款流水详细QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款流水详细Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款详细Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款详细QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款详细Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款金额查询">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款金额查询Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.提款金额查询Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.支付记录Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.支付记录QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.支付记录Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.新会员DirectPayQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.新会员DirectPayQueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.新会员DirectPayHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.新会员Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.新会员QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.新会员Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.普通会员Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.普通会员QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.普通会员Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ApproveRequest">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ApproveRequestValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ApproveRequestHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.AutoPayRequest">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.AutoPayRequestValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.AutoPayRequestHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.CancelPayRequest">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.CancelPayRequestValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayAffiliate">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayAffiliateValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayAffiliateHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayAffiliateV2">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayAffiliateV2Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayAffiliateV2Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayRequest">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayRequestValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayRequestHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayRequestTest">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayRequestTestValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayRequestTestHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayRequestV2">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayRequestV2Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.DirectPayRequestV2Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.提款管理.Queries.DirectPayRequestV2Handler.INR(CMS.Core.Application.提款管理.Queries.DirectPayRequestV2)">
+            <summary>
+            inr 代付渠道 
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.Core.Application.提款管理.Queries.DirectPayRequestV2Handler.INR_V(CMS.Core.Application.提款管理.Queries.DirectPayRequestV2)">
+            <summary>
+            inr 代付渠道 
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.InternalCancel">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.InternalCancelValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.InternalVerify">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.InternalVerifyValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.LockWithdrawRequest">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.LockWithdrawRequestValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.LockWithdrawRequestHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ManualPayRequest">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ManualPayRequestValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.ManualPayRequestHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.PaymentNotReceivedUpdate">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.PaymentNotReceivedUpdateValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.TransferToManualPay">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.TransferToManualPayValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.TransferToManualPayHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.TransferToRiskManagement">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.TransferToRiskManagementValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.提款管理.Queries.TransferToRiskManagementHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.游戏管理.Queries.游戏转账搜索">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.游戏管理.Queries.游戏转账搜索Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.游戏管理.Queries.游戏转账搜索Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.电销任务Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.电销任务QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.电销任务Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.备注记录Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.备注记录QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.备注记录Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.活跃记录Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.活跃记录QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.活跃记录Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.电销报表Query">
+            <summary>
+            电销数据查询
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.导入客户分配Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.导入客户分配QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Queries.导入客户分配Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Transact.增加备注Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Transact.增加备注QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.电销管理.Transact.增加备注Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetAccessPrivilege">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetAccessPrivilegeHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetApiAccessList">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetApiAccessListHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetDashboardDetails">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.系统管理.Queries.GetDashboardDetails.Admin">
+            <summary>
+            市场管理人员账号（区分首页统计数据使用）
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetDashboardDetailsValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetDashboardDetailsHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetDiffUserAccessMenu">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetDiffUserAccessMenuReturn">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetGameCode">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetGameConfig">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.系统管理.Queries.GetGameConfig.walletType">
+            <summary>
+            1:转账钱包，0:单一钱包
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetGameProxyConfig">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.系统管理.Queries.GetGameProxyConfigReturn.proxyUrl">
+            <summary>
+            游戏api 反向 代理
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.系统管理.Queries.GetGameProxyConfigReturn.merchantAccount">
+            <summary>
+            品牌
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.系统管理.Queries.GetGameProxyConfigReturn.gameClassRowId">
+            <summary>
+            游戏配置数据id 唯一
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetManageGroup">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetSystemSettings">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetUserMenu">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetUserMenuHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetUsers">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetUsersValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Queries.GetUsersHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.ResetGameProxyConfig">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.ResetGameProxyConfigHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.SyncAffiliate">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.SyncAffiliateHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.ToggleGameStatus">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.ToggleGameStatusHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.ToggleMenu">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.ToggleMenuHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.TogglePrivilege">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.TogglePrivilegeHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.ToggleStatus">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.ToggleStatusHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.ToggleUserStatus">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.ToggleUserStatusHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateAccessPrivilege">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateAccessPrivilegeHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateAccessPrivilegeAllAddCustom">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateAccessPrivilegeAllAddCustomHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateAccessPrivilegeCustom">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateAccessPrivilegeCustomHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdatePassword">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdatePasswordHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateUserDetails">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateUserDetailsHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateUserMenu">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateUserMenuHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateWebsiteNavSettings">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.UpdateWebsiteNavSettingsHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.黑白名单更新">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.系统管理.Transact.黑白名单更新.type">
+            <summary>
+            0:上锁，1：解锁
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.黑白名单更新Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.系统管理.Transact.黑白名单更新Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfo">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfo.account">
+            <summary>
+            会员账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfo.Admin">
+            <summary>
+            当前登录账号，可空
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn">
+            <summary>
+            查询回应数据结构
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.account">
+            <summary>
+            会员账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.telephone">
+            <summary>
+            电话号 139****1234
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.amountactive">
+            <summary>
+            当前主账号金额
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.depositamount">
+            <summary>
+            当前总充值
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.depositnumber">
+            <summary>
+            当前总充值次数
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.withdrawalamount">
+            <summary>
+            当前总提款
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.withdrawalnumber">
+            <summary>
+            当前总提款次数
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.riskRemark">
+            <summary>
+            当前会员备注信息
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.vipStatusRemark">
+            <summary>
+            当前vip状态备注
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.macaddress">
+            <summary>
+            注册ip,对应实际地址（参考）
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.createtime">
+            <summary>
+            会员注册时间
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.affaccount">
+            <summary>
+            当前代理
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoReturn.levels">
+            <summary>
+            会员级别
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoTextSql">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoTextSql.SearcharUserInfoSql">
+            <summary>
+            查询账号基本信息 SQL
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserBaseInfoHandler.#ctor(AutoMapper.IMapper,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            
+            </summary>
+            <param name="mapper"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserBindCards">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBindCards.account">
+            <summary>
+            会员账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBindCards.Admin">
+            <summary>
+            当前登录账号，可空
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserBindCardsReturn">
+            <summary>
+            查询回应数据结构
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBindCardsReturn.cardno">
+            <summary>
+            卡号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBindCardsReturn.cardbank">
+            <summary>
+            开户行名
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserBindCardsReturn.cardaddress">
+            <summary>
+            开户行支行
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserBindCardsValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserBindCardsValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserBindCardsTextSql">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.账号管理.Queries.SearchUserBindCardsTextSql.SearcharUserBindCardsSql">
+            <summary>
+            查询账号基本信息 SQL
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserBindCardsHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserBindCardsHandler.#ctor(AutoMapper.IMapper,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            
+            </summary>
+            <param name="mapper"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserBindCardsHandler.Handle(CMS.Core.Application.账号管理.Queries.SearchUserBindCards)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserEventTime">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserEventTime.account">
+            <summary>
+            会员账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserEventTime.wid">
+            <summary>
+            当前提款的id
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserEventTime.startTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserEventTime.endTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserEventTime.Admin">
+            <summary>
+            当前登录账号，可空
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeReturn">
+            <summary>
+            查询回应数据结构
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeReturn.account">
+            <summary>
+            会员账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeReturn.amount">
+            <summary>
+            当前总充值
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeReturn.balance">
+            <summary>
+            当前总提款
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeReturn.paytime">
+            <summary>
+            当前总反水
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeReturn.optype">
+            <summary>
+            事件操作类型
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeReturn.n">
+            <summary>
+            事件操作类型 描述 0:充值，1:提款， 2:优惠红利，3:反水
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeTextSql">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeTextSql.SearcharUserEventTimeSql">
+            <summary>
+            查询账号基本信息 SQL
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeTextSql.queyrWithdrawSql">
+            <summary>
+            查询，提款信息
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeTextSql.queyrUserSql">
+            <summary>
+            查询会员信息
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeHandler.#ctor(AutoMapper.IMapper,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            
+            </summary>
+            <param name="mapper"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserEventTimeHandler.Handle(CMS.Core.Application.账号管理.Queries.SearchUserEventTime)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserLoginChart">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserLoginChart.account">
+            <summary>
+            会员账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserLoginChart.Admin">
+            <summary>
+            当前登录账号，可空
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserLoginChartReturn">
+            <summary>
+            查询回应数据结构
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserLoginChartReturn.l_device">
+            <summary>
+            登录设备  1:android，2：ios,   3:h5  , 4: pc 
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserLoginChartReturn.times">
+            <summary>
+            登录次数
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserLoginChartValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserLoginChartValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserLoginChartTextSql">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.账号管理.Queries.SearchUserLoginChartTextSql.SearcharUserLoginChartSql">
+            <summary>
+            查询账号基本信息 SQL
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserLoginChartHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserLoginChartHandler.#ctor(AutoMapper.IMapper,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            
+            </summary>
+            <param name="mapper"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserLoginChartHandler.Handle(CMS.Core.Application.账号管理.Queries.SearchUserLoginChart)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyData">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyData.account">
+            <summary>
+            会员账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyData.Admin">
+            <summary>
+            当前登录账号，可空
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataReturn">
+            <summary>
+            查询回应数据结构
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataReturn.account">
+            <summary>
+            会员账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataReturn.depositAmount">
+            <summary>
+            当前总充值
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataReturn.withdrawAmount">
+            <summary>
+            当前总提款
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataReturn.turnover">
+            <summary>
+            当前总反水
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataReturn.bonus">
+            <summary>
+            当前总红利
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataTextSql">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataTextSql.SearcharUserMonthlyDataSql">
+            <summary>
+            查询账号基本信息 SQL
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataHandler.#ctor(AutoMapper.IMapper,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            
+            </summary>
+            <param name="mapper"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.SearchUserMonthlyDataHandler.Handle(CMS.Core.Application.账号管理.Queries.SearchUserMonthlyData)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.TestFluent">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.TestFluentValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.TestFluentHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.交易记录">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.交易记录Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.交易记录Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.交易记录V2">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.交易记录V2Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.交易记录V2Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.关联搜索">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.关联搜索Return.uid">
+            <summary>
+            ofuser.id
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.关联搜索Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.关联搜索Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.存款账号">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.存款账号Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.存款账号Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.查询账号日志.account">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.查询账号日志.accountType">
+            <summary>
+            账号类型
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.查询账号日志.startTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.查询账号日志.endTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.等级List">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.等级ListValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.等级ListHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.等级列表">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.等级列表Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.等级列表Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.获取游戏金额">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.获取游戏金额Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.获取游戏金额Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.获取游戏金额Handler.GetToken3(System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Ching Security Method
+            </summary>
+            <param name="account"></param>
+            <param name="callfrom"></param>
+            <param name="ipaddress"></param>
+            <param name="calltime"></param>
+            <param name="callaction"></param>
+            <param name="loginToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Queries.获取游戏金额Handler.SendRequestVINTL(System.String,System.Int32,System.Int32,System.String,System.String,System.Int64,LogLib.Helper.WriteToFile,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            根据游戏代码+游戏id 获取游戏余额
+            </summary>
+            <param name="gameCode"></param>
+            <param name="gameId"></param>
+            <param name="currencyType"></param>
+            <param name="account"></param>
+            <param name="agaccount"></param>
+            <param name="uid"></param>
+            <param name="merchantAccount">品牌</param>
+            <param name="writeToFile"></param>
+            <param name="callSec"></param>
+            <param name="apiUrl"></param>
+            <param name="jwtEncoderKey"></param>
+            <param name="desEncodeKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.获取游戏金额NoAuth">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.获取游戏金额NoAuthValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.获取游戏金额NoAuthHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账号搜索">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号搜索.uid">
+            <summary>
+            游戏账号 
+            inr:  bayo+ofUser.id
+            awc:  awc+ofUser.id
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号搜索.anomaly">
+            <summary>
+            默认风控
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号搜索.riskTypesAready">
+            <summary>
+            新增风控类型
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号搜索.vipTypeAready">
+            <summary>
+            vip状态
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号搜索Return.anomaly">
+            <summary>
+            默认风控
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号搜索Return.riskTypesAready">
+            <summary>
+            新增风控类型
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账号搜索Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账号搜索Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账号搜索电销">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号搜索电销Return.anomaly">
+            <summary>
+            默认风控
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号搜索电销Return.riskTypesAready">
+            <summary>
+            新增风控类型
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账号搜索电销Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账号搜索电销Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账号详细Query">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号详细Query.id">
+            <summary>
+            会员id
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号详细Query.Account">
+            <summary>
+            会员账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号详细Return.saler">
+            <summary>
+            电销人员
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号详细Return.walletType">
+            <summary>
+            游戏钱包类型
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Queries.账号详细Return.merchantAccount">
+            <summary>
+            品牌
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账号详细QueryValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账号详细Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账户存款列表">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账户存款列表Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.账户存款列表Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.邮件发送列表">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.邮件发送列表Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.邮件发送列表Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.首存账号">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.首存账号Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.首存账号Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Queries.RecordsCount">
+            <summary>
+            当前记录，有多少行
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.AccountLoginUnlock">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.AccountLoginUnlockValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.AccountLoginUnlockHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.VPN开关">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.VPN开关Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.VPN开关Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CMS.Core.Application.账号管理.Transact.会员VIP状态修改" -->
+        <member name="P:CMS.Core.Application.账号管理.Transact.会员VIP状态修改.account">
+            <summary>
+            会员账号根据id 获取账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.会员VIP状态修改.id">
+            <summary>
+            会员id
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.会员VIP状态修改.vipTypeAready">
+            <summary>
+            配置好的风控状态
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.会员VIP状态修改.replyVIP">
+            <summary>
+            风控描述
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.会员VIP状态修改Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.会员VIP状态修改Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.会员开启商户">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.会员开启商户Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.会员开启商户Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.会员风控状态修改">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.会员风控状态修改.account">
+            <summary>
+            会员账号根据id 获取账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.会员风控状态修改.id">
+            <summary>
+            会员id
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.会员风控状态修改.riskTypeAready">
+            <summary>
+            配置好的风控状态
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.会员风控状态修改.reply">
+            <summary>
+            风控描述
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.会员风控状态修改Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.会员风控状态修改Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.关闭会员商户">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.关闭会员商户Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.关闭会员商户Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.卡查询">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.卡查询Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.卡查询Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.参与推荐结算">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.参与推荐结算.isLimitSpreadBilled">
+            <summary>
+            是否设置了实名验证
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.参与推荐结算Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.参与推荐结算Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.姓名更新">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.姓名更新Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.姓名更新Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.定额提款限制修改">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.定额提款限制修改.account">
+            <summary>
+            会员账号根据id 获取账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.定额提款限制修改.id">
+            <summary>
+            会员id
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.定额提款限制修改.fixWAmountLimitLevel">
+            <summary>
+            配置定额限制级别
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.定额提款限制修改Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.定额提款限制修改Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.定额提款限制更新">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.定额提款限制更新.isLimitedfixWithdrawal">
+            <summary>
+            是否可以参与，定额的提款：0：可以，1：禁止参与
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.定额提款限制更新.limitType">
+            <summary>
+            0:网银定额，1：支付宝定额，2：微信定额  
+            默认 0
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.定额提款限制更新Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.定额提款限制更新Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Transact.定额提款限制更新Handler.UpdateLimitedWXFixWithdrawal(CMS.Core.Application.账号管理.Transact.定额提款限制更新)">
+            <summary>
+            微信定额 参与权限
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Transact.定额提款限制更新Handler.UpdateLimitedAliFixWithdrawal(CMS.Core.Application.账号管理.Transact.定额提款限制更新)">
+            <summary>
+            支付宝定额 参与权限
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Transact.定额提款限制更新Handler.UpdateLimitedFixWithdrawal(CMS.Core.Application.账号管理.Transact.定额提款限制更新)">
+            <summary>
+            网银定额 参与权限
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.定额限制修改">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.定额限制修改.account">
+            <summary>
+            会员账号根据id 获取账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.定额限制修改.id">
+            <summary>
+            会员id
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.定额限制修改.fixAmountLimitLevel">
+            <summary>
+            配置定额限制级别
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.定额限制修改Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.定额限制修改Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.实名存款更新">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.实名存款更新.isneedcheckrealname">
+            <summary>
+            是否设置了实名验证
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.实名存款更新Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.实名存款更新Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.密码更新">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.密码更新Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.密码更新Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新上级代理">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.更新上级代理.accountid">
+            <summary>
+            代理id
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.更新上级代理.freezereason">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新上级代理Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新上级代理Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新会员充值实名">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新会员充值实名Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新会员充值实名Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新会员加码比例">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.更新会员加码比例.account">
+            <summary>
+            根据会员id 获取到会员账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.更新会员加码比例.id">
+            <summary>
+            会员id
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新会员加码比例Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新会员加码比例Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新卡名称">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新卡名称Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新卡名称Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新存款条件">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.更新存款条件.limitType">
+            <summary>
+            0:网银定额限制提交，1：支付宝定额限制提交，2：微信定额限制提交
+            默认为 0
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新存款条件Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新存款条件Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新标记">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新标记Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新标记Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新游戏状态">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新游戏状态Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.更新游戏状态Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.查询会员加码比例">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.QueryOutModel">
+            <summary>
+            查询返回数据
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.realNames">
+            <summary>
+            充值多实名
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.specialDepositPromo">
+            <summary>
+            会员特别的存款优惠
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.disabledMids">
+            <summary>
+            会员禁用的商户id列表
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.riskTypesAready">
+            <summary>
+            已经配置的风控类型
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.riskRemark">
+            <summary>
+            风控备注
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.vipTypeAready">
+            <summary>
+            vip状态类型
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.vipStatusRemark">
+            <summary>
+            vip状态备注
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.isneedcheckrealname">
+            <summary>
+            存款实名验证  0：否，1：是
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.isLimitSpreadBilled">
+            <summary>
+            是否参与推荐优惠结算 1：参与，0：不参与
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.fixAmountLimitLevel">
+            <summary>
+            查询定额存款金额的级别
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.fixWAmountLimitLevel">
+            <summary>
+            查询定额提款金额的级别
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.isLimitedfixWithdrawal">
+            <summary>
+            是否可以参与，定额的提款：0：可以，1：禁止参与
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.isLimitedAliFixWithdrawal">
+            <summary>
+            是否可以参与，支付宝定额的提款：0：可以，1：禁止参与
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.QueryOutModel.isLimitedWXFixWithdrawal">
+            <summary>
+            是否可以参与，微信定额的提款：0：可以，1：禁止参与
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.查询会员加码比例Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.游戏金额重置">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.游戏金额重置Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.游戏金额重置Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Application.账号管理.Transact.游戏金额重置Handler.GetToken3(System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Ching Security Method
+            </summary>
+            <param name="account"></param>
+            <param name="callfrom"></param>
+            <param name="ipaddress"></param>
+            <param name="calltime"></param>
+            <param name="callaction"></param>
+            <param name="loginToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.生日更新">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.生日更新Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.生日更新Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.电话更新">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.电话更新Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.电话更新Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.电话查询">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.电话查询Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.电话查询Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.等级Edit">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.等级EditValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.等级EditHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.绑定卡删除">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.绑定卡删除Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.绑定卡删除Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.账号优惠禁止">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.账号优惠禁止Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.账号优惠禁止Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.账号详细Update">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.账号详细UpdateValidator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.账号详细UpdateHandler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮件发送_导入">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮件发送_导入Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮件发送_导入Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮件发送_改状态">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮件发送_改状态Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮件发送_改状态Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮件发送_新增">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮件发送_新增Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮件发送_新增Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮箱更新">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮箱更新Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.邮箱更新Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.银行卡单笔提款区间限制.account">
+            <summary>
+            会员账号根据id 获取账号
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.银行卡单笔提款区间限制.id">
+            <summary>
+            会员id
+            </summary>
+        </member>
+        <member name="P:CMS.Core.Application.账号管理.Transact.银行卡单笔提款区间限制.minAmount">
+            <summary>
+            配置定额限制级别
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.银行卡单笔提款区间限制Validator">
+            <summary>
+            API Model Validation
+            </summary>
+        </member>
+        <member name="T:CMS.Core.Application.账号管理.Transact.银行卡单笔提款区间限制Handler">
+            <summary>
+            Request Handler
+            </summary>
+        </member>
+        <member name="M:CMS.Core.Common.Security.GuidToLongString">
+            <summary>
+            获取guid long字串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.Core.Common.Security.DoubleMD5Hash(System.String)">
+            <summary>
+            Double hashed use to store password 
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.Core.Common.Security.GetToken3(System.String,System.Int32,System.String,System.String,System.String,System.String)">
+            <summary>
+            Ching Security Method
+            </summary>
+            <param name="account"></param>
+            <param name="callfrom"></param>
+            <param name="ipaddress"></param>
+            <param name="calltime"></param>
+            <param name="callaction"></param>
+            <param name="loginToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.Core.BaseRequestHandler`2.Handle(`0)">
+            <summary>
+            Override in a derived class for the handler logic
+            </summary>
+            <param name="request">Request</param>
+            <returns>Response</returns>
+        </member>
+        <member name="T:AWC2019.Core.Application.Account.Queries.SampleQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="T:AWC2019.Core.Application.Account.Queries.GetLBBetRecordQuery">
+            <summary>
+            MediatR Request that returns a List of LBModel
+            </summary>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.Password``1(FluentValidation.IRuleBuilder{``0,System.String})">
+            <summary>
+            后台密码
+            </summary>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.Account``1(FluentValidation.IRuleBuilder{``0,System.String})">
+            <summary>
+            后台账号
+            </summary>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.Datetime``1(FluentValidation.IRuleBuilder{``0,System.Nullable{System.DateTime}})">
+            <summary>
+            时间格式
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ruleBuilder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.Realname``1(FluentValidation.IRuleBuilder{``0,System.String})">
+            <summary>
+            IP Address
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ruleBuilder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.AccountRegex``1(FluentValidation.IRuleBuilder{``0,System.String})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ruleBuilder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.DateTimeStr``1(FluentValidation.IRuleBuilder{``0,System.String})">
+            <summary>
+            IP Address
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ruleBuilder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.AffiliateOld``1(FluentValidation.IRuleBuilder{``0,System.String})">
+            <summary>
+            处理旧的代理
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ruleBuilder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.PageSize``1(FluentValidation.IRuleBuilder{``0,System.Int32})">
+            <summary>
+            PageSize Limiter
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ruleBuilder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.Level``1(FluentValidation.IRuleBuilder{``0,System.Int32})">
+            <summary>
+            PageSize Limiter
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ruleBuilder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.Status``1(FluentValidation.IRuleBuilder{``0,System.Int32})">
+            <summary>
+            PageSize Limiter
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ruleBuilder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.CardNo``1(FluentValidation.IRuleBuilder{``0,System.String})">
+            <summary>
+            银行卡
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ruleBuilder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AWC2019.Core.Validation.FluentValidationRuleExtensions.IP``1(FluentValidation.IRuleBuilder{``0,System.String})">
+            <summary>
+            IP Address
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ruleBuilder"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

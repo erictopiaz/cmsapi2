@@ -1,0 +1,460 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnvironmentName>Staging</EnvironmentName>
+    <UserSecretsId>2ac43f79-bc9a-4e9f-b37b-0fccf3b69981</UserSecretsId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="wwwroot_layui\design\css\layui.css" />
+    <Content Include="wwwroot_layui\design\css\layui.mobile.css" />
+    <Content Include="wwwroot_layui\design\css\modules\code.css" />
+    <Content Include="wwwroot_layui\design\css\modules\laydate\default\font.css" />
+    <Content Include="wwwroot_layui\design\css\modules\laydate\default\laydate.css" />
+    <Content Include="wwwroot_layui\design\css\modules\layer\default\icon-ext.png" />
+    <Content Include="wwwroot_layui\design\css\modules\layer\default\icon.png" />
+    <Content Include="wwwroot_layui\design\css\modules\layer\default\layer.css" />
+    <Content Include="wwwroot_layui\design\css\modules\layer\default\loading-0.gif" />
+    <Content Include="wwwroot_layui\design\css\modules\layer\default\loading-1.gif" />
+    <Content Include="wwwroot_layui\design\css\modules\layer\default\loading-2.gif" />
+    <Content Include="wwwroot_layui\design\develop\treeGrid0.1.js" />
+    <Content Include="wwwroot_layui\design\extend\dltable.js" />
+    <Content Include="wwwroot_layui\design\extend\treeGrid.js" />
+    <Content Include="wwwroot_layui\design\font\iconfont.eot" />
+    <Content Include="wwwroot_layui\design\font\iconfont.svg" />
+    <Content Include="wwwroot_layui\design\font\iconfont.ttf" />
+    <Content Include="wwwroot_layui\design\font\iconfont.woff" />
+    <Content Include="wwwroot_layui\design\images\face\0.gif" />
+    <Content Include="wwwroot_layui\design\images\face\1.gif" />
+    <Content Include="wwwroot_layui\design\images\face\10.gif" />
+    <Content Include="wwwroot_layui\design\images\face\11.gif" />
+    <Content Include="wwwroot_layui\design\images\face\12.gif" />
+    <Content Include="wwwroot_layui\design\images\face\13.gif" />
+    <Content Include="wwwroot_layui\design\images\face\14.gif" />
+    <Content Include="wwwroot_layui\design\images\face\15.gif" />
+    <Content Include="wwwroot_layui\design\images\face\16.gif" />
+    <Content Include="wwwroot_layui\design\images\face\17.gif" />
+    <Content Include="wwwroot_layui\design\images\face\18.gif" />
+    <Content Include="wwwroot_layui\design\images\face\19.gif" />
+    <Content Include="wwwroot_layui\design\images\face\2.gif" />
+    <Content Include="wwwroot_layui\design\images\face\20.gif" />
+    <Content Include="wwwroot_layui\design\images\face\21.gif" />
+    <Content Include="wwwroot_layui\design\images\face\22.gif" />
+    <Content Include="wwwroot_layui\design\images\face\23.gif" />
+    <Content Include="wwwroot_layui\design\images\face\24.gif" />
+    <Content Include="wwwroot_layui\design\images\face\25.gif" />
+    <Content Include="wwwroot_layui\design\images\face\26.gif" />
+    <Content Include="wwwroot_layui\design\images\face\27.gif" />
+    <Content Include="wwwroot_layui\design\images\face\28.gif" />
+    <Content Include="wwwroot_layui\design\images\face\29.gif" />
+    <Content Include="wwwroot_layui\design\images\face\3.gif" />
+    <Content Include="wwwroot_layui\design\images\face\30.gif" />
+    <Content Include="wwwroot_layui\design\images\face\31.gif" />
+    <Content Include="wwwroot_layui\design\images\face\32.gif" />
+    <Content Include="wwwroot_layui\design\images\face\33.gif" />
+    <Content Include="wwwroot_layui\design\images\face\34.gif" />
+    <Content Include="wwwroot_layui\design\images\face\35.gif" />
+    <Content Include="wwwroot_layui\design\images\face\36.gif" />
+    <Content Include="wwwroot_layui\design\images\face\37.gif" />
+    <Content Include="wwwroot_layui\design\images\face\38.gif" />
+    <Content Include="wwwroot_layui\design\images\face\39.gif" />
+    <Content Include="wwwroot_layui\design\images\face\4.gif" />
+    <Content Include="wwwroot_layui\design\images\face\40.gif" />
+    <Content Include="wwwroot_layui\design\images\face\41.gif" />
+    <Content Include="wwwroot_layui\design\images\face\42.gif" />
+    <Content Include="wwwroot_layui\design\images\face\43.gif" />
+    <Content Include="wwwroot_layui\design\images\face\44.gif" />
+    <Content Include="wwwroot_layui\design\images\face\45.gif" />
+    <Content Include="wwwroot_layui\design\images\face\46.gif" />
+    <Content Include="wwwroot_layui\design\images\face\47.gif" />
+    <Content Include="wwwroot_layui\design\images\face\48.gif" />
+    <Content Include="wwwroot_layui\design\images\face\49.gif" />
+    <Content Include="wwwroot_layui\design\images\face\5.gif" />
+    <Content Include="wwwroot_layui\design\images\face\50.gif" />
+    <Content Include="wwwroot_layui\design\images\face\51.gif" />
+    <Content Include="wwwroot_layui\design\images\face\52.gif" />
+    <Content Include="wwwroot_layui\design\images\face\53.gif" />
+    <Content Include="wwwroot_layui\design\images\face\54.gif" />
+    <Content Include="wwwroot_layui\design\images\face\55.gif" />
+    <Content Include="wwwroot_layui\design\images\face\56.gif" />
+    <Content Include="wwwroot_layui\design\images\face\57.gif" />
+    <Content Include="wwwroot_layui\design\images\face\58.gif" />
+    <Content Include="wwwroot_layui\design\images\face\59.gif" />
+    <Content Include="wwwroot_layui\design\images\face\6.gif" />
+    <Content Include="wwwroot_layui\design\images\face\60.gif" />
+    <Content Include="wwwroot_layui\design\images\face\61.gif" />
+    <Content Include="wwwroot_layui\design\images\face\62.gif" />
+    <Content Include="wwwroot_layui\design\images\face\63.gif" />
+    <Content Include="wwwroot_layui\design\images\face\64.gif" />
+    <Content Include="wwwroot_layui\design\images\face\65.gif" />
+    <Content Include="wwwroot_layui\design\images\face\66.gif" />
+    <Content Include="wwwroot_layui\design\images\face\67.gif" />
+    <Content Include="wwwroot_layui\design\images\face\68.gif" />
+    <Content Include="wwwroot_layui\design\images\face\69.gif" />
+    <Content Include="wwwroot_layui\design\images\face\7.gif" />
+    <Content Include="wwwroot_layui\design\images\face\70.gif" />
+    <Content Include="wwwroot_layui\design\images\face\71.gif" />
+    <Content Include="wwwroot_layui\design\images\face\8.gif" />
+    <Content Include="wwwroot_layui\design\images\face\9.gif" />
+    <Content Include="wwwroot_layui\design\layui.all.js" />
+    <Content Include="wwwroot_layui\design\layui.js" />
+    <Content Include="wwwroot_layui\design\layui_old.all.js" />
+    <Content Include="wwwroot_layui\design\layui_old.js" />
+    <Content Include="wwwroot_layui\design\lay\all-mobile.js" />
+    <Content Include="wwwroot_layui\design\lay\all.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\carousel.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\code.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\element.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\flow.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\form.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\jquery.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\laydate.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\layedit.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\layer.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\laypage.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\laytpl.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\mobile.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\mobile\layer-mobile.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\mobile\layim-mobile-open.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\mobile\upload-mobile.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\mobile\zepto.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\table.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\tree.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\upload.js" />
+    <Content Include="wwwroot_layui\design\lay\modules\util.js" />
+    <Content Include="wwwroot_layui\favicon.ico" />
+    <Content Include="wwwroot_layui\index.html" />
+    <Content Include="wwwroot_layui\js\axios.js" />
+    <Content Include="wwwroot_layui\js\cfunc.js" />
+    <Content Include="wwwroot_layui\js\fpjs.js" />
+    <Content Include="wwwroot_layui\js\globalmixin.js" />
+    <Content Include="wwwroot_layui\js\vue-paginate.js" />
+    <Content Include="wwwroot_layui\js\vue.js" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="wwwroot_layui\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Include="wwwroot_layui\lib\bootstrap\LICENSE" />
+    <Content Include="wwwroot_layui\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="wwwroot_layui\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Include="wwwroot_layui\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+    <Content Include="wwwroot_layui\lib\jquery-validation\dist\additional-methods.js" />
+    <Content Include="wwwroot_layui\lib\jquery-validation\dist\additional-methods.min.js" />
+    <Content Include="wwwroot_layui\lib\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="wwwroot_layui\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="wwwroot_layui\lib\jquery-validation\LICENSE.md" />
+    <Content Include="wwwroot_layui\lib\jquery\dist\jquery.js" />
+    <Content Include="wwwroot_layui\lib\jquery\dist\jquery.min.js" />
+    <Content Include="wwwroot_layui\lib\jquery\dist\jquery.min.map" />
+    <Content Include="wwwroot_layui\lib\jquery\LICENSE.txt" />
+    <Content Include="wwwroot_layui\lib\layui\css\layui.css" />
+    <Content Include="wwwroot_layui\lib\layui\css\layui.mobile.css" />
+    <Content Include="wwwroot_layui\lib\layui\css\modules\code.css" />
+    <Content Include="wwwroot_layui\lib\layui\css\modules\laydate\default\laydate.css" />
+    <Content Include="wwwroot_layui\lib\layui\css\modules\layer\default\icon-ext.png" />
+    <Content Include="wwwroot_layui\lib\layui\css\modules\layer\default\icon.png" />
+    <Content Include="wwwroot_layui\lib\layui\css\modules\layer\default\layer.css" />
+    <Content Include="wwwroot_layui\lib\layui\css\modules\layer\default\loading-0.gif" />
+    <Content Include="wwwroot_layui\lib\layui\css\modules\layer\default\loading-1.gif" />
+    <Content Include="wwwroot_layui\lib\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="wwwroot_layui\lib\layui\font\iconfont.eot" />
+    <Content Include="wwwroot_layui\lib\layui\font\iconfont.svg" />
+    <Content Include="wwwroot_layui\lib\layui\font\iconfont.ttf" />
+    <Content Include="wwwroot_layui\lib\layui\font\iconfont.woff" />
+    <Content Include="wwwroot_layui\lib\layui\font\iconfont.woff2" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\0.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\1.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\10.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\11.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\12.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\13.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\14.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\15.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\16.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\17.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\18.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\19.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\2.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\20.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\21.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\22.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\23.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\24.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\25.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\26.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\27.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\28.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\29.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\3.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\30.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\31.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\32.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\33.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\34.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\35.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\36.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\37.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\38.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\39.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\4.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\40.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\41.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\42.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\43.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\44.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\45.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\46.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\47.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\48.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\49.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\5.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\50.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\51.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\52.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\53.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\54.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\55.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\56.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\57.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\58.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\59.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\6.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\60.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\61.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\62.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\63.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\64.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\65.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\66.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\67.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\68.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\69.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\7.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\70.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\71.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\8.gif" />
+    <Content Include="wwwroot_layui\lib\layui\images\face\9.gif" />
+    <Content Include="wwwroot_layui\lib\layui\layui.all.js" />
+    <Content Include="wwwroot_layui\lib\layui\layui.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\carousel.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\code.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\colorpicker.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\element.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\flow.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\form.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\jquery.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\laydate.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\layedit.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\layer.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\laypage.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\laytpl.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\mobile.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\rate.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\slider.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\table.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\transfer.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\tree.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\upload.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\modules\util.js" />
+    <Content Include="wwwroot_layui\lib\layui\lay\treeGird.js" />
+    <Content Include="wwwroot_layui\lib\superslide\jquery.SuperSlide.2.1.3.js" />
+    <Content Include="wwwroot_layui\login.html" />
+    <Content Include="wwwroot_layui\pages\404.html" />
+    <Content Include="wwwroot_layui\pages\agent\agent_edit.html" />
+    <Content Include="wwwroot_layui\pages\agent\category.js" />
+    <Content Include="wwwroot_layui\pages\agent\data.js" />
+    <Content Include="wwwroot_layui\pages\agent\myagents.html" />
+    <Content Include="wwwroot_layui\pages\agent\search.html" />
+    <Content Include="wwwroot_layui\pages\deposit\atm.html" />
+    <Content Include="wwwroot_layui\pages\deposit\other_dep.html" />
+    <Content Include="wwwroot_layui\pages\deposit\thirdpay.html" />
+    <Content Include="wwwroot_layui\pages\member\add.html" />
+    <Content Include="wwwroot_layui\pages\member\blocklist.html" />
+    <Content Include="wwwroot_layui\pages\member\deposit.html" />
+    <Content Include="wwwroot_layui\pages\member\deposit_first.html" />
+    <Content Include="wwwroot_layui\pages\member\edit.html" />
+    <Content Include="wwwroot_layui\pages\member\level.html" />
+    <Content Include="wwwroot_layui\pages\member\leveledit.html" />
+    <Content Include="wwwroot_layui\pages\member\list-old.html" />
+    <Content Include="wwwroot_layui\pages\member\list.html" />
+    <Content Include="wwwroot_layui\pages\member\password.html" />
+    <Content Include="wwwroot_layui\pages\member\transactdetails.html" />
+    <Content Include="wwwroot_layui\pages\member\withdeposit.html" />
+    <Content Include="wwwroot_layui\pages\oldtable\hongli - Copy.html" />
+    <Content Include="wwwroot_layui\pages\oldtable\hongli.html" />
+    <Content Include="wwwroot_layui\pages\oldtable\transfer.html" />
+    <Content Include="wwwroot_layui\pages\promo\content.html" />
+    <Content Include="wwwroot_layui\pages\promo\content_edit.html" />
+    <Content Include="wwwroot_layui\pages\promo\rebate.html" />
+    <Content Include="wwwroot_layui\pages\promo\rebate_edit.html" />
+    <Content Include="wwwroot_layui\pages\promo\redpackets.html" />
+    <Content Include="wwwroot_layui\pages\promo\self_help.html" />
+    <Content Include="wwwroot_layui\pages\promo\sh_edit.html" />
+    <Content Include="wwwroot_layui\pages\system\appconfig.html" />
+    <Content Include="wwwroot_layui\pages\system\netbank.html" />
+    <Content Include="wwwroot_layui\pages\system\netbank_edit.html" />
+    <Content Include="wwwroot_layui\pages\system\rebate.html" />
+    <Content Include="wwwroot_layui\pages\system\thirdpay.html" />
+    <Content Include="wwwroot_layui\pages\system\thirdpay_edit.html" />
+    <Content Include="wwwroot_layui\pages\system\useredit.html" />
+    <Content Include="wwwroot_layui\pages\system\userlist.html" />
+    <Content Include="wwwroot_layui\pages\trash\agent\category.js" />
+    <Content Include="wwwroot_layui\pages\trash\agent\myagents.html" />
+    <Content Include="wwwroot_layui\pages\trash\baselist_onchange.html" />
+    <Content Include="wwwroot_layui\pages\trash\deposit\atm - Copy.html" />
+    <Content Include="wwwroot_layui\pages\trash\deposit\atm1.html" />
+    <Content Include="wwwroot_layui\pages\trash\deposit\old_atm.html" />
+    <Content Include="wwwroot_layui\pages\trash\deposit\old_list.html" />
+    <Content Include="wwwroot_layui\pages\trash\deposit\other_dep.html" />
+    <Content Include="wwwroot_layui\pages\trash\deposit\thirdpay - Copy.html" />
+    <Content Include="wwwroot_layui\pages\trash\deposit\thirdpay_old.html" />
+    <Content Include="wwwroot_layui\pages\trash\member\edit.html" />
+    <Content Include="wwwroot_layui\pages\trash\promo\add.html" />
+    <Content Include="wwwroot_layui\pages\trash\promo\content.html">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot_layui\pages\trash\promo\content_edit.html">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot_layui\pages\trash\promo\redpackets.html">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot_layui\pages\trash\promo\self_help.html">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot_layui\pages\trash\promo\sh_edit.html">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot_layui\pages\trash\promo\youhui.html" />
+    <Content Include="wwwroot_layui\pages\trash\vip1.html" />
+    <Content Include="wwwroot_layui\pages\trash\vip2.html" />
+    <Content Include="wwwroot_layui\pages\website\message.html" />
+    <Content Include="wwwroot_layui\pages\website\notice - Copy.html" />
+    <Content Include="wwwroot_layui\pages\website\notice.html" />
+    <Content Include="wwwroot_layui\pages\website\notice_add.html" />
+    <Content Include="wwwroot_layui\pages\website\notice_edit.html" />
+    <Content Include="wwwroot_layui\pages\website\validatecode.html" />
+    <Content Include="wwwroot_layui\pages\welcome.html" />
+    <Content Include="wwwroot_layui\pages\withdraw\baselist.html" />
+    <Content Include="wwwroot_layui\static\css\font-awesome.min.css" />
+    <Content Include="wwwroot_layui\static\css\font.css" />
+    <Content Include="wwwroot_layui\static\css\weadmin.css" />
+    <Content Include="wwwroot_layui\static\css\weadmin.less" />
+    <Content Include="wwwroot_layui\static\fonts\fontawesome-webfont.eot" />
+    <Content Include="wwwroot_layui\static\fonts\fontawesome-webfont.svg" />
+    <Content Include="wwwroot_layui\static\fonts\fontawesome-webfont.ttf" />
+    <Content Include="wwwroot_layui\static\fonts\fontawesome-webfont.woff" />
+    <Content Include="wwwroot_layui\static\fonts\fontawesome-webfont.woff2" />
+    <Content Include="wwwroot_layui\static\fonts\FontAwesome.otf" />
+    <Content Include="wwwroot_layui\static\fonts\iconfont.eot" />
+    <Content Include="wwwroot_layui\static\fonts\iconfont.svg" />
+    <Content Include="wwwroot_layui\static\fonts\iconfont.ttf" />
+    <Content Include="wwwroot_layui\static\fonts\iconfont.woff" />
+    <Content Include="wwwroot_layui\static\images\aiwrap.png" />
+    <Content Include="wwwroot_layui\static\images\bg.png" />
+    <Content Include="wwwroot_layui\static\images\mapico1.png" />
+    <Content Include="wwwroot_layui\static\images\mapico2.png" />
+    <Content Include="wwwroot_layui\static\images\mapico3.png" />
+    <Content Include="wwwroot_layui\static\images\mapico4.png" />
+    <Content Include="wwwroot_layui\static\js\admin.js" />
+    <Content Include="wwwroot_layui\static\js\eleDel.js" />
+    <Content Include="wwwroot_layui\static\js\extends\tabmenu.js" />
+    <Content Include="wwwroot_layui\static\js\menu.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AspNetCoreRateLimit" Version="3.0.5" />
+    <PackageReference Include="Dapper.FluentMap" Version="1.8.0" />
+    <PackageReference Include="EPPlus" Version="4.5.3.2" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.5.0" />
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <!--<PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />-->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="8.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="NLog" Version="4.6.8" />
+    <PackageReference Include="NLog.Targets.Syslog" Version="6.0.0" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.1" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.1.2" />
+    <PackageReference Include="NSwag.Core" Version="13.1.6" />
+    <PackageReference Include="NSwag.Generation.AspNetCore" Version="13.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Ching.DistributedTransaction.EFModel\Ching.DistributedTransaction.EFModel.csproj" />
+    <ProjectReference Include="..\..\GameOrderShare\GameOrderShare.csproj" />
+    <ProjectReference Include="..\..\GoogleAuth\GoogleAuth.csproj" />
+    <ProjectReference Include="..\..\Middlewares\Middlewares.csproj" />
+    <ProjectReference Include="..\..\PromoShare\PromoShare.csproj" />
+    <ProjectReference Include="..\..\shareLib\DBLibs\DBLibs.csproj" />
+    <ProjectReference Include="..\..\shareLib\LogLib\LogLib.csproj" />
+    <ProjectReference Include="..\..\shareLib\UtilsLib\UtilsLib.csproj" />
+    <ProjectReference Include="..\CMS.Core\CMS.Core.csproj" />
+    <ProjectReference Include="..\CMS.Data\CMS.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
+    <Folder Include="wwwroot\export\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Program Files\Microsoft SDKs\Azure\.NET SDK\v2.9\bin\plugins\Diagnostics\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="qqwry.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

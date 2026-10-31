@@ -1,0 +1,271 @@
+﻿@{
+    ViewData["Title"] = "合营结算记录";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>会员列表</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="/static/css/font.css" />
+    <link rel="stylesheet" href="/static/css/weadmin.css" />
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/vue.js"></script>
+    <script src="/js/vue-paginate.js"></script>
+    <script src="/js/axios.js"></script>
+    <script src="/js/globalmixin.js"></script>
+
+</head>
+
+<body>
+    <div class="weadmin-nav">
+        <span class="layui-breadcrumb">
+            <a href="javascript:;">首页</a> <a href="javascript:;">会员管理</a>
+            <a href="javascript:;"> <cite>会员列表</cite></a>
+        </span>
+        <a class="layui-btn layui-btn-sm" style="margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+           title="刷新">
+            <i class="layui-icon layui-icon-refresh"></i>
+            <!-- <i class="layui-icon" style="line-height:30px">&#x1002;</i> -->
+        </a>
+
+    </div>
+
+    <div class="weadmin-body" id="app">
+        <table class="layui-table" id="memberList">
+            <thead>
+                <tr>
+                    <!--<th>
+                        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary">
+                            <i class="layui-icon">&#xe605;</i>
+                        </div>
+                    </th>-->
+                    <!--<th>ID</th>-->
+                    <th>等级</th>
+                    <!--<th>备注</th>-->
+                    <th>沙巴</th>
+                    <th>DS电竞</th>
+                    <th>DS彩票</th>
+                    <th>EA真人</th>
+                    <th>PT电子</th>
+                    <th>KG彩票</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template v-for="(item, index) in tablerecords">
+                    <tr class="more_info_k">
+                        <!--<td>
+                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="1">
+                                <i class="layui-icon">&#xe605;</i>
+                            </div>
+                        </td>-->
+                        <!--<td class="userId">{{ item.id }}<i class="layui-icon">&#xe625;</i></td>-->
+                        <td>{{item.levels}}</td>
+                        <!--<td>{{item.description}}</td>-->
+                        <td>{{item.ob_turnover | percentage(2)}} / {{item.ob_turnovermax}}</td>
+                        <td>{{item.dses_turnover | percentage(2)}} / {{item.dses_turnovermax}}</td>
+                        <td>{{item.ds_turnover | percentage(2)}} / {{item.ds_turnovermax}}</td>
+                        <td>{{item.ew_turnover | percentage(2)}} / {{item.ew_turnovermax}}</td>
+                        <td>{{item.pt_turnover | percentage(2)}} / {{item.pt_turnovermax}}</td>
+                        <td>{{item.keno_turnover | percentage(2)}} / {{item.keno_turnovermax}}</td>
+                        <td class="td-manage">
+                            <a title="编辑" v-on:click="editaccount(item.account)" href="javascript:;">
+                                <i class="layui-icon layui-icon-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="more_info hide">
+                        <td colspan="12">
+                            <ul>
+                                <li>BBIN<span>{{item.bbin_turnover | percentage(2)}} / {{item.bbin_turnovermax}}</span></li>
+                                <li>SPB<span>{{item.spb_turnover | percentage(2)}} / {{item.spb_turnovermax}}</span></li>
+                                <li>TTG<span>{{item.ttg_turnover | percentage(2)}} / {{item.ttg_turnovermax}}</span></li>
+                                <li>LB<span>{{item.lb_turnover | percentage(2)}} / {{item.lb_turnovermax}}</span></li>
+                                <li>AG<span>{{item.ag_turnover | percentage(2)}} / {{item.ag_turnovermax}}</span></li>
+                                <!--<li>KG2<span>{{item.keno2_turnover | percentage(2)}} / {{item.keno2_turnovermax}}</span></li>
+                                <li>VR<span>{{item.vr_turnover | percentage(2)}} / {{item.vr_turnovermax}}</span></li>
+                                <li>XJ<span>{{item.xj_turnover | percentage(2)}} / {{item.xj_turnovermax}}</span></li>
+                                <li>PG<span>{{item.pg_turnover | percentage(2)}} / {{item.pg_turnovermax}}</span></li>-->
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="more_info hide">
+                        <td colspan="12">
+                            <ul>
+                                <!--<li>BBIN<span>{{item.bbin_turnover | percentage(2)}} / {{item.bbin_turnovermax}}</span></li>
+                                <li>SPB<span>{{item.spb_turnover | percentage(2)}} / {{item.spb_turnovermax}}</span></li>
+                                <li>TTG<span>{{item.ttg_turnover | percentage(2)}} / {{item.ttg_turnovermax}}</span></li>
+                                <li>LB<span>{{item.lb_turnover | percentage(2)}} / {{item.lb_turnovermax}}</span></li>
+                                <li>AG<span>{{item.ag_turnover | percentage(2)}} / {{item.ag_turnovermax}}</span></li>-->
+                                it
+                                <li>KG2it<span>{{item.keno2_turnover | percentage(2)}} / {{item.keno2_turnovermax}}</span></li>
+                                <li>VR<span>{{item.vr_turnover | percentage(2)}} / {{item.vr_turnovermax}}</span></li>
+                                <li>XJ<span>{{item.xj_turnover | percentage(2)}} / {{item.xj_turnovermax}}</span></li>
+                                <li>PG<span>{{item.pg_turnover | percentage(2)}} / {{item.pg_turnovermax}}</span></li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                </template>
+
+            </tbody>
+        </table>
+        <!--<dilv>
+            <a class="prev" href="">&lt;&lt;</a> <a class="num" href="">1</a>
+            <span class="current">2</span> <a class="num" href="">3</a>
+            <a class="num" href="">4s89</a> <a class="next" href="">&gt;&gt;</a>
+        </div>-->
+        <!--<template>
+
+            <paginate :page-count=pagemodel.pagecount
+                      :click-handler="search"
+                      :prev-text="'Prev'"
+                      :next-text="'Next'"
+                      :container-class="'page'"
+                      :page-class="'num'">
+            </paginate>
+
+        </template>-->
+
+        <div>
+            <div class="page">
+                <paginate :page-count=pagemodel.pagecount
+                          :page-class="page"
+                          :container-class="page"
+                          :prev-text="'&lt;&lt;'"
+                          :next-text="'&gt;&gt;'"
+                          :no-li-surround="true"
+                          :active-class="'current'"
+                          :break-view-class="'num'"
+                          :click-handler="search">
+
+                    <a class="prev" slot="prevContent">Changed previous button</a>
+                    <span slot="nextContent">Changed next button</span>
+
+
+                </paginate>
+
+                <!--<a class="prev" href="">&lt;&lt;</a>
+                <a class="num" href="">1</a>
+                <span class="current">2</span>
+                <a class="num" href="">3</a>
+                <a class="num" href="">489</a> <a class="next" href="">&gt;&gt;</a>-->
+            </div>
+        </div>
+    </div>
+    <script src="/design/layui.all.js" charset="utf-8"></script>
+    <script src="/static/js/eleDel.js" type="text/javascript" charset="utf-8"></script>
+
+    <script>
+        //layui.use(['jquery'], function () {
+        //    var $ = layui.jquery;
+        //})
+
+        Vue.component('paginate', VuejsPaginate);
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                pagemodel: {
+                    pagecount: 50
+                },
+                input: {
+                    pagesize: 10,
+                    page: 0
+                },
+                message: 'innermessage',
+                tablerecords: [
+                    //{ id: '1', realname: 'Realname', birthday: '1982-09-09', referrerreg: 'https://google.com', ipaddress: '192.168.1.1', createtime: '2019-09-09', levels: '万象会员' },
+                    //{ id: '2', realname: '测试', birthday: '1982-09-09', referrerreg: 'https://google.com', ipaddress: '192.168.1.1', createtime: '2019-09-09', levels: '万象会员' }
+                ]
+            },
+            mounted: function () {
+                // Grab initial data
+                this.$nextTick(function () {
+                    // Code that will run only after the
+                    // entire view has been rendered
+                    this.search(0);
+                    //var self = this;
+                    //this.postwithauth('/Account/SearchAccount', { CreateTime: this.input.createtime }, function (response) {
+                    //    if (response.status == 200 && response.data.code == 1) {
+                    //        console.info('Logged!!!');
+                    //        self.tablerecords = response.data.data.data;
+                    //        layui.use(['jquery'], function () {
+                    //            var $ = layui.jquery;
+                    //            $('.more_info_k').on('click', function () {
+                    //                $(this).nextUntil('.more_info_k').toggleClass('hide');
+                    //            }).click();
+                    //        });
+
+                    //    }
+                    //    else
+                    //        console.info(response);
+
+                    //});
+
+                });
+                //window.alert("sometext");
+                //axios
+                //    .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                //    .then(function (response) { window.alert(response); })
+                //    .catch(error => { console.log(error) })
+
+            },
+            methods: {
+                editaccount: function (item_id) {
+                    //alert('editing account with id ' + item_id);
+                    WeAdminEdit('编辑', './leveledit.html?id=' + item_id, 1, 800, 400);
+                },
+                search: function (_pageindex) {
+                    //alert(_pageindex);
+                    var self = this;
+                    //if (_pageindex) this.input.page = _pageindex;
+                    this.input.pagesize = parseInt(this.input.pagesize);
+
+                    this.postwithauth('/Account/AccountLevel',
+                        this.input
+                        //{
+                        //    createtime: this.input.createtime,
+                        //    PageSize: parseInt(this.input.pagesize)
+                        //}
+                        , function (response) {
+                            if (response.status == 200 && response.data.code == 1) {
+                                self.tablerecords = response.data.data;
+                                //var totalItems = response.data.data.totalItems;
+                                //self.pagemodel.pagecount = parseInt(totalItems / self.input.pagesize);
+                            }
+                            else
+                                console.info(response);
+
+                            setTimeout(function () {
+                                layui.use(['jquery'], function () {
+                                    var $ = layui.jquery;
+                                    $('.more_info_k').on('click', function () {
+                                        $(this).nextUntil('.more_info_k').toggleClass('hide');
+                                    });
+                                });
+                            }, 500);
+                        });
+
+                    //window.alert("sometext");
+                    //axios
+                    //    .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                    //    .then(function (response) { window.alert(response); })
+                    //    .catch(error => { console.log(error) })
+                }
+            }
+        });
+    </script>
+</body>
+</html>

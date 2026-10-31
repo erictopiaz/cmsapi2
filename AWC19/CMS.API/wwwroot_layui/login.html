@@ -1,0 +1,104 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./static/css/font.css">
+    <link rel="stylesheet" href="./static/css/weadmin.css">
+    <script src="./lib/layui/layui.js" charset="utf-8"></script>
+
+</head>
+<body class="login-bg">
+    <div class="login" id="app">
+        <div class="message">awc-管理登录</div>
+        <div id="darkbannerwrap"></div>
+        <div class="layui-form">
+            <input name="username" placeholder="用户名" type="text" v-model="input.username" lay-verify="required" class="layui-input">
+            <hr class="hr15">
+            <input name="password" lay-verify="required" placeholder="密码" v-model="input.password" type="password" class="layui-input">
+            <hr class="hr15">
+            <input v-on:click="loginuser" class="loginin" value="登录" lay-submit lay-filter="login" style="width:100%;" type="button">
+            <hr class="hr20">
+            <div>
+                前端静态展示，请随意输入，即可登录。
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        layui.extend({
+            admin: '{/}./static/js/admin'
+        });
+        layui.use(['form', 'admin'], function () {
+            var form = layui.form
+                , admin = layui.admin;
+            // layer.msg('玩命卖萌中', function(){
+            //   //关闭后的操作
+            //   });
+            //监听提交
+            //form.on('submit(login)', function (data) {
+            //    // alert(888)
+            //    this.login(inputmodel.username, inputmodel.password, function (response) {
+
+            //    });
+
+            //    return false;
+            //});
+        });
+    </script>
+    <!-- 底部结束 -->
+
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.js"></script>
+    <script src="/js/globalmixin.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            created: function () {
+                if (this.checklogin()) {
+                    //window.alert(this.checklogin());
+                    //window.alert('This will redirect to LOGIN page');
+                    //window.location = "index.html";
+                }
+            },
+            methods: {
+                loginuser: function (event) {
+                    //window.alert('Login Initiated');
+                    this.login(this.input.username, this.input.password, function (response) {
+                        if (response) {
+                            layer.msg("登入成功", function () {
+                                location.href = './index.html'
+                            });
+                        }
+                        else {
+                            layer.msg("登入失败", function () { });
+                        }
+                    });
+                }
+            },
+            mounted: function () {
+                this.input.username = 'arvin';
+                this.input.password = '123123';
+            },
+            data: {
+                message: 'Hello Vue!',
+                input: {
+                    username: '',
+                    password: ''
+                }
+            }
+        });
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1888 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CMS.API</name>
+    </assembly>
+    <members>
+        <member name="M:CMS.API.BLL.Account.AccountBLL.QueryAccountById(System.Int64)">
+            <summary>
+            获取会员账号根据id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Account.AccountBLL.QueryUserLogRecords(ShareEntity.InputModels.Account.QueryUserLogInputModel)">
+            <summary>
+            生成优惠或红利
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Account.AccountBLL.QueryVIPAccounts(System.String)">
+            <summary>
+            获取红利或优惠数据模型
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Account.AccountBLL.ImportVIPContacts(ShareEntity.InputModels.Vip.ImportVIPContactModel)">
+            <summary>
+            VIP专员导入
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Account.AccountBLL.QueryVipMapping(ShareEntity.InputModels.Vip.VipMappingInputModel,System.String)">
+            <summary>
+            分配管理员联系方式到VIP
+            </summary>
+            <param name="inputModel"></param>
+            <param name="loginAccount">当前登录的管理员</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Account.AccountBLL.ConformedVIP(ShareEntity.InputModels.Vip.ConformActionModel)">
+            <summary>
+            确认vip会员已经添加我们联系方式
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Account.AccountBLL.CancelContactVIP(ShareEntity.InputModels.Vip.ConformActionModel)">
+            <summary>
+            取消分配置到VIP联系方式
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Account.AccountBLL.LoadContactsData(System.String)">
+            <summary>
+            查询当前管理员的联系方式
+            </summary>
+            <param name="adminAccount"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.Agent.AgentBLL">
+            <summary>
+            cms 代理业务管理
+            </summary>
+        </member>
+        <member name="F:CMS.API.BLL.Agent.AgentBLL.VerifyAgentStatus">
+            <summary>
+            代理审核返回结果
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Agent.AgentBLL.CreateAccountAsync(ShareEntity.InputModels.agent.RegisterAffiliateModel)">
+            <summary>
+            创建代理账号
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Agent.AgentBLL.AgentVerify(ShareEntity.InputModels.agent.VerifyAgentInputModel)">
+            <summary>
+            代理审核
+            </summary>
+            <param name="agentAccount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Agent.AgentBLL.AgentDisableOrEnable(ShareEntity.InputModels.agent.AgentDisableOrEnableInputModel)">
+            <summary>
+            代理开启或停用
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Agent.AgentBLL.checkPassword(System.Object,System.String)">
+            <summary>
+            验证密码是否正常
+            </summary>
+            <param name="pwdObject"></param>
+            <param name="md5Password"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.CallBLL">
+            <summary>
+            电销处理
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.CallBLL.RemarkReport(System.Int32)">
+            <summary>
+             电销  备注报表
+            </summary>
+            <param name="month">0:本月， 1：上月</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.CallBLL.QueryCallLogs(ShareEntity.Call.QueryCallLogModel)">
+            <summary>
+            电销记录查询
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.CheckRight">
+            <summary>
+            根据给定的PATH ，查看是否有权限操作
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Currency.CurrencyBLL.QueryAccess(System.String,System.String,System.Int32)">
+            <summary>
+            货币权限检测（管理员查询，可见会员）
+            </summary>
+            <param name="token"></param>
+            <param name="secret"></param>
+            <param name="currencycode"></param>
+            <returns></returns>
+        </member>
+        <member name="F:CMS.API.BLL.CustomerClaimTypes.CurrencyTypes">
+            <summary>
+            支持的货币代码
+            </summary>
+        </member>
+        <member name="T:CMS.API.BLL.Euro.EuroBLL">
+            <summary>
+            欧洲杯竞猜，数据处理
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Euro.EuroBLL.ECupBetRecords(ShareEntity.InputModels.Euro.QueryEuroCupBilledInputModel)">
+            <summary>
+            获取竞猜数据结果
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Euro.EuroBLL.VerifyECupBilled(ShareEntity.InputModels.Euro.EuroUpdateInputModel)">
+            <summary>
+            结算记录审核
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Euro.EuroBLL.CancelECupBilled(ShareEntity.InputModels.Euro.EuroUpdateInputModel)">
+            <summary>
+            结算记录审核取消
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.Export.ExportBLL">
+            <summary>
+            数据导出业务处理
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadAgentWithdrawDataFromDB(ShareEntity.InputModels.agent.QueryAgentWithdrawInputModel)">
+            <summary>
+            代理提款导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadAgentBillDataFromDB(ShareEntity.InputModels.agent.QueryAgentBilledInputModel)">
+            <summary>
+            代理结算数据导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadAgentBillAutoDataFromDB(ShareEntity.InputModels.agent.QueryAgentBilledInputModel)">
+            <summary>
+            代理日自动结算数据导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadAgentPlayersGameMonthDataFromDB(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            代理下线会员月游戏报表 ---导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadAgentPlayersGameDailayDataFromDB_old(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            代理下线会员日游戏报表 ---- 导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadAgentPlayersGameDailayDataFromDB(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            代理下线会员日游戏报表 ---- 导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadUserBetRecord(ShareEntity.InputModels.Account.QueryUserBetLogInputModel)">
+            <summary>
+            会员游戏注单 ---- 导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadAgentGameDailayDataFromDB(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            代理下线会员日游戏报表 ---- 导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadAgentPlayersFinanceMonthDataFromDB(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            代理下线会员月财务报表 --- 导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadAgentPlayersFinanceDailayDataFromDB_old(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            代理下线会员日财务报表 ---- 导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadAgentPlayersFinanceDailayDataFromDB(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            代理下线会员日财务报表 ---- 导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Export.ExportBLL.LoadAgentTurnoverFromDB(ShareEntity.InputModels.TurnOver.QueryTurnOverInputModel)">
+            <summary>
+            代理返水数据 ---- 导出
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.Game.GameBLL">
+            <summary>
+            游戏参数列表，
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Game.GameBLL.LoadGameConfig(ShareEntity.InputModels.GameConfig.QueryGameConfigInputModel)">
+            <summary>
+            游戏分类列表查询
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Game.GameBLL.LoadGameConfigParams(ShareEntity.InputModels.GameConfig.QueryGameConfigInputModel)">
+            <summary>
+            游戏参数列表
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Game.GameBLL.UpdateGameConfigStatus(ShareEntity.InputModels.GameConfig.UpdateGameConfigInputModel)">
+            <summary>
+            更新游戏分类状态
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Game.GameBLL.LoadGameReport(ShareEntity.InputModels.GameReport.QueryGameReportInputModel,System.String)">
+            <summary>
+            游戏盈利报表
+            风控使用
+            </summary>
+            <param name="model"></param>
+            <param name="adminAccount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Game.GameBLL.LoadGameModels(ShareEntity.InputModels.GameConfig.QueryGameModelsInputModel)">
+            <summary>
+            获取电子游戏列表
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Game.GameBLL.QueryUserBetRecords``2(ShareEntity.InputModels.Account.QueryUserBetLogInputModel,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            获取平台注单记录
+            </summary>
+            <param name="inputModel"></param>
+            <param name="config">获取配置文件信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Game.GameBLL.QueryUserBetRecordsV(ShareEntity.InputModels.Account.QueryUserBetLogInputModel,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            获取平台注单记录
+            </summary>
+            <param name="inputModel"></param>
+            <param name="config">获取配置文件信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Game.GameBLL.QueryBetAmountResize(ShareEntity.InputModels.Account.QueryUserBetLogInputModel,System.String,System.String)">
+            <summary>
+            获取平台 外站游戏 平台账变 
+            </summary>
+            <param name="inputModel"></param>
+            <param name="token"></param>
+            <param name="loginKey"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CMS.API.BLL.Game.GameReport.totalWinlost">
+            <summary>
+            游戏平台的总输赢
+            </summary>
+        </member>
+        <member name="P:CMS.API.BLL.Game.GameReport.totalWDamount">
+            <summary>
+            客人的总提-总存
+            </summary>
+        </member>
+        <member name="P:CMS.API.BLL.Game.GameReport.totalbets">
+            <summary>
+            总投注
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Game.GameOrdersBLL.QueryDailyGameReportByPlatAccunt(ShareEntity.InputModels.Account.QueryGameReportByPlatAccuntInputModel,LogLib.Helper.WriteToFile,System.Boolean)">
+            <summary>
+            拉取 游戏日报表
+            </summary>
+            <param name="inputModel"></param>
+            <param name="writeToFile"></param>
+            <param name="mapGameId">gameid 映射, true：映射，false ：否</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Game.GameOrdersBLL.QueryOrdersByPlat(ShareEntity.InputModels.Account.QueryOrdersByPlatInputModel,System.String,System.String)">
+            <summary>
+            获取平台 外站游戏 平台注单 
+            </summary>
+            <param name="inputModel"></param>
+            <param name="token"></param>
+            <param name="loginKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.Game.TransferBLL">
+            <summary>
+            转账表的操作
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Game.TransferBLL.LoadTransferRecords(ShareEntity.InputModels.Transfer.QueryTransferInputModel)">
+            <summary>
+            查询转账记录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Game.TransferBLL.CancleTransferAsync(ShareEntity.InputModels.Transfer.CancleTransferInputModel)">
+            <summary>
+            撤回转账
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Game.TransferBLL.ViewTransferById(System.Int64)">
+            <summary>
+            查看当前转账记录详情
+            </summary>
+            <param name="transferId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.Goods.PointsGoodsBLL">
+            <summary>
+            积分业务
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Goods.PointsGoodsBLL.QueryExchangeGoods(ShareEntity.InputModels.Goods.QueryGoodsInputModel)">
+            <summary>
+            查询礼品
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Goods.PointsGoodsBLL.CreatePointsGoods(ShareEntity.InputModels.Goods.CreateGoodsInputModel)">
+            <summary>
+            新增礼品
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Goods.PointsGoodsBLL.OffOrOn(ShareEntity.InputModels.Goods.OffOrOnInputModel)">
+            <summary>
+            积分礼品启用/关闭
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Goods.PointsGoodsBLL.QueryGoodsById(System.Int64)">
+            <summary>
+            积分礼品详情
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Goods.PointsGoodsBLL.ModifyGoods(ShareEntity.InputModels.Goods.UpdateGoodsInputModel)">
+            <summary>
+            更新礼品
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.Merchant.MerchantBLL">
+            <summary>
+            商户设置更新
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Merchant.MerchantBLL.SaveQueryMerchantWhere(ShareEntity.InputModels.website.QueryMerchantWhereModel)">
+            <summary>
+            附加存款记录查询支付通道
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.Message.MesageBLL">
+            <summary>
+            网站消息处理
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Message.MesageBLL.LMessageReply(ShareEntity.InputModels.Message.LMessageReplyInputModel)">
+            <summary>
+            回复留言
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Message.MesageBLL.LMessageById(System.Int64)">
+            <summary>
+            查询留言信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Message.MesageBLL.LMessageCancel(System.Int64,System.String)">
+            <summary>
+            取消留言
+            </summary>
+            <param name="id"></param>
+            <param name="admin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.BonusRecordsAsync(ShareEntity.InputModels.Bonus.QueryBonusInputModel,System.String,System.String)">
+            <summary>
+            生成优惠或红利
+            </summary>
+            <param name="inputModel"></param>
+            <param name="token"></param>
+            <param name="loginKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.LoadBonusById(System.Int64)">
+            <summary>
+            加载优惠或红利
+            </summary>
+            <param name="tid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.CreateBonusAsync(ShareEntity.InputModels.Promo.CreatePromoInputModel,System.String,System.String)">
+            <summary>
+            生成优惠或红利
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.CreateBonusBatAsync(ShareEntity.InputModels.Promo.CreatePromoInputModel)">
+            <summary>
+            批量生成优惠或红利
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.UpdateBonusAsync(ShareEntity.InputModels.Promo.UpdatePromoInputModel)">
+            <summary>
+            编辑红利和优惠
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.VerifyBonusAsync(ShareEntity.InputModels.Bonus.VerifyBonusInputModel,System.String)">
+            <summary>
+            红利优惠审核
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.CancelBonusAsync(ShareEntity.InputModels.Bonus.VerifyBonusInputModel)">
+            <summary>
+            红利优惠取消审核
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.VerifySelfBonusAsync(ShareEntity.InputModels.Bonus.VerifyBonusInputModel)">
+            <summary>
+            福利中心 红利优惠审核
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.VerifySelfBonusBatAsync(ShareEntity.InputModels.Bonus.VerifyBonusBatInputModel)">
+            <summary>
+            批量审核
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.GetTids(System.String)">
+            <summary>
+            根据选择的id集合
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.CancelSelfBonusAsync(ShareEntity.InputModels.Bonus.VerifyBonusInputModel)">
+            <summary>
+            福利中心 红利审核取消
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.LoadSelfBonusById(System.Int64)">
+            <summary>
+            福利中心 加载优惠或红利
+            </summary>
+            <param name="tid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.SelfBonusList">
+            <summary>
+            福利中心，项目选择列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.SelfBonusRecordsAsync(ShareEntity.InputModels.Bonus.QueryBonusInputModel,System.String,System.String)">
+            <summary>
+            福利中心 记录查询
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.CreateSelfBonusBatAsync(ShareEntity.InputModels.Promo.CreateSelfPromoInputModel)">
+            <summary>
+            福利中心 批量生成优惠或红利
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.CreateSelfBonusAsync(ShareEntity.InputModels.Promo.CreateSelfPromoInputModel)">
+            <summary>
+            福利中心 生成优惠或红利
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.UpdateSelfBonusAsync(ShareEntity.InputModels.Promo.UpdateSelfPromoInputModel)">
+            <summary>
+            编辑红利和优惠
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.GetSelfOrderModel(System.Int64)">
+            <summary>
+            福利中心  记录核实并返回
+            </summary>
+            <param name="aid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.GetOrderModel(System.Int32)">
+            <summary>
+            核实并返回
+            </summary>
+            <param name="aid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.CalcBonusData(System.String)">
+            <summary>
+            获取红利或优惠数据模型
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.BonusBLL.CalcAccountTurnOverData(System.String)">
+            <summary>
+            获取pt返水数据模型
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.Promo.PromoBaseBLL">
+            <summary>
+            优惠公共操作
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.PromoBaseBLL.CheckPromo(System.String,System.Int32,System.String,System.Int32,System.Int64,System.Int32)">
+            <summary>
+            检查是否有申请过的优惠 单个优惠代码确认
+            </summary>
+            <param name="account">当前账号</param>
+            <param name="autopromotype">自助活动类型</param>
+            <param name="startTime">申请到的活动时间</param>
+            <param name="platformType">来自哪种类型的平台</param>
+            <param name="promoCode">来自哪个已配置好的优惠活动</param>
+            <param name="gametype">来自哪个游戏平台</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.PromoBaseBLL.CheckPromoByMultiPromoCode(System.String,System.Int32,System.String,System.Int32,System.Collections.Generic.List{System.Int64},System.Int32)">
+            <summary>
+            检查是否有申请过的优惠 多个优惠代码确认
+            </summary>
+            <param name="account">当前账号</param>
+            <param name="autopromotype">自助活动类型</param>
+            <param name="startTime">申请时间</param>
+            <param name="platformType">来自哪种类型的平台</param>
+            <param name="promoCodes">来自哪个已配置好的优惠活动</param>
+            <param name="gametype">来自哪个游戏平台</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.PromoBLL.AutoPromoTypes(ShareEntity.InputModels.Promo.QueryAutoPromoTypesInputModel)">
+            <summary>
+            加载当前的自助优惠的分类菜单
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.PromoBLL.CreatePromoContent(ShareEntity.InputModels.Promo.CreatePromoContentInputModel)">
+            <summary>
+            优惠页面内容创建
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.PromoBLL.LoadPromoContentById(System.Int64)">
+            <summary>
+            获取指定优惠
+            </summary>
+            <param name="tid">优惠的ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.PromoBLL.PromoContentRecords(ShareEntity.InputModels.Promo.QueryPromoContentInputModel,System.String,System.String)">
+            <summary>
+            优惠活动内容查询
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.PromoCodeBLL.PromoCodeRecords(ShareEntity.InputModels.Promo.QueryPromoCodeInputModel)">
+            <summary>
+            优惠代码查询返回
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.PromoMiscBLL.PromoMiscRecords(ShareEntity.InputModels.Promo.QueryPromoMiscInputModel,System.String,System.String)">
+            <summary>
+            优惠积分查询返回
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.PromoMiscBLL.CreatePromoMisc(ShareEntity.InputModels.Promo.CreatePromoMiscInputModel)">
+            <summary>
+            创建积分
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.PromoMiscBLL.VerifyPromoMisc(ShareEntity.InputModels.Promo.VerifyPromoMiscInputModel)">
+            <summary>
+            审核积分
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.PromoMiscBLL.CancelPromoMisc(ShareEntity.InputModels.Promo.VerifyPromoMiscInputModel)">
+            <summary>
+            微调积分
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.ResizeBLL.ResizeRecords(ShareEntity.InputModels.Resize.QueryResizeInputModel,System.String,System.String)">
+            <summary>
+            生成优惠或红利
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.ResizeBLL.CreateResize(ShareEntity.InputModels.Resize.CreateResizeInputModel)">
+            <summary>
+            创建微调
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.ResizeBLL.VerifyResize(ShareEntity.InputModels.Resize.VerifyResizeInputModel)">
+            <summary>
+            会员微调审核
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.ResizeBLL.CancelResize(ShareEntity.InputModels.Resize.VerifyResizeInputModel)">
+            <summary>
+            会员微调取消
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.SpreadBLL.SpreadRecords(ShareEntity.InputModels.Promo.QuerySpreadInputModel,System.String,System.String)">
+            <summary>
+            推荐记录
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.SpreadBLL.SpreadBilledRecordsINTL_Daily(ShareEntity.InputModels.Promo.QuerySpreadBilledIntlInputModel,System.String,System.String)">
+            <summary>
+            推荐投注日结算
+            </summary>
+            <param name="inputModel"></param>
+            <param name="token"></param>
+            <param name="loginKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.SpreadBLL.SpreadBilledRecordsINTL_Weekly(ShareEntity.InputModels.Promo.QuerySpreadBilledIntlInputModel,System.String,System.String)">
+            <summary>
+            推荐充值周结算
+            </summary>
+            <param name="inputModel"></param>
+            <param name="token"></param>
+            <param name="loginKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.SpreadBLL.VerifySpreadBilled(ShareEntity.InputModels.Promo.CacelSpreadBilledInputModel)">
+            <summary>
+            推荐优惠审核
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.SpreadBLL.GetSpreadBilledModel(System.Int32)">
+            <summary>
+            核实并返回
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CMS.API.BLL.Promo.TurnOverData.bbinaccount">
+            <summary>
+            bbin账号  发返水时要用这个账号去车为客人的账号
+            </summary>
+        </member>
+        <member name="P:CMS.API.BLL.Promo.TurnOverData.pmisc">
+            <summary>
+            控用户是否可以参加一些优惠设置
+            </summary>
+        </member>
+        <member name="P:CMS.API.BLL.Promo.TurnOverData.saler">
+            <summary>
+            电销账号
+            </summary>
+        </member>
+        <member name="P:CMS.API.BLL.Promo.TurnOverData.misc_inr">
+            <summary>
+            印度币反水比例
+            </summary>
+        </member>
+        <member name="T:CMS.API.BLL.Promo.TurnOverReward">
+            <summary>
+            当开统计
+            </summary>
+        </member>
+        <member name="T:CMS.API.BLL.Promo.TurnOverModel">
+            <summary>
+            返水比例列表
+            </summary>
+        </member>
+        <member name="P:CMS.API.BLL.Promo.TurnOverModel.misc">
+            <summary>
+            投注换算积分比例
+            </summary>
+        </member>
+        <member name="P:CMS.API.BLL.Promo.TurnOverModel.betCodeDetail">
+            <summary>
+            额外返水比例设置
+            </summary>
+        </member>
+        <member name="P:CMS.API.BLL.Promo.TurnOverModel.b_status">
+            <summary>
+            额外返水比例是否开启
+            </summary>
+        </member>
+        <member name="T:CMS.API.BLL.Promo.TurnOverRateModel">
+            <summary>
+            游戏平台的反水比例，不同货币的，可能有不同的反水比例 数据存放在 ofUserGroup.misc_inr 
+            不同的货币对应的反水比例，放到不同列保存
+            </summary>s
+        </member>
+        <member name="F:CMS.API.BLL.Promo.TurnOverBLL.gameTypeList">
+            <summary>
+            139, 140, 145, 128, 150, 144, 146, 155, 151,  152,  154, 158, 159,160, 161, 165
+            LB,  AG,   XJ, EA, IMES, VR,   PG,  KY, DSCP, DSES, RG,  TD,  TF, AW,  CQ,  OBG
+            这几个平台的输赢入库时，要在输赢前加上负号
+            159:tf, 160:aw, 161: cq
+            </summary>
+        </member>
+        <member name="F:CMS.API.BLL.Promo.TurnOverBLL.gameTurnoverDict">
+            <summary>
+            游戏平台商的内部游戏
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.TurnOverRecords(ShareEntity.InputModels.TurnOver.QueryTurnOverInputModel,System.String,System.String)">
+            <summary>
+            生成优惠或红利
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.VerifyTurnOver(ShareEntity.InputModels.TurnOver.VerifyTurnOverInputModel)">
+            <summary>
+            批量审核操作
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.GetTids(System.String)">
+            <summary>
+            根据选择的id集合
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.QueryAccountsBycontent(System.String,System.Int32,UtilsLib.Merchant.DefaultModel)">
+            <summary>
+            计算会员账号列表
+            </summary>
+            <param name="content">上传的反水内容</param>
+            <param name="gameType">游戏平台id</param>
+            <param name="merModel">品牌数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.CreateTurnOverCNY(ShareEntity.InputModels.TurnOver.CreateTurnOverInputModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            批量创建返水
+            给指定平台的---特殊游戏
+            </summary>
+            <param name="inputModel"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.CreateTurnOverIntl(ShareEntity.InputModels.TurnOver.CreateTurnOverInputModel,LogLib.Helper.WriteToFile)">
+            <summary>
+            批量创建返水  国际版...
+            给指定平台的---特殊游戏
+            </summary>
+            <param name="inputModel"></param>
+            <param name="writeToFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.QueryTurnoverExtraP(System.String,System.String,System.Decimal,LogLib.Helper.WriteToFile)">
+            <summary>
+            获取客人额外各平台的返水比例
+            </summary>
+            <param name="betCodeDetail"></param>
+            <param name="gamename">游戏平台名</param>
+            <param name="effectivebets">投注额</param>
+            <param name="writeToFile">投注额</param>
+            <returns>item1:返水金额, item2: 返水比例</returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.AccessPlatformGameTurnover(ShareEntity.InputModels.TurnOver.CreateTurnOverInputModel)">
+            <summary>
+            限制只有kg2/kg3可以指定游戏加返水
+            
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.CalcRewards(System.String,System.Decimal,System.Decimal,System.Decimal,System.Decimal,CMS.API.BLL.Promo.BonusPointsModel)">
+            <summary>
+            计算当前应给多少返水
+            和当前结余多少金额
+            当前可换积分多少
+            </summary>
+            <param name="account"></param>
+            <param name="totalRewards">当天某平台已经发放的返水</param>
+            <param name="limitRewards">日限</param>
+            <param name="p">返水比例</param>
+            <param name="effectbet">有效果投注</param>
+            <param name="bpModel">投注转积分比例</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.CalcBBinTurnOverData(System.String)">
+            <summary>
+            获取bbin返水数据模型 透过bbinaccount, 这样处理要多一层更新操作
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.CalcBBinTurnOverDataV(System.String)">
+            <summary>
+            获取bbin返水数据模型 直接透过id 查找会员账号 20221223 更新
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.CalcBossTurnOverDataV(System.String)">
+            <summary>
+            Boss 品牌，游戏账号获取 透过uid 映射到会员账号
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.CalcAwcTurnOverDataV(System.String)">
+            <summary>
+            Awc 品牌，游戏账号获取 透过uid 映射到会员账号
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.CalcTurnOverDataIntlV(System.String)">
+            <summary>
+            返水数据模型 直接透过id 查找会员账号 20240424 更新
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.CalcPtTurnOverData(System.String)">
+            <summary>
+            获取pt返水数据模型
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Promo.TurnOverBLL.CalcJDBTurnOverData(System.String)">
+            <summary>
+            获取JDB返水数据模型
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.Promo.turnoverResult">
+            <summary>
+            返水结果
+            </summary>
+        </member>
+        <member name="P:CMS.API.BLL.Promo.turnoverResult.controllUsers">
+            <summary>
+            被风控的账号
+            </summary>
+        </member>
+        <member name="T:CMS.API.BLL.Promo.BonusPointsModel">
+            <summary>
+            兑换机分比例模型数据
+            </summary>
+        </member>
+        <member name="P:CMS.API.BLL.Promo.BonusPointsModel.turnoverpercentage">
+            <summary>
+            返水积分比
+            </summary>
+        </member>
+        <member name="T:CMS.API.BLL.Saler.SalerBLL">
+            <summary>
+            电销操作
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Saler.SalerBLL.SalerRecords(ShareEntity.InputModels.Saler.SalerReportInputModel)">
+            <summary>
+            电销会员报表
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.BLL.Sys.OfSettingBLL">
+            <summary>
+            参设置
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.QueryWebSiteNavSetting">
+            <summary>
+            查询网站配置参数
+            </summary>
+            <returns></returns> 
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.QueryWebSiteNavSettingINR(System.String,System.Int32)">
+            <summary>
+            查询网站配置参数
+            </summary>
+            <param name="merchantAccount"></param>
+            <param name="currencyType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.updateWebSiteSetting(ShareEntity.InputModels.OfSetting.WebSiteSettingsModels)">
+            <summary>
+            更新网站参数配置
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.QueryWebSiteSetting">
+            <summary>
+            查询网站配置参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.QueryAgentRegisterHostSetting">
+            <summary>
+            查询合营推广地址host参数配置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.UpdateAgentRegisterHostSetting(ShareEntity.InputModels.OfSetting.AgentRegisterHostModel)">
+            <summary>
+            更新合营推广地址host参数配置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.UpdateApiUrlModelSetting(ShareEntity.InputModels.OfSetting.ApiUrlModel)">
+            <summary>
+            更新接口地址列表
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.UpdatePromoJumpUrlSetting(ShareEntity.InputModels.OfSetting.PromoJumpUrlModel)">
+            <summary>
+            更新优惠的跳转url
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.UpdateAppSetting(ShareEntity.InputModels.OfSetting.AppSettingsModel)">
+            <summary>
+            更新APP参数配置
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.QueryAppSetting">
+            <summary>
+            查询app配置参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.UpdateAppSettingIntl(ShareEntity.InputModels.OfSetting.AppSettingsModel)">
+            <summary>
+            更新APP参数配置
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.QueryAppSettingIntl">
+            <summary>
+            查询app配置参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.UpdateAppSettingBoss(ShareEntity.InputModels.OfSetting.AppSettingsModel)">
+            <summary>
+            更新APP参数配置
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.QueryAppSettingBoss">
+            <summary>
+            查询app配置参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.UpdateAppIndexSetting(ShareEntity.InputModels.OfSetting.AppIndexGameSettingModels)">
+            <summary>
+            更新APP首页游戏参数配置
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.QueryAppIndexSetting">
+            <summary>
+            查询app首页游戏配置参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.UpdateAppSlotSetting(ShareEntity.InputModels.OfSetting.AppSlotGameSettingModels)">
+            <summary>
+            更新APP老机游戏参数配置
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.QueryAppSlotSetting">
+            <summary>
+            查询app老虎机游戏配置参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.UpdateGameUrlMode(ShareEntity.InputModels.OfSetting.AppGameUrlModeSettingModels)">
+            <summary>
+            更新APP游戏登录模式
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.QueryGameUrlMode(ShareEntity.InputModels.OfSetting.QueryAppGameUrlModeInputModels)">
+            <summary>
+            查询app游戏登录模式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Sys.OfSettingBLL.LoadCurrencyV(System.String)">
+            <summary>
+            返回货币+品牌
+            </summary>
+            <param name="currencys"></param>
+            <returns></returns>
+        </member>
+        <member name="F:CMS.API.BLL.Vip.VipLevelUp.upLevelRewardKV">
+            <summary>
+            级别关系升级奖金
+            88	188	288	588	888	1888	5888
+            </summary>
+        </member>
+        <member name="F:CMS.API.BLL.Vip.VipLevelUp.levelSort">
+            <summary>
+            会员等级排序
+            </summary>
+        </member>
+        <member name="F:CMS.API.BLL.Vip.VipLevelUp.sortLevel">
+            <summary>
+            排序会员等级
+            </summary>
+        </member>
+        <member name="F:CMS.API.BLL.Vip.VipLevelUp.levelName">
+            <summary>
+            会员等级名
+            </summary>
+        </member>
+        <member name="M:CMS.API.BLL.Vip.VipLevelUp.VipLevelMonthRecords(ShareEntity.InputModels.Vip.QueryVipLevelInputModel)">
+            <summary>
+            生成优惠或红利
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Vip.VipLevelUp.QueryTotalReward(System.Int32,System.Int32)">
+            <summary>
+            获取越级升级奖金
+            </summary>
+            <param name="startSortId"></param>
+            <param name="endSortId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Vip.VipLevelUp.QueryMaxLevelTotalReward(System.Int32)">
+            <summary>
+            获取升级奖金,如果有越级会给到最高级别的奖金
+            </summary>
+            <param name="endSortId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Vip.VipLevelUp.VipLevelUpTo(ShareEntity.InputModels.Vip.VipLevelUpDownInputModel)">
+            <summary>
+            vip 升级操作
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Vip.VipLevelUp.VipLevelCancel(ShareEntity.InputModels.Vip.VipLevelUpDownInputModel)">
+            <summary>
+            vip升级数据取消
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Vip.VipLevelUp.VipLevelDownMonthRecords(ShareEntity.InputModels.Vip.QueryVipLevelInputModel)">
+            <summary>
+            降级记录
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Vip.VipLevelUp.VipLevelDownTo(ShareEntity.InputModels.Vip.VipLevelUpDownInputModel)">
+            <summary>
+            vip 降级操作
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Vip.VipLevelUp.VipLevelDownCancel(ShareEntity.InputModels.Vip.VipLevelUpDownInputModel)">
+            <summary>
+            vip降级数据取消
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Vip.VipLevelUp.VipDepositTimesDailyRecords(ShareEntity.InputModels.Vip.QueryVipDepositTimesDailyInputModel)">
+            <summary>
+            降级记录
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.BLL.Vip.VipLevelUp.GetTids(System.String)">
+            <summary>
+            根据选择的id集合
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CMS.API.BLL.Vip.VipUpModel.is_up">
+            <summary>
+            0:降级，1：升级，2：保级
+            </summary>
+        </member>
+        <member name="T:CMS.API.BLL.Vip.PromoModel">
+            <summary>
+            红利优惠模型
+            </summary>
+        </member>
+        <member name="M:CMS.API.Controllers.AccountController.NewUpdateAccountPassword(CMS.Core.Application.账号管理.Transact.密码更新)">
+            <summary>
+            作废
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.Controllers.AgentController">
+            <summary>
+            代理管理
+            </summary>
+        </member>
+        <member name="M:CMS.API.Controllers.AgentController.AgentCreate(ShareEntity.InputModels.agent.RegisterAffiliateModel)">
+            <summary>
+            创建代理
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.AgentController.AgentVerify(ShareEntity.InputModels.agent.VerifyAgentInputModel)">
+            <summary>
+            代理审核
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.AgentController.AgentEdit">
+            <summary>
+            编辑代理
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.AgentController.AgentDisableOrEnable(ShareEntity.InputModels.agent.AgentDisableOrEnableInputModel)">
+            <summary>
+            代理开启和停用
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.AgentController.AgentList">
+            <summary>
+            代理显示列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.AgentController.AgentDepositDailyList">
+            <summary>
+            代理日存款列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.AgentController.AgentDepositMonthlyList">
+            <summary>
+            代理月存款列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.AgentController.AgentGameDailyList">
+            <summary>
+            代理日游戏列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.AgentController.AgentGameMonthlyList">
+            <summary>
+            代理月游戏列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.AgentController.AgentLoseDailylyList">
+            <summary>
+            代理日负赢利列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.AgentController.AgentWithdrawList">
+            <summary>
+            代理提款列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BetRecordController.QueryDailyGameReportByPlatAccunt(ShareEntity.InputModels.Account.QueryGameReportByPlatAccuntInputModel)">
+            <summary>
+            boss 游戏平台日报表  （每天对应平台一条记录）
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.BonusRecords(ShareEntity.InputModels.Bonus.QueryBonusInputModel)">
+            <summary>
+            红利记录查询
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.LoadBonusById(System.Int64)">
+            <summary>
+            获取红利
+            根据红利ID
+            </summary>
+            <param name="tid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.CreateBonus(ShareEntity.InputModels.Promo.CreatePromoInputModel)">
+            <summary>
+            创建优惠红利
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.CreateBonusBat(ShareEntity.InputModels.Promo.CreatePromoInputModel)">
+            <summary>
+            批量创建优惠红利
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.UpdateBonus(ShareEntity.InputModels.Promo.UpdatePromoInputModel)">
+            <summary>
+            修改红利金额 
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.VerifyBonus(ShareEntity.InputModels.Bonus.VerifyBonusInputModel)">
+            <summary>
+            红利审核通过
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.CancelBonus(ShareEntity.InputModels.Bonus.VerifyBonusInputModel)">
+            <summary>
+            红利审核取消
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.CancelSelfBonus(ShareEntity.InputModels.Bonus.VerifyBonusInputModel)">
+            <summary>
+            福利中心 红利审核取消
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.SelfBonusRecords(ShareEntity.InputModels.Bonus.QueryBonusInputModel)">
+            <summary>
+            福利中心 记录查询
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.UpdateSelfBonus(ShareEntity.InputModels.Promo.UpdateSelfPromoInputModel)">
+            <summary>
+            福利中心 修改红利金额 
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.LoadSelfBonusById(System.Int64)">
+            <summary>
+            福利中心 获取红利
+            根据红利ID
+            </summary>
+            <param name="tid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.SelfBonusList">
+            <summary>
+            福利中心，项目选择列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.CreateSelfBonusBat(ShareEntity.InputModels.Promo.CreateSelfPromoInputModel)">
+            <summary>
+            福利中心 批量创建优惠红利
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.CreateSelfBonus(ShareEntity.InputModels.Promo.CreateSelfPromoInputModel)">
+            <summary>
+            福利中心 创建优惠红利
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.BonusController.VerifySelfBonus(ShareEntity.InputModels.Bonus.VerifyBonusBatInputModel)">
+            <summary>
+            福利中心 红利审核通过 审核后才可以领取
+            批量/单个审核 公共api
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.CallController.RemarkReport(System.Int32)">
+            <summary>
+            通话报表
+            </summary>
+            <param name="month">0：本月，1：上月  默认为0</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ExportController.LoadAgentBillDataFromDB(ShareEntity.InputModels.agent.QueryAgentBilledInputModel)">
+            <summary>
+            代理结算数据导出
+            </summary>
+            <param name="exportInputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ExportController.LoadAgentBillAutoDataFromDB(ShareEntity.InputModels.agent.QueryAgentBilledInputModel)">
+            <summary>
+            代理日自动结算数据导出
+            </summary>
+            <param name="exportInputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ExportController.LoadAgentPlayersGameMonthDataFromDB(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            代理下线会员月游戏数据-----导出
+            </summary>
+            <param name="exportInputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ExportController.LoadAgentPlayersGameDailayDataFromDB(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            代理下线会员日游戏数据-----导出
+            </summary>
+            <param name="exportInputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ExportController.LoadAgentGameDailayDataFromDB(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            导出代理时间段内的统计数据
+            </summary>
+            <param name="exportInputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ExportController.LoadUserBetRecord(ShareEntity.InputModels.Account.QueryUserBetLogInputModel)">
+            <summary>
+            游戏平台数据导出
+            </summary>
+            <param name="exportInputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ExportController.LoadAgentPlayersFinanceMonthDataFromDB(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            代理下线会员月存款数据 -----导出
+            </summary>
+            <param name="exportInputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ExportController.LoadAgentPlayersFinanceDailayDataFromDB(ShareEntity.Agent.Finance.AgentReportQueryInputModel)">
+            <summary>
+            代理下线会员日存款数据 -----导出
+            </summary>
+            <param name="exportInputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ExportController.LoadAgentTurnoverFromDB(ShareEntity.InputModels.TurnOver.QueryTurnOverInputModel)">
+            <summary>
+            代理下线会员日存款数据 -----导出
+            </summary>
+            <param name="exportInputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.Controllers.GameController">
+            <summary>
+            游戏管理
+            </summary>
+        </member>
+        <member name="F:CMS.API.Controllers.GameController._accessor">
+            
+        </member>
+        <member name="M:CMS.API.Controllers.GameController.ViewTransferById(System.Int64)">
+            <summary>
+            获取当前转账记录的详情
+            </summary>
+            <param name="tranferId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.GameController.LoadGameConfig(ShareEntity.InputModels.GameConfig.QueryGameConfigInputModel)">
+            <summary>
+            获取游戏分类列表
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.GameController.LoadGameConfigParams(ShareEntity.InputModels.GameConfig.QueryGameConfigInputModel)">
+            <summary>
+            获取游戏参数列表
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.GameController.UpdateGameConfigStatus(ShareEntity.InputModels.GameConfig.UpdateGameConfigInputModel)">
+            <summary>
+            更新参数列表的状态
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.GameController.LoadGameReport(ShareEntity.InputModels.GameReport.QueryGameReportInputModel)">
+            <summary>
+            游戏盈利报表
+            风控使用
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.GameController.LoadGameModels(ShareEntity.InputModels.GameConfig.QueryGameModelsInputModel)">
+            <summary>
+            获取游戏电子游戏列表
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.LoginController.Post(CMS.Core.Application.Admin.Queries.LoginRequestQuery)">
+            <summary>
+            后台登入
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.LoginController.CheckStatus">
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.LoginController.GetUser">
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.LoginController.GetUserPrivilege(CMS.Core.Application.系统管理.Queries.GetAccessPrivilege)">
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.Controllers.PromoController">
+            <summary>
+            优惠管理
+            </summary>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.AutoPromoTypes(ShareEntity.InputModels.Promo.QueryAutoPromoTypesInputModel)">
+            <summary>
+            加载当前的自助优惠的分类菜单
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.PromoMiscRecords(ShareEntity.InputModels.Promo.QueryPromoMiscInputModel)">
+            <summary>
+            优惠积分-分页查询
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.CreatePromoMisc(ShareEntity.InputModels.Promo.CreatePromoMiscInputModel)">
+            <summary>
+            创建优惠积分
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.VerifyPromoMisc(ShareEntity.InputModels.Promo.VerifyPromoMiscInputModel)">
+            <summary>
+            优惠积分审核
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.CancelPromoMisc(ShareEntity.InputModels.Promo.VerifyPromoMiscInputModel)">
+            <summary>
+            优惠积分取消
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.SpreadRecords(ShareEntity.InputModels.Promo.QuerySpreadInputModel)">
+            <summary>
+            推荐管理 分页查询
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.SpreadBilledRecords(ShareEntity.InputModels.Promo.QuerySpreadBilledInputModel)">
+            <summary>
+            推荐结算 分页查询
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.SpreadBilledRecordsINTL(ShareEntity.InputModels.Promo.QuerySpreadBilledIntlInputModel)">
+            <summary>
+            推荐结算 分页查询 INTL
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.CancelSpreadBilled(ShareEntity.InputModels.Promo.CacelSpreadBilledInputModel)">
+            <summary>
+            推荐结算 取消
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.VerifySpreadBilled(ShareEntity.InputModels.Promo.CacelSpreadBilledInputModel)">
+            <summary>
+            推荐结算 审核
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.CreatePromoContent(ShareEntity.InputModels.Promo.CreatePromoContentInputModel)">
+            <summary>
+            优惠内容的配置  创建
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.LoadPromoContentById(System.Int64)">
+            <summary>
+            优惠内容单调出来供修改
+            </summary>
+            <param name="tid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.PromoContentRecords(ShareEntity.InputModels.Promo.QueryPromoContentInputModel)">
+            <summary>
+            优惠内容  分页查询
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.ECupBetRecords(ShareEntity.InputModels.Euro.QueryEuroCupBilledInputModel)">
+            <summary>
+            欧洲杯竞猜，数据
+            </summary>
+            <param name="inputModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.VerifyECupBilled(ShareEntity.InputModels.Euro.EuroUpdateInputModel)">
+            <summary>
+            欧洲杯竞猜审核
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PromoController.CancelECupBilled(ShareEntity.InputModels.Euro.EuroUpdateInputModel)">
+            <summary>
+            欧洲杯竞猜审核取消
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.Controllers.ResizeController">
+            <summary>
+            账号微调操作
+            </summary>
+        </member>
+        <member name="M:CMS.API.Controllers.ResizeController.ResizeRecords(ShareEntity.InputModels.Resize.QueryResizeInputModel)">
+            <summary>
+            微调记录查询返回
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ResizeController.CreateResize(ShareEntity.InputModels.Resize.CreateResizeInputModel)">
+            <summary>
+            微调创建
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ResizeController.VerifyResize(ShareEntity.InputModels.Resize.VerifyResizeInputModel)">
+            <summary>
+            微调审核
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.SystemController.QueryCurrencys(System.Int32)">
+            <summary>
+            查询当前管理员支付的货币类型
+            </summary>
+            <param name="v">0：返回货币类型，1：返回 货币+品牌</param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.TurnOverController.VerifyTurnOver(ShareEntity.InputModels.TurnOver.VerifyTurnOverInputModel)">
+            <summary>
+            返水审核
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.TurnOverController.CancelTurnOver(ShareEntity.InputModels.TurnOver.VerifyTurnOverInputModel)">
+            <summary>
+            返水取消
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.VipLevelMonthRecords(ShareEntity.InputModels.Vip.QueryVipLevelInputModel)">
+            <summary>
+            会员升降级列表数据显示
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.VipLevelUpTo(ShareEntity.InputModels.Vip.VipLevelUpDownInputModel)">
+            <summary>
+            升级
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.VipLevelCancel(ShareEntity.InputModels.Vip.VipLevelUpDownInputModel)">
+            <summary>
+            取消升降级
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.VipLevelDownMonthRecords(ShareEntity.InputModels.Vip.QueryVipLevelInputModel)">
+            <summary>
+            会员降级列表数据显示
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.VipLevelDownTo(ShareEntity.InputModels.Vip.VipLevelUpDownInputModel)">
+            <summary>
+            降级
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.VipLevelDownCancel(ShareEntity.InputModels.Vip.VipLevelUpDownInputModel)">
+            <summary>
+            取消升降级
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.VipDepositTimesDailyRecords(ShareEntity.InputModels.Vip.QueryVipDepositTimesDailyInputModel)">
+            <summary>
+            每天各vip存款次数
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.ImportVIPContacts(ShareEntity.InputModels.Vip.ImportVIPContactModel)">
+            <summary>
+            VIP专员导入
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.QueryAllVIPContacts(ShareEntity.InputModels.Vip.VipMappingInputModel)">
+            <summary>
+            查询所有已分配置联系VPI
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.LoadContactsData">
+            <summary>
+            查询当前管理员的联系方式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.ConformedVIP(ShareEntity.InputModels.Vip.ConformActionModel)">
+            <summary>
+            确认vip会员已经添加我们联系方式
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.VipController.CancelContactVIP(ShareEntity.InputModels.Vip.ConformActionModel)">
+            <summary>
+            取消分配置到VIP联系方式
+            </summary>
+            <param name="form"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CMS.API.Models.Call.CallLogModel">
+            <summary>
+            备注记录
+            </summary>
+        </member>
+        <member name="P:CMS.API.Models.Call.CallLogModel.account">
+            <summary>
+            会员账号
+            </summary>
+        </member>
+        <member name="P:CMS.API.Models.Call.CallLogModel.createperson">
+            <summary>
+            负责人
+            </summary>
+        </member>
+        <member name="P:CMS.API.Models.Call.CallLogModel.comment">
+            <summary>
+            备注数据
+            </summary>
+        </member>
+        <member name="P:CMS.API.Models.Call.CallLogModel.contactStatus">
+            <summary>
+            备注状态  0：未通，1：接通， -1：分配置
+            </summary>
+        </member>
+        <member name="P:CMS.API.Models.Call.CallLogModel.createtime">
+            <summary>
+            备注或分配时间
+            </summary>
+        </member>
+        <member name="T:CMS.API.Models.Call.CallLogOutModel">
+            <summary>
+            备注记录统计输出
+            </summary>
+        </member>
+        <member name="P:CMS.API.Models.Call.CallLogOutModel.amount">
+            <summary>
+            统计时间内的存款金额
+            </summary>
+        </member>
+        <member name="P:CMS.API.Models.Call.CallLogOutModel.deleverTime">
+            <summary>
+            备注记录的分配时间
+            </summary>
+        </member>
+        <member name="P:CMS.API.Models.Call.CallLogOutModel.reviewtime">
+            <summary>
+            从注册到当前，最后一次存款时间
+            </summary>
+        </member>
+        <member name="P:CMS.API.Models.Call.CallLogOutModel.levels">
+            <summary>
+            VIP名称
+            </summary>
+        </member>
+        <member name="P:CMS.API.Models.CurrencyModel.currencyname">
+            <summary>
+            货币名称
+            </summary>
+        </member>
+        <member name="P:CMS.API.Models.CurrencyModel.currencycode">
+            <summary>
+            货币代码
+            </summary>
+        </member>
+        <member name="T:CMS.API.Models.BaseSearchModel">
+            <summary>
+            基本的查询类型
+            </summary>
+        </member>
+        <member name="T:CMS.API.Models.Vip.VipImportContentModel">
+            <summary>
+            vip专员导入的数据模型
+            </summary>
+        </member>
+    </members>
+</doc>

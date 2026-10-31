@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Data</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper.Contrib" Version="2.0.30" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ShareEntity\ShareEntity.csproj" />
+    <ProjectReference Include="..\..\shareLib\UtilsLib\UtilsLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Thirdpay">
+      <HintPath>..\..\..\Libraries\Thirdpay\bin\Release\Thirdpay.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

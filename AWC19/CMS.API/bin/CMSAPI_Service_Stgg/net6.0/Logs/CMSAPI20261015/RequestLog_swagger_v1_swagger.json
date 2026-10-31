@@ -1,0 +1,91 @@
+﻿***************************************************
+2026-10-15 00:24:11 92127 : RequestLog /swagger/v1/swagger.json
+2026-10-15 00:24:11 92128 : VisitLog=Url: /swagger/v1/swagger.json,
+ requestIP: ::1,
+Headers: [{"Accept":"application/json,*/*"},{"Connection":"keep-alive"},{"Host":"localhost:65509"},{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"},{"Accept-Encoding":"gzip, deflate, br, zstd"},{"Accept-Language":"zh-CN,zh;q=0.9"},{"Referer":"http://localhost:65509/swagger/index.html"},{"sec-ch-ua-platform":""Windows""},{"sec-ch-ua":""Google Chrome";v="155", "Chromium";v="155", "Not(A:Brand";v="24""},{"sec-ch-ua-mobile":"?0"},{"Sec-Fetch-Site":"same-origin"},{"Sec-Fetch-Mode":"cors"},{"Sec-Fetch-Dest":"empty"},{"adminAccount":""}],
+Method: GET,
+RequestBody: ,
+ResponseBody: ,
+ExcuteStartTime: 2026-10-15 00:24:11.154,
+ExcuteStartTime: 2026-10-15 00:24:11.920,
+ StackTrace: 
+***************************************************
+
+***************************************************
+2026-10-15 00:43:57 70749 : RequestLog /swagger/v1/swagger.json
+2026-10-15 00:43:57 70751 : VisitLog=Url: /swagger/v1/swagger.json,
+ requestIP: ::1,
+Headers: [{"Accept":"application/json,*/*"},{"Connection":"keep-alive"},{"Host":"localhost:65509"},{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"},{"Accept-Encoding":"gzip, deflate, br, zstd"},{"Accept-Language":"zh-CN,zh;q=0.9"},{"Referer":"http://localhost:65509/swagger/index.html"},{"sec-ch-ua-platform":""Windows""},{"sec-ch-ua":""Google Chrome";v="155", "Chromium";v="155", "Not(A:Brand";v="24""},{"sec-ch-ua-mobile":"?0"},{"Sec-Fetch-Site":"same-origin"},{"Sec-Fetch-Mode":"cors"},{"Sec-Fetch-Dest":"empty"},{"adminAccount":""}],
+Method: GET,
+RequestBody: ,
+ResponseBody: ,
+ExcuteStartTime: 2026-10-15 00:43:57.130,
+ExcuteStartTime: 2026-10-15 00:43:57.707,
+ StackTrace: 
+***************************************************
+
+***************************************************
+2026-10-15 00:46:12 94921 : RequestLog /swagger/v1/swagger.json
+2026-10-15 00:46:12 94922 : VisitLog=Url: /swagger/v1/swagger.json,
+ requestIP: ::1,
+Headers: [{"Accept":"application/json,*/*"},{"Connection":"keep-alive"},{"Host":"localhost:65509"},{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"},{"Accept-Encoding":"gzip, deflate, br, zstd"},{"Accept-Language":"zh-CN,zh;q=0.9"},{"Referer":"http://localhost:65509/swagger/index.html"},{"sec-ch-ua-platform":""Windows""},{"sec-ch-ua":""Google Chrome";v="155", "Chromium";v="155", "Not(A:Brand";v="24""},{"sec-ch-ua-mobile":"?0"},{"Sec-Fetch-Site":"same-origin"},{"Sec-Fetch-Mode":"cors"},{"Sec-Fetch-Dest":"empty"},{"adminAccount":""}],
+Method: GET,
+RequestBody: ,
+ResponseBody: ,
+ExcuteStartTime: 2026-10-15 00:46:12.945,
+ExcuteStartTime: 2026-10-15 00:46:12.948,
+ StackTrace: 
+***************************************************
+
+***************************************************
+2026-10-15 01:18:00 89215 : RequestLog /swagger/v1/swagger.json
+2026-10-15 01:18:00 89216 : VisitLog=Url: /swagger/v1/swagger.json,
+ requestIP: ::1,
+Headers: [{"Accept":"application/json,*/*"},{"Connection":"keep-alive"},{"Host":"localhost:65509"},{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"},{"Accept-Encoding":"gzip, deflate, br, zstd"},{"Accept-Language":"zh-CN,zh;q=0.9"},{"Referer":"http://localhost:65509/swagger/index.html"},{"sec-ch-ua-platform":""Windows""},{"sec-ch-ua":""Google Chrome";v="155", "Chromium";v="155", "Not(A:Brand";v="24""},{"sec-ch-ua-mobile":"?0"},{"Sec-Fetch-Site":"same-origin"},{"Sec-Fetch-Mode":"cors"},{"Sec-Fetch-Dest":"empty"},{"adminAccount":""}],
+Method: GET,
+RequestBody: ,
+ResponseBody: ,
+ExcuteStartTime: 2026-10-15 01:17:59.861,
+ExcuteStartTime: 2026-10-15 01:18:00.891,
+ StackTrace: 
+***************************************************
+
+***************************************************
+2026-10-15 01:19:53 15417 : RequestLog /swagger/v1/swagger.json
+2026-10-15 01:19:53 15419 : VisitLog=Url: /swagger/v1/swagger.json,
+ requestIP: ::1,
+Headers: [{"Accept":"application/json,*/*"},{"Connection":"keep-alive"},{"Host":"localhost:65509"},{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"},{"Accept-Encoding":"gzip, deflate, br, zstd"},{"Accept-Language":"zh-CN,zh;q=0.9"},{"Referer":"http://localhost:65509/swagger/index.html"},{"sec-ch-ua-platform":""Windows""},{"sec-ch-ua":""Google Chrome";v="155", "Chromium";v="155", "Not(A:Brand";v="24""},{"Sec-Purpose":"prefetch;prerender"},{"sec-ch-ua-mobile":"?0"},{"Sec-Fetch-Site":"same-origin"},{"Sec-Fetch-Mode":"cors"},{"Sec-Fetch-Dest":"empty"},{"adminAccount":""}],
+Method: GET,
+RequestBody: ,
+ResponseBody: ,
+ExcuteStartTime: 2026-10-15 01:19:52.212,
+ExcuteStartTime: 2026-10-15 01:19:53.153,
+ StackTrace: 
+***************************************************
+
+***************************************************
+2026-10-15 01:20:53 34510 : RequestLog /swagger/v1/swagger.json
+2026-10-15 01:20:53 34511 : VisitLog=Url: /swagger/v1/swagger.json,
+ requestIP: ::1,
+Headers: [{"Accept":"application/json,*/*"},{"Connection":"keep-alive"},{"Host":"localhost:65509"},{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"},{"Accept-Encoding":"gzip, deflate, br, zstd"},{"Accept-Language":"zh-CN,zh;q=0.9"},{"Referer":"http://localhost:65509/swagger/index.html"},{"sec-ch-ua-platform":""Windows""},{"sec-ch-ua":""Google Chrome";v="155", "Chromium";v="155", "Not(A:Brand";v="24""},{"Sec-Purpose":"prefetch;prerender"},{"sec-ch-ua-mobile":"?0"},{"Sec-Fetch-Site":"same-origin"},{"Sec-Fetch-Mode":"cors"},{"Sec-Fetch-Dest":"empty"},{"adminAccount":""}],
+Method: GET,
+RequestBody: ,
+ResponseBody: ,
+ExcuteStartTime: 2026-10-15 01:20:52.443,
+ExcuteStartTime: 2026-10-15 01:20:53.344,
+ StackTrace: 
+***************************************************
+
+***************************************************
+2026-10-15 23:18:50 56324 : RequestLog /swagger/v1/swagger.json
+2026-10-15 23:18:50 56325 : VisitLog=Url: /swagger/v1/swagger.json,
+ requestIP: ::1,
+Headers: [{"Accept":"application/json,*/*"},{"Connection":"keep-alive"},{"Host":"localhost:65509"},{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"},{"Accept-Encoding":"gzip, deflate, br, zstd"},{"Accept-Language":"zh-CN,zh;q=0.9"},{"Referer":"http://localhost:65509/swagger/index.html"},{"sec-ch-ua-platform":""Windows""},{"sec-ch-ua":""Google Chrome";v="155", "Chromium";v="155", "Not(A:Brand";v="24""},{"Sec-Purpose":"prefetch;prerender"},{"sec-ch-ua-mobile":"?0"},{"Sec-Fetch-Site":"same-origin"},{"Sec-Fetch-Mode":"cors"},{"Sec-Fetch-Dest":"empty"},{"adminAccount":""}],
+Method: GET,
+RequestBody: ,
+ResponseBody: ,
+ExcuteStartTime: 2026-10-15 23:18:49.687,
+ExcuteStartTime: 2026-10-15 23:18:50.563,
+ StackTrace: 
+***************************************************
+

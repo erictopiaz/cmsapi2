@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>活动编辑</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../static/css/font.css">
+    <link rel="stylesheet" href="../../static/css/weadmin.css">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="edit">
+    <div class="weadmin-body">
+        <form class="layui-form" lay-filter="noticeform" id="noticeform">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">结束时间：</label>
+                <div class="layui-inline">
+                    <input class="layui-input layui-hide" name="id" id="start" />
+                    <input class="layui-input" placeholder="结束时间" name="expiredate" id="start" />
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">公告类型：</label>
+                <div class="layui-inline">
+
+                    <select class="layui-input" name="type">
+                        <option value=-1 selected>==公告类型==</option>
+                        <option value=0>普通公告</option>
+                        <option value=2>合营公告</option>
+                        <option value=100>提示公告</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">公告内容</label>
+                <div class="layui-input-block">
+                    <textarea name="content" placeholder="请输入内容" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label"></label>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-normal" id="FORM-saveval">
+                        修改
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div id="dataId"></div>
+    </div>
+    <script src="/lib/layui/layui.js" charset="utf-8"></script>
+    <script src="/static/js/eleDel.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/globalmixin.js"></script>
+    <script type="text/javascript">
+
+
+        //function getParameterByName(sParam) {
+        //    var sPageURL = window.location.search.substring(1),
+        //        sURLVariables = sPageURL.split('&'),
+        //        sParameterName,
+        //        i;
+
+        //    for (i = 0; i < sURLVariables.length; i++) {
+        //        sParameterName = sURLVariables[i].split('=');
+
+        //        if (sParameterName[0] === sParam) {
+        //            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        //        }
+        //    }
+        //};
+        //var _noticeid = getParameterByName('id');
+        //var _content = getParameterByName('content');
+        //var _type = getParameterByName('type');
+        //var _expiredate = getParameterByName('expire');
+        var _headers = {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('acow8unasvef')
+        };
+
+
+
+        //function getParameterByName(name, url) {
+        //    if (!url) url = window.location.href;
+        //    name = name.replace(/[\[\]]/g, '\\$&');
+        //    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        //        results = regex.exec(url);
+        //    if (!results) return null;
+        //    if (!results[2]) return '';
+        //    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        //}
+        layui.use(['form', 'jquery', 'admin', 'layer'], function () {
+
+            var self = this;
+            var form = layui.form,
+                $ = layui.jquery,
+                admin = layui.admin,
+                layer = layui.layer;
+            //var formhandler = form.val("noticeform", { //formTest 即 class="layui-form" 所在元素属性 lay-filter="" 对应的值
+            //    "content": _content// "name": "value"
+            //    , "id": _noticeid
+            //    , "expiredate": _expiredate
+            //});            //页面初始化加载
+
+
+
+            function ArrayToObject(arr) {
+                var obj = {};
+                for (var i = 0; i < arr.length; i++)
+                    if (arr[i].value != undefined && arr[i].value != null && arr[i].value != '')
+                        obj[arr[i].name] = arr[i].value;
+                    else
+                        obj[arr[i].name] = null;
+                return obj;
+            }
+
+
+            //表单取值
+            $('#FORM-saveval').on('click', function (othis) {
+                var _where = layui.$('#noticeform').serializeArray();
+                console.info(_where);
+                _where = ArrayToObject(_where);
+                console.info(_where);
+
+                var self = this;
+                var _data = {
+                    //id: parseInt(_noticeid),
+                    content: _where.content,
+                    type: parseInt(_where.type),
+                    expiredate: _where.expiredate
+                };
+
+                console.info(_data);
+                //console.info(_headers);
+                //console.info(_headers);
+                //window.togglestatus = function (item_id, status) {
+                //console.info(item_id);
+                //console.info(status);
+                var jsonData = JSON.stringify(_data);
+                $.ajax({
+                    type: "post",
+                    url: "/api/Website/NoticeAdd",
+                    headers: _headers,
+                    contentType: "application/json;",
+                    dataType: "json",
+                    async: false,
+                    data: jsonData,
+                    success: function (result) {
+                        //var message = "OK";
+                        //if (result.code != 1) message = result.message;
+                        ////console.info(result);
+                        layer.closeAll();
+                        //layer.msg("更新成功");
+                        return false;
+                    }
+                });
+
+                return false;
+
+
+            });
+
+            //$('#FORM-saveval').on('click', function () {
+
+
+            //    //var data1 = formhandler;
+            //    var _data = $('#noticeform').serializeObject();
+            //    console.info(_data);
+            //    //_where = ArrayToObject(_where);
+            //    //_where.status = parseInt(_where.status);
+            //    //_where.level = parseInt(_where.level);
+            //    //_where.type = parseInt(_where.type);
+            //    //console.info(_where);
+            //    //maintable.reload({ where: _where, page: { curr: 1 } });
+            //    return false;
+
+            //});
+
+
+
+            form.on('checkbox(lockDemo)', function (obj) {
+                var self = this;
+                var _data = {
+                    account: parameterId,
+                    command: self.value,
+                    status: obj.elem.checked
+                };
+                //console.info(_data);
+                //console.info(_headers);
+                //console.info(_headers);
+                //window.togglestatus = function (item_id, status) {
+                //console.info(item_id);
+                //console.info(status);
+                var jsonData = JSON.stringify(_data);
+                layui.$.ajax({
+                    type: "post",
+                    url: "/api/System/Access/TogglePrivilege",
+                    headers: _headers,
+                    contentType: "application/json;",
+                    dataType: "json",
+                    data: jsonData,
+                    success: function (result) {
+                        var message = "OK";
+                        if (result.code != 1) message = result.message;
+                        //console.info(result);
+                        layer.tips(message, obj.othis);
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>

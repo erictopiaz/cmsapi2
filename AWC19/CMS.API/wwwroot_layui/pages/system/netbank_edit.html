@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>活动编辑</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../static/css/font.css">
+    <link rel="stylesheet" href="../../static/css/weadmin.css">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="edit">
+    <div class="weadmin-body" id="app">
+        <div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">开户姓名：</label>
+                <div class="layui-input-block layui-inline">
+                    <input type="text" class="layui-input" v-model="details.realname" readonly>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">银行卡号：</label>
+                <div class="layui-input-block layui-inline">
+                    <input type="text" class="layui-input" v-model="details.cardno" readonly>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">银行名称：</label>
+                <div class="layui-input-block layui-inline">
+                    <input type="text" class="layui-input" v-model="details.bank" readonly>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">开户地址：</label>
+                <div class="layui-input-block layui-inline">
+                    <input type="text" class="layui-input" v-model="details.cardaddress" readonly>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">返现比例：</label>
+                <div class="layui-input-block layui-inline">
+                    <input type="number" class="layui-input" v-model="details.feecent">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">返现上限：</label>
+                <div class="layui-input-block layui-inline">
+                    <input type="number" class="layui-input" v-model="details.feemax">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">收款上限：</label>
+                <div class="layui-input-block layui-inline">
+                    <input type="number" class="layui-input" v-model="details.paymentcap">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">存款次数要求：</label>
+                <div class="layui-input-block layui-inline">
+                    <input type="number" class="layui-input" v-model="details.mindepositcount">
+                </div>
+            </div>
+
+            <hr class="layui-bg-blue">
+
+            <div class="layui-inline">
+
+                <ul>
+                    <li v-for="level in levellist">
+                        <input type="checkbox" :value="level.id" :id="level.id" v-model="checkedCategories" @click="check($event)"> {{level.label}}
+                    </li>
+                </ul>
+            </div>
+
+
+            <!--<div class="layui-form-item">
+                <label class="layui-form-label">使用等级：</label>
+                <div class="layui-input-block">
+                    <ul>
+                        <li v-for="level in levellist">
+                            <input type="checkbox" lay-skin="primary" :value="level.id" :id="level.id" v-model="checkedCategories" @click="check($event)"> {{level.label}}
+                        </li>
+                    </ul>
+                </div>
+            </div>-->
+            <hr class="layui-bg-blue">
+
+            <div class="layui-form-item">
+                <button type="button" class="layui-btn layui-btn-normal layui-btn-fluid">修改</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="/design/layui.all.js"></script>
+    <script src="/static/js/eleDel.js"></script>
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.js"></script>
+    <script src="/js/globalmixin.js"></script>
+
+    <script type="text/javascript">
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                checkedCategories: [10007, 10002],
+                levellist: [
+                    { id: 10002, label: "黄金VIP" },
+                    { id: 10006, label: "忠实玩家" },
+                    { id: 10007, label: "普通玩家" },
+                    { id: 10004, label: "钻石VIP" },
+                    { id: 10005, label: "特邀VIP" },
+                    { id: 10025, label: "至尊VIP" },
+                    { id: 10012, label: "见习VIP" },
+                    { id: 10027, label: "白银VIP" },
+                    { id: 10028, label: "白玉VIP" },
+                    { id: 10001, label: "万象会员" },
+                    { id: 10026, label: "核查级别" },
+                    { id: 10011, label: "老虎机俱乐部" },
+                    { id: 10023, label: "爵士返水" },
+                    { id: 10003, label: "铂金VIP" },
+                    { id: 10020, label: "国王现金" },
+                    { id: 10022, label: "公爵返水" },
+                    { id: 10019, label: "公爵现金" },
+                    { id: 10018, label: "爵士现金" },
+                    { id: 10017, label: "骑士现金" },
+                    { id: 10021, label: "国王返水" },
+                    { id: 10024, label: "骑士返水" }
+                ],
+                //mainCategories: [{
+                //    merchantId: '1'
+                //}, {
+                //    merchantId: '2'
+                //}],
+                input: {
+                    pagesize: 10,
+                    status: -1
+                },
+                details: {}
+            },
+            computed: {
+
+            },
+            mounted: function () {
+                this.details = this.paramstoobject();
+                if (this.details.range)
+                    this.checkedCategories = decodeURIComponent(this.details.range).split(',');
+                console.info(this.details);
+            },
+            methods: {
+                check: function (e) {
+                    if (e.target.checked) {
+                        console.log(e.target.value)
+                    }
+                },
+                initpager: function (curPage, totalRecord) {
+                    var self = this;
+                    layui.use('laypage', function () {
+                        var laypage = layui.laypage;
+                        laypage.render({
+                            elem: 'pager',
+                            curr: curPage,
+                            count: totalRecord,
+                            limit: self.input.pagesize,
+                            limits: [2, 10, 20, 30, 50],
+                            layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+                            , jump: function (obj, first) {
+                                console.info(obj);
+                                console.info('limit:' + obj.limit);
+
+                                if (!first) {
+                                    self.search(obj.curr, obj.limit);
+                                    //do something
+                                }
+
+                                //limit = obj.limit;
+                                //var pageIndex = obj.curr;
+                                //if (!first) {
+                                //    var ant = $("#queryForm").find("input[name='account']").val();
+                                //    var data = data = { "account": ant, "afpaymentlivetype": 1, "pageSize": limit, "pageIndex": pageIndex };
+                                //    loadPageData(data);
+                                //}
+                            }
+                        })
+                    });
+
+                },
+                switchwebstatus: function (x) {
+                    console.info(x.id, " ", x.statuschecked);
+                    this.postwithauth('/Website/BankCardSwitch', { id: x.id, onoff: x.statuschecked },
+                        function (response) {
+                            console.info('====/Website/BankCardSwitch====');
+                            console.info(response);
+                        });
+
+                },
+                switchappstatus: function (x) {
+                    console.info(x.id, " ", x.appstatuschecked);
+                    this.postwithauth('/Website/BankCardSwitch', { id: x.id, apponoff: x.appstatuschecked },
+                        function (response) {
+                            console.info('====/Website/BankCardSwitch====');
+                            console.info(response);
+                        });
+
+                },
+                search: function (_pageindex, pagesize) {
+                    var self = this;
+                    var _where = layui.$('#formfield').serializeArray();
+                    _where = this.ArrayToObject(_where);
+                    _where.status = parseInt(_where.status);
+                    _where.appstatus = parseInt(_where.appstatus);
+                    _where.type = parseFloat(_where.type);
+                    _where.page = _pageindex != null ? _pageindex : 0;
+                    _where.pagesize = this.pagesize = pagesize;
+
+
+                    this.postwithauth('/Website/BankCardRecord', _where,
+                        function (response) {
+                            if (response.status == 200 && response.data.code == 1) {
+                                var y = response.data.data.data;
+                                for (var i = 0; i < y.length; i++) {
+                                    y[i].statuschecked = y[i].status == 1 ? true : false;
+                                    y[i].appstatuschecked = y[i].appstatus == 1 ? true : false;
+                                }
+                                self.recordlist = y;
+                                var totalItems = response.data.data.totalItems;
+                                self.initpager(_pageindex, totalItems);
+                            }
+                            else
+                                console.info(response);
+                        });
+                    return false;
+
+                }
+            }
+        });
+
+
+
+
+                //layui.use(['form', 'jquery', 'admin', 'layer'], function () {
+                //    var form = layui.form,
+                //        $ = layui.jquery,
+                //        admin = layui.admin,
+                //        layer = layui.layer;
+                //    //页面初始化加载
+                //    //$(function () {
+                //    //    setTimeout(function () {
+                //    //        frameVal();
+                //    //    }, 100);
+                //    //});
+
+                //});
+    </script>
+</body>
+
+</html>

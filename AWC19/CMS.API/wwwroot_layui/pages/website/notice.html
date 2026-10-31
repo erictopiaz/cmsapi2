@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>优惠内容页配置</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <link href="/static/css/font.css" rel="stylesheet" />
+    <link href="/static/css/weadmin.css" rel="stylesheet" />
+
+    <!--<script src="~/lib/jquery/jquery1.42.min.js"></script>
+    <script src="~/lib/jquery/json2.min.js"></script>-->
+    <!--<script src="~/js/moment.js"></script>-->
+    <!--<script src="~/js/site.js"></script>-->
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="weadmin-nav">
+        <span class="layui-breadcrumb">
+            <a href="javascript:;">首页</a> <a href="javascript:;">会员管理</a>
+            <a href="javascript:;"> <cite>会员列表</cite></a>
+        </span>
+        <a class="layui-btn layui-btn-sm" style="margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+           title="刷新">
+            <i class="layui-icon layui-icon-refresh"></i>
+            <!-- <i class="layui-icon" style="line-height:30px">&#x1002;</i> -->
+        </a>
+    </div>
+    <div class="weadmin-body">
+        <div class="layui-row">
+            <form class="layui-form layui-col-md12 we-search" lay-filter="goBonus" id="formfield">
+                检索条件：
+                <div class="layui-inline">
+                    <input class="layui-input" name="content" placeholder="标题" />
+                </div>
+
+                <div class="layui-inline">
+                    <select class="layui-input" name="type">
+                        <option value=-1 selected>==公告类型==</option>
+                        <option value=0>普通公告</option>
+                        <option value=2>合营公告</option>
+                        <option value=100>提示公告</option>
+                    </select>
+                </div>
+
+                <div class="layui-inline">
+                    <select class="layui-input" name="status">
+                        <option value=-1 selected>==状态==</option>
+                        <option value=0>关闭</option>
+                        <option value=1>启用</option>
+                    </select>
+                </div>
+
+
+
+
+                <button class="layui-btn layui-btn-normal" id="FORM-getval" lay-submit="" lay-filter="searchbutton">
+                    <i class="layui-icon layui-icon-search"></i>查询
+                </button>
+                <button class="layui-btn layui-btn-normal" id="FORM-getval" lay-submit="" lay-filter="addbutton">
+                    <i class="layui-icon layui-icon-search"></i>增加
+                </button>
+            </form>
+        </div>
+        <!--<div class="weadmin-block">
+            <button class="layui-btn layui-btn-normal" onclick="WeAdminShow('添加','/Promo/EditContent?s=0&tid=0',600,400)">
+                <i class="layui-icon layui-icon-add-circle-fine"></i>添加
+            </button>
+        </div>-->
+        <div class="table_scroll" id="maintable">
+            <table lay-even class="layui-table">
+                <thead>
+                    <tr>
+                        <th>创建时间</th>
+                        <th>过期时间</th>
+                        <!--<th>状态</th>-->
+                        <th>公告类型</th>
+                        <th width="50px">内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in todos" v-on:dblclick="editcontent(item)">
+                        <td>{{item.createtime | standarddate}}</td>
+                        <td>
+                            <span v-if="item.status==1">
+                                <span class="layui-badge layui-bg-red" v-if="Date.parse(item.expiredate) < Date.now()">过期了 {{item.expiredate | standarddate}}</span>
+                                <span class="layui-badge layui-bg-green" v-if="Date.parse(item.expiredate) >= Date.now()">启用 {{item.expiredate | standarddate}}</span>
+                            </span>
+                            <span v-if="item.status==0">
+                                <span class="layui-badge layui-bg-gray">关闭 {{item.expiredate | standarddate}}</span>
+                            </span>
+                            <!--{{item.expiredate | standarddate}}-->
+                        </td>
+                        <!--<td>
+                            <input type="checkbox" title="启用" :checked="item.statuscheckbox">
+                        </td>-->
+                        <!--<td>
+                            <span v-if="item.status==0" class="layui-btn layui-btn-xs layui-bg-gray">关闭</span>
+                            <span v-if="item.status==1" class="layui-btn layui-btn-xs">启用</span>
+                        </td>-->
+                        <td>{{item.typename}}</td>
+                        <td>{{item.body | obscureend(30)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align:center">
+                <div id="pager"></div>
+            </div>
+
+        </div>
+    </div>
+    <script src="/design/layui.all.js"></script>
+    <script src="/static/js/eleDel.js"></script>
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.js"></script>
+    <script src="/js/globalmixin.js"></script>
+
+    <script>
+
+        var app = new Vue({
+            el: '#maintable',
+            data: {
+                todos: null,
+                pagesize: 10
+            },
+            mounted: function () {
+                this.search(0, this.pagesize);
+            },
+            methods: {
+                initpager: function (curPage, totalRecord) {
+                    var self = this;
+                    layui.use('laypage', function () {
+                        var laypage = layui.laypage;
+                        laypage.render({
+                            elem: 'pager',
+                            curr: curPage,
+                            count: totalRecord,
+                            limit: self.pagesize,
+                            limits: [2, 10, 20, 30, 50],
+                            layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+                            , jump: function (obj, first) {
+                                //console.info(obj);
+                                //console.info('limit:' + obj.limit);
+                                if (!first) {
+                                    self.search(obj.curr, obj.limit);
+                                }
+                            }
+                        })
+                    });
+
+                },
+                search: function (_pageindex, pagesize) {
+                    var self = this;
+                    //console.info('pageindex:' + _pageindex + " pagesize:" + pagesize);
+                    var _where = layui.$('#formfield').serializeArray();
+                    _where = this.ArrayToObject(_where);
+                    _where.status = -1;//parseInt(_where.status);
+                    _where.type = parseFloat(_where.type);
+                    _where.page = _pageindex != null ? _pageindex : 0;
+                    _where.pagesize = this.pagesize = pagesize;
+
+                    this.postwithauth('/Website/NoticeRecord', _where,
+                        function (response) {
+                            if (response.status == 200 && response.data.code == 1) {
+                                self.todos = response.data.data.data;
+                                for (var i = 0; i < self.todos.count; i++) 
+                                    self.todos[i].statuscheckbox = self.todos[i] == 1 ? true : false;
+
+                                var totalItems = response.data.data.totalItems;
+                                self.initpager(_pageindex, totalItems);
+                            }
+                            else
+                                console.info(response);
+                        });
+                    return false;
+                },
+                editcontent: function (item) {
+                    WeAdminEdit('编辑', './notice_edit.html?id=' + item.id + '&content=' + item.body + '&expire=' + item.expiredate,10,400,350);
+                }
+            }
+
+        });
+
+        layui.use(['form', 'laydate'], function () {
+            var laydate = layui.laydate,
+                form = layui.form;
+            laydate.render({
+                elem: '#start'
+                , type: 'datetime'
+            });
+            laydate.render({
+                elem: '#end'
+                , type: 'datetime'
+            });
+            form.on('submit(searchbutton)', function (data) {
+                app.search(0, app.pagesize);
+                return false;
+            });
+            form.on('submit(addbutton)', function (data) {
+                WeAdminShow('添加公告','./notice_add.html',500,400)
+                return false;
+            });
+        });
+
+    </script>
+</body>
+</html>
+
+

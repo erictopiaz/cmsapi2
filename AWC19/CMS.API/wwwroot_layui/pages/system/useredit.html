@@ -1,0 +1,167 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>优惠内容管理</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="../../static/css/font.css" />
+    <link rel="stylesheet" href="../../static/css/weadmin.css" />
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="weadmin-nav">
+        <span class="layui-breadcrumb">
+            <a href="javascript:;">首页</a> <a href="javascript:;">会员管理</a>
+            <a href="javascript:;"> <cite>会员列表</cite></a>
+        </span>
+        <a class="layui-btn layui-btn-sm" style="margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+           title="刷新">
+            <i class="layui-icon layui-icon-refresh"></i>
+            <!-- <i class="layui-icon" style="line-height:30px">&#x1002;</i> -->
+        </a>
+    </div>
+    <div class="weadmin-body">
+
+        <table id="maintable" lay-filter="test"></table>
+
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-xs" lay-event="edit" onclick="editaccount('{{d.account}}')">编辑</a>
+        </script>
+
+        <script type="text/html" id="onlineTpl">
+            <input type="checkbox" name="lock" value="{{d.id}}" title="在线" lay-filter="lockDemo" {{ d.online == 1 ? 'checked' : '' }}>
+        </script>
+        <script type="text/html" id="statusTpl">
+            <input type="checkbox" name="lock" value="{{d.command}}" title="正常" lay-filter="lockDemo" {{ d.status == 1 ? 'checked' : '' }}>
+        </script>
+    </div>
+    <script src="/lib/layui/layui.js" charset="utf-8"></script>
+    <script src="/static/js/eleDel.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.js"></script>
+    <script src="/js/globalmixin.js"></script>
+
+    <script>
+
+
+        layui.use(['table', 'form'], function () {
+            var table = layui.table;
+
+            var _headers = {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('acow8unasvef')
+            };
+            var _request = {
+                pageName: 'page' //页码的参数名称，默认：page
+                , limitName: 'pagesize' //每页数据量的参数名，默认：limit
+            };
+
+
+
+            window.getParameterByName = function (name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+            var parameterId = getParameterByName('id');
+            var _where = { account: parameterId };
+            console.info(_where);
+
+            var maintable = table.render({
+                elem: '#maintable'
+                , url: _API + '/System/Access/CommandList' //数据接口
+                , method: 'post'
+                , contentType: 'application/json'
+                , headers: _headers
+                , request: _request
+                , where: _where
+                //, page: true //开启分页
+                , cols: [[ //表头
+                    { field: 'command', title: '命令', sort: true, fixed: 'left' }
+                    , { field: 'group', title: '分组', sort: true }
+                    , { field: 'description', title: '命令', sort: true }
+                    , { field: 'status', title: '状态', templet: '#statusTpl', sort: true }
+                ]]
+                , parseData: function (res) { //res 即为原始返回的数据
+                    return {
+                        "code": res.code == 1 ? 0 : 1, //解析接口状态
+                        "msg": res.message, //解析提示文本
+                        "count": 100, //解析数据长度
+                        "data": res.data //解析数据列表
+                    };
+                }
+            });
+
+
+
+            var form = layui.form;
+            function ArrayToObject(arr) {
+                var obj = {};
+                for (var i = 0; i < arr.length; i++)
+                    if (arr[i].value != undefined && arr[i].value != null && arr[i].value != '')
+                        obj[arr[i].name] = arr[i].value;
+                    else
+                        obj[arr[i].name] = null;
+                return obj;
+            }
+            //表单取值
+            layui.$('#FORM-getval').on('click', function () {
+                _where = layui.$('#formtest').serializeArray();
+                console.info(_where);
+                _where = ArrayToObject(_where);
+                console.info(_where);
+                _where.status = parseInt(_where.status);
+                _where.online = parseInt(_where.online);
+                maintable.reload({ where: _where, page: { curr: 1 } });
+                return false;
+            });
+
+
+            form.on('checkbox(lockDemo)', function (obj) {
+                var self = this;
+                var _data = {
+                    account: parameterId,
+                    command: self.value,
+                    status: obj.elem.checked
+                };
+                //console.info(_data);
+                //console.info(_headers);
+                //console.info(_headers);
+                //window.togglestatus = function (item_id, status) {
+                //console.info(item_id);
+                //console.info(status);
+                var jsonData = JSON.stringify(_data);
+                layui.$.ajax({
+                    type: "post",
+                    url: _API + "/System/Access/TogglePrivilege",
+                    headers: _headers,
+                    contentType: "application/json;",
+                    dataType: "json",
+                    data: jsonData,
+                    success: function (result) {
+                        var message = "OK";
+                        if (result.code != 1) message = result.message;
+                        //console.info(result);
+                        layer.tips(message, obj.othis);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+﻿@{
+    ViewData["Title"] = "合营结算记录";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>会员列表</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="/static/css/font.css" />
+    <link rel="stylesheet" href="/static/css/weadmin.css" />
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <script src="/lib/layui/layui.js" charset="utf-8"></script>
+    <script src="/static/js/eleDel.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <div class="weadmin-nav">
+        <span class="layui-breadcrumb">
+            <a href="javascript:;">首页</a> <a href="javascript:;">会员管理</a>
+            <a href="javascript:;"> <cite>会员列表</cite></a>
+        </span>
+        <a class="layui-btn layui-btn-sm" style="margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+           title="刷新">
+            <i class="layui-icon layui-icon-refresh"></i>
+            <!-- <i class="layui-icon" style="line-height:30px">&#x1002;</i> -->
+        </a>
+
+    </div>
+
+    <div class="weadmin-body" id="app">
+        <div class="layui-row">
+            <form class="layui-form layui-col-md12 we-search">
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.account" placeholder="账号" />
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.realname" placeholder="姓名" />
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.createtime" placeholder="开始日" />
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.email" placeholder="邮箱" />
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.telephone" placeholder="电话" />
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.referrerreg" placeholder="注册地址" />
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.affaccount" placeholder="代理" />
+                </div>
+                <div class="layui-inline">
+                    <select class="layui-input" v-model="input.level">
+                        <option v-for="option in levellist" v-bind:value="option.levelnumber" :key="option">
+                            {{ option.levels }}
+                        </option>
+                    </select>
+                </div>
+                <div class="layui-inline">
+                    <select class="layui-input" v-model="input.status">
+                        <option v-for="option in statuslist" v-bind:value="option.id">
+                            {{ option.label }}
+                        </option>
+                    </select>
+                </div>
+
+
+
+
+
+                <!--<button style="float:right" v-on:click="updatecolumn">
+                    <i class="layui-ilayui-icon-search"></i>
+                </button>-->
+                <h1 class="layui-btn" lay-submit="" lay-filter="sreach" style="float:right" v-on:click="search(0)">
+                    <i class="layui-icon layui-icon-search"></i>
+                </h1>
+                <!--<button class="layui-btn" lay-submit="" lay-filter="sreach" style="float:right">
+                    <i class="layui-icon layui-icon-search"></i>
+                </button>-->
+            </form>
+        </div>
+        <!--<div class="weadmin-block">
+            <button class="layui-btn layui-btn-dansger" onclick="delAll()">
+                <i class="layui-icon layui-icon-delete"></i>批量删除
+            </button>
+            <button class="layui-btn" onclick="WeAdminShow('添加用户','./add.html',600,400)">
+                <i class="layui-icon layui-icon-add-circle-fine"></i>添加
+            </button>
+            <span class="fr" style="line-height:40px">共有数据：88 条</span>
+        </div>-->
+        <table class="layui-table" id="memberList">
+            <thead>
+                <tr>
+                    <!--<th>
+                        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary">
+                            <i class="layui-icon">&#xe605;</i>
+                        </div>
+                    </th>-->
+                    <!--<th>ID</th>-->
+                    <th>账号</th>
+                    <th>姓名</th>
+                    <th>生日</th>
+                    <th>注册网址</th>
+                    <th>注册IP</th>
+                    <th>注册时间</th>
+                    <th>级别</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template v-for="(item, index) in accountlist">
+                    <tr class="more_info_k">
+                        <!--<td>
+                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="1">
+                                <i class="layui-icon">&#xe605;</i>
+                            </div>
+                        </td>-->
+                        <!--<td class="userId">{{ item.id }}<i class="layui-icon">&#xe625;</i></td>-->
+                        <td>{{item.account}}</td>
+                        <td>{{item.realname}}</td>
+                        <td>{{item.birthday}}</td>
+                        <td>{{item.referrerreg}}</td>
+                        <td>{{item.ipaddress}}</td>
+                        <td>{{item.createtime | standarddate}}</td>
+                        <td>{{item.levelname}}</td>
+                        <td class="td-status">
+                            <span class="layui-btn layui-btn-normal layui-btn-xs" v-if="item.status==1">已启用</span>
+                            <span class="layui-btn layui-btn-normal layui-btn-xs" v-if="item.status==0">停用</span>
+                        </td>
+                        <td class="td-manage">
+                            <a href="javascript:;" title="启用">
+                                <i class="layui-icon layui-icon-download-circle"></i>
+                            </a>
+                            <a title="编辑" v-on:click="editaccount(item.account)" href="javascript:;">
+                                <i class="layui-icon layui-icon-edit"></i>
+                            </a>
+                            <!--<a title="编辑" onclick="WeAdminEdit('编辑', './edit.html?id={{item.account}}' , 1, 600, 400)" href="javascript:;">
+                                <i class="layui-icon layui-icon-edit"></i>
+                            </a>-->
+                            <!--<a onclick="WeAdminShow('修改密码','./password.html',600,400)" title="修改密码" href="javascript:;">
+                                <i class="layui-icon layui-icon-util"></i>
+                            </a>-->
+                        </td>
+                    </tr>
+                    <tr class="more_info hide">
+                        <td colspan="9">
+                            <ul>
+                                <li>网站金额<span>{{ item.amountactive }}</span></li>
+                                <li>积分<span>{{ item.bonuspoints }}</span></li>
+                                <li>存款次数<span>{{ item.depositnumber }}</span></li>
+                                <li>提款次数<span>{{ item.withdrawalnumber}}</span></li>
+                                <li>代理<span>{{ item.affaccount }}</span></li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                </template>
+
+            </tbody>
+        </table>
+
+        <!-- 分页 -->
+        <div>
+            <div style="text-align:center">
+                <div id="pager"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.js"></script>
+    <script src="/js/globalmixin.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                pagemodel: {
+                    pagecount: 50
+                },
+                input: {
+                    status: -1,
+                    pagesize: 10,
+                    page: 0
+                },
+                statuslist: [
+                    { id: -1, label: "所有状态" },
+                    { id: 0, label: "冻结" },
+                    { id: 1, label: "正常" }
+                ],
+                levellist: [{ "levelnumber": -1, "levels": "所有等级" }],
+                accountlist: [],
+            },
+            created: function () {
+                var self = this;
+                this.postwithauth('/Account/LevelList',
+                    {},
+                    function (response) {
+                        if (response.status == 200 && response.data.code == 1) {
+                            self.levellist = response.data.data;
+                            self.levellist.push({ levelnumber: -1, levels: "所有等级" })
+                            self.input.level = -1
+                            console.info(self.levellist);
+                        }
+                    });
+            },
+            mounted: function () {
+                // Grab initial data
+                this.$nextTick(function () {
+                    // Code that will run only after the
+                    // entire view has been rendered
+                    var self = this;
+                    this.input.account = 'john2602';
+
+
+                    this.search(0, 10);
+                });
+                //window.alert("sometext");
+                //axios
+                //    .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                //    .then(function (response) { window.alert(response); })
+                //    .catch(error => { console.log(error) })
+
+            },
+            methods: {
+                initpager: function (curPage, totalRecord) {
+                    var self = this;
+                    layui.use('laypage', function () {
+                        var laypage = layui.laypage;
+                        laypage.render({
+                            elem: 'pager',
+                            curr: curPage,
+                            count: totalRecord,
+                            limit: self.input.pagesize,
+                            limits: [2, 10, 20, 30, 50],
+                            layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+                            , jump: function (obj, first) {
+                                console.info(obj);
+                                console.info('limit:' + obj.limit);
+
+                                if (!first) {
+                                    self.search(obj.curr, obj.limit);
+                                }
+                            }
+                        })
+                    });
+
+                },
+
+                editaccount: function (item_id) {
+                    WeAdminEdit('编辑', './edit.html?id=' + item_id, 1, 800, 400);
+                },
+                search: function (_pageindex, _pagesize) {
+                    var self = this;
+                    this.input.page = _pageindex;
+                    if (!this.input.createtime) this.input.createtime = null;
+                    this.input.pagesize = _pagesize
+
+                    this.postwithauth('/Account/SearchAccount',
+                        this.input,
+                        function (response) {
+                            if (response.status == 200 && response.data.code == 1) {
+                                self.accountlist = response.data.data.data;
+                                var totalItems = response.data.data.totalItems;
+                                self.initpager(_pageindex, totalItems);
+                            }
+                            else
+                                console.info(response);
+
+                            setTimeout(function () {
+                                layui.use(['jquery'], function () {
+                                    var $ = layui.jquery;
+                                    $('.more_info_k').on('click', function () {
+                                        $(this).nextUntil('.more_info_k').toggleClass('hide');
+                                    });
+                                });
+                            }, 5000);
+                        });
+                }
+            }
+        });
+    </script>
+
+
+
+</body>
+</html>

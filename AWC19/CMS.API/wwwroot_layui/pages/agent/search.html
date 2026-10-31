@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>代理搜索</title>
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<link rel="stylesheet" href="../../static/css/font.css" />
+		<link rel="stylesheet" href="../../static/css/weadmin.css" />
+		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+		<!--[if lt IE 9]>
+		  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+		  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body id="agentSearch">
+		<div class="weadmin-nav">
+			<span class="layui-breadcrumb">
+				<a href="javascript:;">首页</a> <a href="javascript:;">会员管理</a>
+				<a href="javascript:;"> <cite>会员列表</cite></a>
+			</span>
+			<a class="layui-btn layui-btn-sm" style="margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+			 title="刷新">
+				<i class="layui-icon layui-icon-refresh"></i>
+				<!-- <i class="layui-icon" style="line-height:30px">&#x1002;</i> -->
+			</a>
+		</div>
+
+		<div class="weadmin-body">
+			<div class="layui-row">
+				<form class="layui-form layui-col-md12 we-search">
+					检索条件：
+					<div class="layui-inline">
+						<input class="layui-input" placeholder="开始日" name="start" id="start" />
+					</div>
+					<div class="layui-inline">
+						<input class="layui-input" placeholder="截止日" name="end" id="end" />
+					</div>
+					<div class="layui-inline">
+						<input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input" />
+					</div>
+					<div class="layui-inline">
+						<input type="text" name="username" placeholder="电话查询" autocomplete="off" class="layui-input" />
+					</div>
+					<button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="sreach" >
+						<i class="layui-icon layui-icon-search"></i>查询
+					</button>
+				</form>
+			</div>
+			<div class="weadmin-block">
+        <ul>
+          <li>
+            <p>每天代理新注册客户</p>
+            <strong>245624</strong>
+          </li>
+          <li>
+            <p>每天代理首存客户</p>
+            <strong>245624</strong>
+          </li>
+          <li>
+            <p>每天代理总存款量</p>
+            <strong>245624</strong>
+          </li>
+          <li>
+            <p>每天代理总提款量</p>
+            <strong>245624</strong>
+          </li>
+          <li>
+            <p>代理首存优惠客户</p>
+            <strong>245624</strong>
+          </li>
+        </ul>
+      </div>
+		</div>
+		<script src="../../lib/layui/layui.js" charset="utf-8"></script>
+    <script src="../../static/js/eleDel.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

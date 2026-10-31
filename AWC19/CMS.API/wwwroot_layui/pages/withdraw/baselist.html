@@ -1,0 +1,368 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="/static/css/font.css" />
+    <link rel="stylesheet" href="/static/css/weadmin.css" />
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+</head>
+
+<body>
+    <div class="weadmin-nav">
+        <span class="layui-breadcrumb">
+            <a href="javascript:;">首页</a> <a href="javascript:;">会员管理</a>
+            <a href="javascript:;"> <cite>会员列表</cite></a>
+        </span>
+        <a class="layui-btn layui-btn-sm" style="margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+           title="刷新">
+            <i class="layui-icon layui-icon-refresh"></i>
+            <!-- <i class="layui-icon" style="line-height:30px">&#x1002;</i> -->
+        </a>
+
+    </div>
+
+    <div class="weadmin-body" id="app">
+        <div class="layui-row">
+
+            <!--账户   提款姓名   提款卡号    提款状态    提款地址    代理   IP-->
+            <form class="layui-form layui-col-md12 we-search" lay-filter="formtest" id="formtest">
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.account" placeholder="账号" />
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.realname" placeholder="提款姓名" />
+                </div>
+
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.cardno" placeholder="提款卡号" />
+                </div>
+
+                <div class="layui-inline">
+                    <select v-model="input.status">
+                        <option value=-1 selected>===所有===</option>
+                        <option value=0>未审核</option>
+                        <option value=1>等待支付</option>
+                        <option value=2>支付成功</option>
+                        <option value=3>提款取消</option>
+                    </select>
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.affaccount" placeholder="代理" />
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.ipaddress" placeholder="IP" />
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.starttime" placeholder="开始时间" />
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" v-model="input.endtime" placeholder="结束时间" />
+                </div>
+
+                <h1 class="layui-btn" lay-submit="" lay-filter="sreach" style="float:right" v-on:click="search(0)">
+                    <i class="layui-icon layui-icon-search"></i>
+                </h1>
+            </form>
+        </div>
+
+
+        <table class="layui-table" id="memberList">
+            <thead>
+                <tr>
+                    <th>账号</th>
+                    <th>名称</th>
+                    <th>卡号</th>
+                    <th>提款金额</th>
+                    <th>付款人</th>
+                    <th>申请时间</th>
+                    <th>等级</th>
+                    <th>次数</th>
+                    <th>银行</th>
+                    <th>管理</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template v-for="(item, index) in recordlist">
+                    <tr class="more_info_k">
+                        <!--<td>
+                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="1">
+                                <i class="layui-icon">&#xe605;</i>
+                            </div>
+                        </td>-->
+                        <!--<td>{{ item.id }}<i class="layui-icon">&#xe625;</i></td>-->
+                        <td v-on:dblclick="editaccount(item.account)">{{item.account}}</td>
+                        <td>{{item.realname}}</td>
+                        <td>{{item.cardno}}</td>
+                        <td v-on:click="discloseamount(item, this)" ref="el">{{item.amount}} <i v-if="item.amount == '*****'"class="layui-icon layui-icon-search"></i></td>
+                        <td>{{item.payperson}}</td>
+                        <td>{{item.requesttime | standarddate}}</td>
+                        <td>{{item.levelname}}</td>
+                        <td></td>
+                        <td>【{{item.cardbank}}】 {{item.cardaddress}}</td>
+                        <td class="td-status">
+
+                            <!--Locked by ME-->
+                            <span v-if="islockedbyme(item)">
+                                <a class="layui-btn layui-btn-xs layui-bg-red" v-on:dblclick="cancelwithdraw(item)">取消</a>
+                                <a class="layui-btn layui-btn-xs layui-bg-orange" v-on:dblclick="manualpay(item)">手动支付</a>
+                                <a class="layui-btn layui-btn-xs layui-bg-gray">代付</a>
+                            </span>
+
+                            <!--Waiting to be LOCKED-->
+                            <a class="layui-btn layui-btn-xs" v-if="isawaitinglock(item)" v-on:dblclick="lockwithdrawrequest(item)">锁住</a>
+
+
+                            <!--Static STATUS-->
+                            <a class="layui-btn layui-btn-xs layui-bg-blue" v-if="islockedbysomeoneelse(item)">锁住【{{item.checkperson}}】</a>
+                            <a class="layui-btn layui-btn-xs" v-if="item.status==0">未审核</a>
+                            <a class="layui-btn layui-btn-xs layui-bg-red" v-if="item.status==3">提款取消</a>
+                            <a class="layui-btn layui-btn-xs" v-if="item.status==2">支付成功</a>
+                        </td>
+                        <!--<td class="td-manage">
+                            <a href="javascript:;" title="启用">
+                                <i class="layui-icon layui-icon-download-circle"></i>
+                            </a>
+                            <a title="编辑" v-on:click="editaccount(item.account)" href="javascript:;">
+                                <i class="layui-icon layui-icon-edit"></i>
+                            </a>
+                        </td>-->
+                    </tr>
+                </template>
+
+            </tbody>
+        </table>
+        <!-- 分页 -->
+        <div style="text-align:center">
+            <div id="pager"></div>
+        </div>
+    </div>
+    <script src="/lib/layui/layui.js" charset="utf-8"></script>
+    <script src="/static/js/eleDel.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.js"></script>
+    <script src="/js/globalmixin.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                input: {
+                    pagesize: 10,
+                    status: -1
+                },
+                teststatus: 0,
+                recordlist: [],
+                statuslist: [
+                    { id: -1, label: "所有" },
+                    { id: 0, label: "未审核" },
+                    { id: 1, label: "等待支付" },
+                    { id: 2, label: "支付成功" },
+                    { id: 3, label: "提款取消" },
+                ]
+            },
+            computed: {
+
+            },
+            mounted: function () {
+                // Grab initial data
+                this.$nextTick(function () {
+                    this.search(0, 10);
+                });
+            },
+            methods: {
+                islockedbysomeoneelse(d) {
+                    if (d.status != 1) return false;
+                    return this.loginusername() != d.checkperson.toLowerCase();
+                },
+                isawaitinglock(d) {
+                    return d.status == 1 && d.checkperson == null;
+                },
+                islockedbyme(d) {
+                    return d.status == 1 && this.loginusername() == d.checkperson.toLowerCase();
+                },
+                ischeckperson(item) {
+                    return item.status == 0
+                },
+                discloseamount(d, elem) {
+                    if (d.amount == '*****') {
+                        this.postwithauth('/Withdraw/DiscloseAmount',
+                            { id: d.id }, function (response) {
+                                console.info(response);
+                                if (response.status == 200 && response.data.code == 1) {
+                                    var message = response.data.data.amount;
+                                    d.amount = '¥ ' + message;
+                                    setTimeout(function () { d.amount = '*****'; }, 2000);
+                                }
+                            });
+
+                    }
+                },
+                initpager: function (curPage, totalRecord) {
+                    var self = this;
+                    layui.use('laypage', function () {
+                        var laypage = layui.laypage;
+                        laypage.render({
+                            elem: 'pager',
+                            curr: curPage,
+                            count: totalRecord,
+                            limit: self.input.pagesize,
+                            limits: [2, 10, 20, 30, 50],
+                            layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+                            , jump: function (obj, first) {
+                                console.info(obj);
+                                console.info('limit:' + obj.limit);
+
+                                if (!first) {
+                                    self.search(obj.curr, obj.limit);
+                                    //do something
+                                }
+                                //limit = obj.limit;
+                                //var pageIndex = obj.curr;
+                                //if (!first) {
+                                //    var ant = $("#queryForm").find("input[name='account']").val();
+                                //    var data = data = { "account": ant, "afpaymentlivetype": 1, "pageSize": limit, "pageIndex": pageIndex };
+                                //    loadPageData(data);
+                                //}
+                            }
+                        })
+                    });
+
+                },
+                isalsocheckuser: function (checkuser) {
+                    console.info(JSON.stringify(checkuser));
+                    return this.loginusername() == checkuser.toLowerCase();
+                },
+                editaccount: function (item_id) {
+                    WeAdminEdit('编辑', '../member/transactdetails.html?id=' + item_id, 1, 800, 400);
+                },
+                manualpay: function (item) {
+                    var self = this;
+                    var indexOfItem = this.recordlist.indexOf(item);
+                    layer.prompt({ title: '请输入返点' },
+                        function (x, index, elem) {
+                            console.info(x);
+                            var xfloat = parseFloat(x);
+                            self.postwithauth('/Withdraw/ManualPay',
+                                { id: item.id, fee: xfloat }, function (response) {
+                                    console.info(response);
+                                    if (response.status == 200 && response.data.code == 1) {
+                                        self.recordlist[indexOfItem].status = 2;
+                                        self.recordlist[indexOfItem].cardno = '*****';
+                                        self.recordlist[indexOfItem].amount = '*****';
+                                        layer.close(index);
+                                    }
+                                });
+                        });
+                },
+                cancelwithdraw: function (item) {
+                    var self = this;
+                    var indexOfItem = this.recordlist.indexOf(item);
+                    layer.prompt({ title: '请输入取消原因' },
+                        function (x, index, elem) {
+                            console.info(x);
+                            self.postwithauth('/Withdraw/CancelRequest',
+                                { id: item.id, cancelreason: x }, function (response) {
+                                    console.info(response);
+                                    if (response.status == 200 && response.data.code == 1) {
+                                        self.recordlist[indexOfItem].status = 3;
+                                        self.recordlist[indexOfItem].cardno = '*****';
+                                        self.recordlist[indexOfItem].amount = '*****';
+                                        layer.close(index);
+                                    }
+                                });
+                        });
+                },
+                verifyWithdraw: function (id) {
+                    layer.prompt({ title: '请输入返点' }, function (x) {
+                        console.info(x);
+                    });
+                },
+
+                lockwithdrawrequest: function (item) {
+                    var selfitem = item;
+                    console.info("locking item:" + item.id);
+                    this.postwithauth('/Withdraw/LockWithdrawRequest',
+                        { id: item.id },
+                        function (response) {
+                            alert(JSON.stringify(response));
+                            if (response.status == 200 && response.data.code == 1) {
+                                selfitem.cardno = response.data.data.cardno;
+                                selfitem.amount = response.data.data.amount;
+                                selfitem.checkperson = response.data.data.checkperson;
+                            }
+                            else
+                                console.info(response);
+                            //setTimeout(function () {
+                            //    layui.use(['jquery'], function () {
+                            //        var $ = layui.jquery;
+                            //        $('.more_info_k').on('click', function () {
+                            //            $(this).nextUntil('.more_info_k').toggleClass('hide');
+                            //        });
+                            //    });
+                            //}, 500);
+                        }
+                    );
+
+                },
+                search: function (_pageindex, pagesize) {
+                    console.info('pageindex:' + _pageindex + " pagesize:" + pagesize);
+                    var self = this;
+                    if (!this.input.createtime) this.input.createtime = null;
+                    if (!this.input.account) this.input.account = null;
+                    if (!this.input.realname) this.input.realname = null;
+                    if (!this.input.cardno) this.input.cardno = null;
+                    if (!this.input.affaccount) this.input.affaccount = null;
+                    if (!this.input.starttime) this.input.starttime = null;
+                    if (!this.input.ipaddress) this.input.ipaddress = null;
+                    if (!this.input.endtime) this.input.endtime = null;
+                    if (!this.input.status < 0) this.input.status = null;
+                    this.input.Page = _pageindex;
+                    this.input.pagesize = pagesize;
+
+                    var action = this.getParameterByName('action');
+                    this.postwithauth('/Withdraw/' + action,
+                        this.input,
+                        function (response) {
+                            if (response.status == 200 && response.data.code == 1) {
+                                self.recordlist = response.data.data.data;
+                                var totalItems = response.data.data.totalItems;
+                                //console.info("totalItems: " + totalItems +
+                                //    "pagecount: " + self.pagemodel.pagecount);
+                                self.initpager(_pageindex, totalItems);
+                            }
+                            else
+                                console.info(response);
+
+                            setTimeout(function () {
+                                layui.use(['jquery'], function () {
+                                    var $ = layui.jquery;
+                                    $('.more_info_k').on('click', function () {
+                                        $(this).nextUntil('.more_info_k').toggleClass('hide');
+                                    });
+                                });
+                            }, 500);
+                        });
+                }
+            }
+        });
+
+
+
+
+    </script>
+
+</body>
+</html>

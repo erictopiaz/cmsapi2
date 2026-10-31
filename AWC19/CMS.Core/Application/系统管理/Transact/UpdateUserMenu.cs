@@ -1,0 +1,87 @@
+﻿using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Linq;
+using AutoMapper;
+using CMS.Data.Models;
+using AWC2019.Core.ViewModel;
+using FluentValidation;
+using System.Data.SqlClient;
+using Dapper;
+using AWC2019.Core.Validation;
+using Newtonsoft.Json;
+using CMS.Core.Application.提款管理;
+using CMS.Core.ViewModel;
+using CMS.Core.Application;
+using ShareEntity.OutputModels;
+using Microsoft.Extensions.Logging;
+using Dapper.Contrib.Extensions;
+using ShareEntity.Models;
+
+namespace CMS.Core.Application.系统管理.Transact
+{
+    /// <summary>
+    /// MediatR Request that returns a List of LBModel
+    /// </summary>
+    public class UpdateUserMenu : IRequest<ResponseModel>
+    {
+        public string Account { get; set; }
+        public string menustring { get; set; }
+        //[JsonIgnore]
+        //public IEnumerable<string> access_privilege { get; set; }
+        [JsonIgnore]
+        public string Admin { get; set; }
+    }
+
+
+    public class UpdateUserMenuValidator : AbstractValidator<UpdateUserMenu>
+    {
+        public UpdateUserMenuValidator()
+        {
+            RuleFor(x => x.Account).Account();
+        }
+    }
+
+
+
+    /// <summary>
+    /// Request Handler
+    /// </summary>
+    public class UpdateUserMenuHandler : BaseRequestHandler<UpdateUserMenu, ResponseModel>
+    {
+        public UpdateUserMenuHandler(IMapper mapper, ILoggerFactory logger) : base(CMS.Data.MainDB.CONNECTIONSTRING, mapper, logger) { }
+        protected override ResponseModel Handle(UpdateUserMenu request)
+        {
+            using (SqlConnection connection = new SqlConnection(CMS.Data.MainDB.WITHWRITE_CONNECTIONSTRING))
+            {
+                var accountRow = connection.Get<ofManage>(request.Account);
+
+                var temp = request.menustring.Split(',');
+
+                var access = accountRow.access;
+                var accessDict = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(access);
+                accessDict["menu"] = string.Join('|', temp);
+
+                accountRow.access = Newtonsoft.Json.JsonConvert.SerializeObject(accessDict);
+                var isSuccess = connection.Update(accountRow);
+
+                //var isSuccess = connection.Execute("" +
+                //    "UPDATE ofManage " +
+                //    "SET access=@access  " +
+                //    "WHERE account = @account ",(new { account = request.Account, access = string.Join('|',request.access_privilege) }));
+
+                return new ResponseModel()
+                {
+                    code = isSuccess ? ShareEntity.Global.ResponseCode.code.SUCCESS : ShareEntity.Global.ResponseCode.code.FAIL,
+                    message = isSuccess ? "success" : "failed"
+                };
+            }
+        }
+
+
+    }
+}
+

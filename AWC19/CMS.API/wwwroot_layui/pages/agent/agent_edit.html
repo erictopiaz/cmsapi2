@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>代理信息</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../static/css/font.css">
+    <link rel="stylesheet" href="../../static/css/weadmin.css">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .layui-tree-branch {
+            display: none;
+        }
+    </style>
+</head>
+
+
+	<body class="edit">
+		<div class="weadmin-nav">
+			<span class="layui-breadcrumb">
+		        <a href="">首页</a>
+		        <a href="">文章管理</a>
+		        <a><cite>分类管理</cite></a>
+		    </span>
+			<a class="layui-btn layui-btn-sm" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+				<i class="layui-icon" style="line-height:30px">ဂ</i></a>
+		</div>
+		<div class="weadmin-body">
+      <h3>子代理</h3>
+      <table class="layui-hidden" id="treeTable" lay-filter="treeTable"></table>
+      <hr class="layui-bg-blue">
+      <h3>直属会员</h3>
+      <table class="layui-table">
+        <thead>
+          <tr>
+            <th>直属会员</th>
+            <th>日期</th>
+            <th>存款金额</th>
+            <th>存款次数</th>
+            <th>提款金额</th>
+            <th>提款次数</th>
+            <th>手续费</th>
+            <th>优惠</th>
+            <th>红利</th>
+            <th>返水</th>
+            <th>存取差</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>会员1</td>
+            <td>2019-10-10</td>
+            <td>1652531</td>
+            <td>651</td>
+            <td>156646</td>
+            <td>15</td>
+            <td>156</td>
+            <td>存一百送一百万</td>
+            <td>16846</td>
+            <td>16541</td>
+            <td>？</td>
+          </tr>
+          <tr>
+            <td>会员1</td>
+            <td>2019-10-10</td>
+            <td>1652531</td>
+            <td>651</td>
+            <td>156646</td>
+            <td>15</td>
+            <td>156</td>
+            <td>存一百送一百万</td>
+            <td>16846</td>
+            <td>16541</td>
+            <td>？</td>
+          </tr>
+          <tr>
+            <td>会员1</td>
+            <td>2019-10-10</td>
+            <td>1652531</td>
+            <td>651</td>
+            <td>156646</td>
+            <td>15</td>
+            <td>156</td>
+            <td>存一百送一百万</td>
+            <td>16846</td>
+            <td>16541</td>
+            <td>？</td>
+          </tr>
+          <tr>
+            <td>会员1</td>
+            <td>2019-10-10</td>
+            <td>1652531</td>
+            <td>651</td>
+            <td>156646</td>
+            <td>15</td>
+            <td>156</td>
+            <td>存一百送一百万</td>
+            <td>16846</td>
+            <td>16541</td>
+            <td>？</td>
+          </tr>
+          <tr>
+            <td>会员1</td>
+            <td>2019-10-10</td>
+            <td>1652531</td>
+            <td>651</td>
+            <td>156646</td>
+            <td>15</td>
+            <td>156</td>
+            <td>存一百送一百万</td>
+            <td>16846</td>
+            <td>16541</td>
+            <td>？</td>
+          </tr>
+        </tbody>
+      </table>
+		</div>
+    <script src="../../design/layui.js" charset="utf-8"></script>
+    <script src="./data.js"></script>
+    <script>
+        var editObj = null, ptable = null, treeGrid = null, tableId = 'treeTable', layer = null;
+        var layout = [[
+                    //{ type: 'numbers' }
+                    // { type: 'radio' }
+                    // { type: 'checkbox', sort: true }
+                     { field: 'name', width: 200, title: '代理账户', /*edit: 'text',*/ sort: false }
+                    , {field: 'date', width: 100, title: '日期', sort: false }
+                    , {field: 'deposit', title: '存款金额', sort: false }
+                    , {field: 'deptimes', title: '存款次数', sort: false }
+                    , {field: 'draw', title: '提款金额', sort: false }
+                    , {field: 'drawtimes', title: '提款次数', sort: false }
+                    , {field: 'fee', title: '手续费', sort: false }
+                    , {field: 'promo', title: '优惠', sort: false }
+                    , {field: 'bonus', title: '红利', sort: false }
+                    , {field: 'rebate', title: '返水', sort: false }
+                    , {field: 'balance', title: '存取差', sort: false }
+                    , { field: 'id', title: 'id', sort: false }
+                    , { field: 'pId', title: 'pid', sort: false }
+                    // , {
+                    //     width: 100, title: '操作', align: 'center'
+                    //     , templet: function (d) {
+                    //         var html = '';
+                    //         var addBtn = '<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="add">添加</a>';
+                    //         var delBtn = '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>';
+                    //         return addBtn + delBtn;
+                    //     }
+                    // }
+                ]];
+        layui.config({
+            base: '../../design/extend/'
+        }).extend({
+            treeGrid: 'treeGrid',
+	          admin: '{/}../../static/js/admin',
+        }).use(['jquery', 'treeGrid', 'layer', 'admin', "table"], function () {
+            var $ = layui.jquery,
+            treeGrid = layui.treeGrid,//很重要
+            admin = layui.admin,
+            layer = layui.layer,
+            table = layui.table;
+            ptable = treeGrid.render({
+                id: tableId
+                , elem: '#' + tableId
+                //, url: '/json/treeData.json'
+                ,data:data.data
+                , cellMinWidth: 60
+                , idField: 'id'//必須字段
+                , treeId: 'id'//树形id字段名称
+                , treeUpId: 'pId'//树形父id字段名称
+                , treeShowName: 'name'//以树形式显示的字段
+                , heightRemove: [".dHead", 10]//不计算的高度,表格设定的是固定高度，此项不生效
+                , isFilter: false
+                , iconOpen: false//是否显示图标【默认显示】
+                , isOpenDefault: false//节点默认是展开还是折叠【默认展开】
+                , loading: true
+                , method: 'post'
+                , isPage: false
+                , cols: layout
+
+                , parseData: function (res) {//数据加载后回调
+                    return data;
+                }
+                , onClickRow: function (index, o) {
+                    console.log(index, o, "单击！");
+                    //msg("单击！,按F12，在控制台查看详细参数！");
+                }
+                , onDblClickRow: function (index, o) {
+                    //console.log(index, o, "双击");
+                    //msg("双击！,按F12，在控制台查看详细参数！");
+                    o.kkkk = "test";
+                    treeGrid.updateRow(tableId, o);
+                }
+                , onCheck: function (obj, checked, isAll) {//复选事件
+                    console.log(obj, checked, isAll, "复选");
+                    msg("复选,按F12，在控制台查看详细参数！");
+                }
+                , onRadio: function (obj) {//单选事件
+                    console.log(obj, "单选");
+                    msg("单选,按F12，在控制台查看详细参数！");
+                }
+            });
+
+            treeGrid.on('tool(' + tableId + ')', function (obj) {
+                if (obj.event === 'del') {//删除行
+                    del(obj);
+                } else if (obj.event === "add") {//添加行
+                    add(obj);
+                }
+            });
+        });
+
+        function del(obj) {
+            layer.confirm("你确定删除数据吗？如果存在下级节点则一并删除，此操作不能撤销！", { icon: 3, title: '提示' },
+                function (index) {//确定回调
+                    obj.del();
+                    layer.close(index);
+                }, function (index) {//取消回调
+                    layer.close(index);
+                }
+            );
+        }
+
+
+        var i = 1000000;
+        //添加
+        function add(pObj) {
+
+            //$.each(delData, function (i, val) {
+            //    //treeGrid.delRow(tableId, val);
+            //    del(val);
+            //});
+
+            console.log(pObj);
+
+            var pdata = pObj ? pObj.data : null;
+            var param = {};
+            param.name = '水果' + Math.random();
+            param.id = i++;//101;
+            param.pId = pdata ? pdata.id : null;
+
+            var r = treeGrid.queryNode(tableId, param);
+            if (r != null)
+            {
+                alert(r.id);
+                r.kkkk = "test";
+                treeGrid.updateRow(tableId, r);
+            }
+            else {
+                treeGrid.addRow(tableId, pdata ? pdata[treeGrid.config.indexName] + 1 : 0, param);
+            }
+        }
+
+        function print() {
+            console.log(treeGrid.cache[tableId]);
+            msg("对象已打印，按F12，在控制台查看！");
+        }
+
+        function msg(msg) {
+            var loadIndex = layer.msg(msg, {
+                time: 3000
+                , offset: 'b'//顶部
+                , shade: 0
+            });
+        }
+
+        function openorclose() {
+            var map = treeGrid.getDataMap(tableId);
+            var o = map['102'];
+            treeGrid.treeNodeOpen(tableId, o, !o[treeGrid.config.cols.isOpen]);
+        }
+
+
+        function openAll() {
+            var treedata = treeGrid.getDataTreeList(tableId);
+            treeGrid.treeOpenAll(tableId, !treedata[0][treeGrid.config.cols.isOpen]);
+        }
+
+        function getCheckData() {
+            var checkStatus = treeGrid.checkStatus(tableId)
+                , data = checkStatus.data;
+            layer.alert(JSON.stringify(data));
+        }
+        function radioStatus() {
+            var data = treeGrid.radioStatus(tableId)
+            layer.alert(JSON.stringify(data));
+        }
+        function getCheckLength() {
+            var checkStatus = treeGrid.checkStatus(tableId)
+                , data = checkStatus.data;
+            layer.msg('选中了：' + data.length + ' 个');
+        }
+
+        function reload() {
+            treeGrid.reload(tableId, {
+                page: {
+                    curr: 1
+                }
+            });
+        }
+        function query() {
+            treeGrid.query(tableId, {
+                where: {
+                    name: 'sdfsdfsdf'
+                }
+            });
+        }
+
+        function test() {
+            console.log(treeGrid.cache[tableId], treeGrid.getClass(tableId));
+
+
+            /*var map=treeGrid.getDataMap(tableId);
+            var o= map['102'];
+            o.name="更新";
+            treeGrid.updateRow(tableId,o);*/
+        }
+    </script>
+	</body>
+
+</html>

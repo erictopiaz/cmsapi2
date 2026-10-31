@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>优惠内容页配置</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <link href="/static/css/font.css" rel="stylesheet" />
+    <link href="/static/css/weadmin.css" rel="stylesheet" />
+
+    <!--<script src="~/lib/jquery/jquery1.42.min.js"></script>
+    <script src="~/lib/jquery/json2.min.js"></script>-->
+    <!--<script src="~/js/moment.js"></script>-->
+    <!--<script src="~/js/site.js"></script>-->
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="weadmin-nav">
+        <span class="layui-breadcrumb">
+            <a href="javascript:;">首页</a> <a href="javascript:;">会员管理</a>
+            <a href="javascript:;"> <cite>会员列表</cite></a>
+        </span>
+        <a class="layui-btn layui-btn-sm" style="margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+           title="刷新">
+            <i class="layui-icon layui-icon-refresh"></i>
+            <!-- <i class="layui-icon" style="line-height:30px">&#x1002;</i> -->
+        </a>
+    </div>
+    <div class="weadmin-body">
+        <div class="layui-row">
+            <form class="layui-form layui-col-md12 we-search" lay-filter="goBonus" id="formfield">
+                检索条件：
+                <div class="layui-inline">
+                    <input type="text" name="account" placeholder="账号" class="layui-input" id="input_account" />
+                </div>
+
+                <div class="layui-inline">
+                    <input class="layui-input" placeholder="存款姓名" name="depositname" />
+                </div>
+
+                <div class="layui-inline">
+                    <input class="layui-input" placeholder="收款姓名" name="receivename" />
+                </div>
+
+                <div class="layui-inline">
+                    <select class="layui-input" name="deposittype">
+                        <option value="" selected>==存款类型==</option>
+                        <option value="ATM汇款">ATM汇款</option>
+                        <option value="网银转账">网银转账</option>
+                        <option value="支付宝转账">支付宝转账</option>
+                    </select>
+                </div>
+
+
+                <div class="layui-inline">
+                    <input class="layui-input" placeholder="代理" name="affaccount" />
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" placeholder="IP" name="ipaddress" />
+                </div>
+
+                <div class="layui-inline">
+                    <select class="layui-input" name="status">
+                        <option value=-1 selected>==全部==</option>
+                        <option value=0>等待审核</option>
+                        <option value=1>审核成功</option>
+                        <option value=2>审核失败</option>
+                    </select>
+                </div>
+                <div class="layui-inline">
+                    <input class="layui-input" placeholder="开始时间" name="starttime" id="start" />
+                </div>
+
+                <div class="layui-inline">
+                    <input class="layui-input" placeholder="结束时间" name="endtime" id="end" />
+                </div>
+
+                <button class="layui-btn layui-btn-normal" id="FORM-getval" lay-submit="" lay-filter="searchbutton">
+                    <i class="layui-icon layui-icon-search"></i>查询
+                </button>
+            </form>
+        </div>
+        <!--<div class="weadmin-block">
+            <button class="layui-btn layui-btn-normal" onclick="WeAdminShow('添加','/Promo/EditContent?s=0&tid=0',600,400)">
+                <i class="layui-icon layui-icon-add-circle-fine"></i>添加
+            </button>
+        </div>-->
+        <div class="table_scroll" id="maintable">
+            <table lay-even class="layui-table">
+                <thead>
+                    <tr>
+                        <th>账号</th>
+                        <th>存款金额</th>
+                        <th>申请时间</th>
+                        <th>审核时间</th>
+                        <th>存款类型</th>
+                        <th>收款人</th>
+                        <th>手续费</th>
+                        <th>返点</th>
+                        <th>状态</th>
+                        <th>管理</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in todos">
+                        <td v-on:dblclick="editaccount(item.account)">{{item.account}}</td>
+                        <td>{{item.amount | currency}}</td>
+                        <td>{{item.requesttime | standarddate}}</td>
+                        <td>{{item.reviewtime | standarddate}}</td>
+                        <td>{{item.depositmethod}}</td>
+                        <td>{{item.receiveperson }}</td>
+                        <td>{{item.fee | currency}}</td>
+                        <td>{{item.fee | currency}}</td>
+                        <td>
+                            <span v-if="item.status==0" class="layui-btn layui-btn-xs layui-bg-gray">未审核</span>
+                            <span v-if="item.status==1" class="layui-btn layui-btn-xs layui-bg-green">正常</span>
+                            <span v-if="item.status==2" class="layui-btn layui-btn-xs layui-bg-red">拒绝</span>
+                        </td>
+                        <td>
+                            <a class="layui-badge layui-bg-orange" v-if="item.status==0" v-on:click="verify(item)">审核</a>
+                            <a class="layui-badge layui-bg-red" v-if="item.status==0" v-on:click="cancel(item)">取消</a>
+                            <a class="layui-badge layui-bg-green" v-if="item.status!=0">查看详细</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align:center">
+                <div id="pager"></div>
+            </div>
+
+        </div>
+    </div>
+    <script src="/design/layui.all.js"></script>
+    <script src="/static/js/eleDel.js"></script>
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.js"></script>
+    <script src="/js/globalmixin.js"></script>
+
+    <script>
+
+        var app = new Vue({
+            el: '#maintable',
+            data: {
+                todos: null,
+                pagesize: 10
+            },
+            mounted: function () {
+                this.search(0, this.pagesize);
+            },
+            methods: {
+                initpager: function (curPage, totalRecord) {
+                    var self = this;
+                    layui.use('laypage', function () {
+                        var laypage = layui.laypage;
+                        laypage.render({
+                            elem: 'pager',
+                            curr: curPage,
+                            count: totalRecord,
+                            limit: this.pagesize,
+                            limits: [2, 10, 20, 30, 50],
+                            layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+                            , jump: function (obj, first) {
+                                //console.info(obj);
+                                //console.info('limit:' + obj.limit);
+                                self.pagesize = obj.limit;
+
+                                if (!first) {
+                                    self.search(obj.curr, obj.limit);
+                                }
+                            }
+                        })
+                    });
+
+                },
+                search: function (_pageindex, pagesize) {
+                    var self = this;
+                    var _where = layui.$('#formfield').serializeArray();
+                    _where = this.ArrayToObject(_where);
+                    _where.status = parseInt(_where.status);
+                    console.info(_where.starttime);
+                    console.info(_where.endtime);
+                    _where.starttime = _where.starttime ==null ? this.getdate_computed(90) : this.getdate(_where.starttime);
+                    _where.endtime = _where.endtime ==null ? this.getdate_computed(0) : this.getdate(_where.endtime);
+                    _where.page = _pageindex != null ? _pageindex : 0;
+                    _where.pagesize = this.pagesize = pagesize;
+
+                    this.postwithauth('/Deposit/NetList', _where,
+                        function (response) {
+                            if (response.status == 200 && response.data.code == 1) {
+                                self.todos = response.data.data.data;
+                                var totalItems = response.data.data.totalItems;
+                                self.initpager(_pageindex, totalItems);
+                            }
+                            else
+                                console.info(response);
+                        });
+                    return false;
+                },
+                verify: function (d) {
+                    var self = this;
+                    layer.prompt({ title: '请输入返点' },
+                        function (z, index, elem) {
+                            var zfloat = parseFloat(z);
+                            this.postwithauth('/Deposit/VerifyRequest',
+                                { id: parseInt(d.id), fee: zfloat }, function (response) {
+                                    console.info(response);
+                                    if (response.status == 200 && response.data.code == 1) {
+                                        layer.close(index);
+                                    }
+                                    self.search(0);
+                                });
+                        });
+
+                },
+                cancel: function (d) {
+                    var self = this;
+                    layer.confirm('确定要取消？', {
+                        btn: ['确定'] //可以无限个按钮
+                    }, function (index, layero) {
+                        this.postwithauth('/Deposit/CancelRequest',
+                            { id: parseInt(d.id) }, function (response) {
+                                console.info(response);
+                                if (response.status == 200 && response.data.code == 1) {
+                                    layer.close(index);
+                                }
+                                self.search(0);
+                            }, function (err) { console.error(err); });
+                    });
+
+                }
+            }
+
+        });
+
+        layui.use(['form', 'laydate'], function () {
+            var laydate = layui.laydate,
+                form = layui.form;
+            laydate.render({
+                elem: '#start'
+                , type: 'datetime'
+            });
+            laydate.render({
+                elem: '#end'
+                , type: 'datetime'
+            });
+            form.on('submit(searchbutton)', function (data) {
+                app.search(0, app.pagesize);
+                return false;
+            });
+        });
+
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,855 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>会员资料编辑</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/weadmin.css">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="edit">
+    <div class="weadmin-body" id="app">
+        <!-- <form class="layui-form">
+            <div class="layui-form-item">
+                <label for="L_username" class="layui-form-label">
+                    <span class="we-red">*</span>登录名
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="L_username" name="username" lay-verify="required|nikename" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    请设置至少5个字符，将会成为您唯一的登录名
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_sex" class="layui-form-label">性别</label>
+                <div class="layui-input-block" id="L_sex">
+                  <input type="radio" name="sex" value="男" title="男" checked>
+                  <input type="radio" name="sex" value="女" title="女">
+                  <input type="radio" name="sex" value="未知" title="未知">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label for="L_email" class="layui-form-label">
+                    <span class="we-red">*</span>手机
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="L_phone" name="phone" lay-verify="required|phone" autocomplete="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_email" class="layui-form-label">
+                    <span class="we-red">*</span>邮箱
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="L_email" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <label for="L_address" class="layui-form-label">
+                    <span class="we-red"></span>地址
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="L_address" name="address" autocomplete="off" class="layui-input">
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <label for="L_pass" class="layui-form-label">
+              <span class="we-red">*</span>密码
+          </label>
+                <div class="layui-input-inline">
+                    <input type="password" id="L_pass" name="pass" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    6到16个字符
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_repass" class="layui-form-label">
+              <span class="we-red">*</span>确认密码
+          </label>
+                <div class="layui-input-inline">
+                    <input type="password" id="L_repass" name="repass" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_repass" class="layui-form-label">
+          </label>
+                <button class="layui-btn" lay-filter="add" lay-submit="">确定</button>
+                <input type="hidden" name="dataId" id="dataId" value="" />
+            </div>
+        </form> -->
+        <!-- 个人信息 -->
+        <form class="layui-form">
+            <h3>个人信息</h3>
+            <!--<div class="layui-inline">
+                <label class="layui-form-label">货币</label>
+                <div class="layui-input-inline">
+                    <select disabled>
+                        <option selected value="">CNY</option>
+                        <option value="">2222</option>
+                        <option value="">3333</option>
+                    </select>
+                </div>
+            </div>-->
+            <div class="layui-inline">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.account" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">注册时间</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.createtime | standarddate" disabled>
+                </div>
+            </div>
+            <!--<div class="layui-form-item">
+                <label class="layui-form-label">选择框</label>
+                <div class="layui-input-block">
+                    <select name="city" lay-verify="required">
+                        <option value=""></option>
+                        <option value="0">北京</option>
+                        <option value="1">上海</option>
+                        <option value="2">广州</option>
+                        <option value="3">深圳</option>
+                        <option value="4">杭州</option>
+                    </select>
+                </div>
+            </div>-->
+            <div class="layui-inline">
+                <label class="layui-form-label">等级</label>
+                <div class="layui-input-inline">
+                    <select v-model="details.level">
+                        <option v-for="option in levellist" v-bind:value="option.levelnumber">
+                            {{ option.levels }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <!--<div class="layui-inline">
+                <label class="layui-form-label">国家</label>
+                <div class="layui-input-inline">
+                    <select>
+                        <option value="">全部</option>
+                        <option value="">2222</option>
+                        <option value="">3333</option>
+                    </select>
+                </div>
+            </div>-->
+            <div class="layui-inline">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" v-model="details.realname">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">生日</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" v-model="details.birthday">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">电话</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" v-model="details.telephone">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">邮箱</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" v-model="details.email">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">微信</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" value="0">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">登录状态</label>
+                <div class="layui-input-inline">
+                    <select v-model="details.status">
+                        <option v-for="option in statuslist" v-bind:value="option.id">
+                            {{ option.label }}
+                        </option>
+                    </select>
+                </div>
+
+
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">注册网址</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.referrerreg" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">注册IP</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.ipaddress" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">注册地址</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.macaddress" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">所属代理</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.affaccount | ifempty" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">推荐代码</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.marcode | ifempty">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" v-model="details.freezereason">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label"></label>
+                <button type="button" class="layui-inline layui-btn layui-btn-normal" v-on:click="updatedata">确定</button>
+            </div>
+        </form>
+        <hr class="layui-bg-blue">
+        <!-- 钱包 -->
+        <form class="layui-form">
+            <h3>钱包及交易记录</h3>
+            <div class="layui-inline">
+                <label class="layui-form-label">钱包余额</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.amountactive | currency" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">入场券</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" value="无">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">金币余额</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" value="无" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">充值金额</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.depositamount | currency" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">充值次数</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.depositnumber | tailingunit" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">提款金额</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.withdrawalamount | currency" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">提款次数</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.withdrawnumber | tailingunit" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">冻结余额</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.amountsuspend | currency" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">负盈利</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" :value="details.winloss | currency" disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label"></label>
+                <button type="button" class="layui-inline layui-btn layui-btn-normal">确定</button>
+            </div>
+        </form>
+        <hr class="layui-bg-blue">
+        <!-- 游戏金额 -->
+        <form class="layui-form">
+            <h3>游戏金额</h3>
+            <div class="layui-inline" v-for="(item, index) in gamecode">
+                <label class="layui-form-label">{{ item.code }}</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input"
+                           :value="item.balance"
+                           v-on:click="getgamebalance(item.code)" readonly>
+                </div>
+            </div>
+        </form>
+
+        <hr class="layui-bg-blue">
+        <!-- 密码修改 -->
+        <form class="layui-form">
+            <h3>密码修改</h3>
+            <div class="layui-inline">
+                <label class="layui-form-label">旧密码</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" placeholder="请输入旧密码" v-model="password.new">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">新密码</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" placeholder="请输入新密码" v-model="password.confirm">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label"></label>
+                <button type="button" class="layui-inline layui-btn layui-btn-normal" v-on:dblclick="changepassword">确认修改</button>
+            </div>
+        </form>
+        <hr class="layui-bg-blue">
+        <!-- 绑定银行卡 -->
+        <form class="layui-form">
+            <h3>绑定银行卡</h3>
+            <div class="layui-form-item" v-for="(item, index) in details.withdrawcards">
+                <label class="layui-form-label">绑定卡 {{index}}</label>
+                <div class="layui-inline edit_bankcard_info">
+                    <input type="text" class="layui-input" :value="item.split(',')[0]" readonly>
+                    <input type="text" class="layui-input" :value="item.split(',')[1]" readonly>
+                    <input type="text" class="layui-input" :value="item.split(',')[2]" readonly>
+                </div>
+                <div class="layui-inline">
+                    <button type="button" class="layui-inline layui-btn layui-btn-danger" v-on:dblclick="deletecard(index)">删除</button>
+                </div>
+            </div>
+        </form>
+        <hr class="layui-bg-blue">
+        <!-- 会员报表 -->
+        <form class="layui-form">
+            <h3>会员报表</h3>
+            <div class="layui-tab edit_m_tab">
+                <ul class="layui-tab-title">
+                    <li>充值</li>
+                    <li>提款</li>
+                    <li>转账</li>
+                    <li>微调</li>
+                    <li>优惠</li>
+                    <li>返水</li>
+                    <li>关联账户</li>
+                </ul>
+                <h1 class="layui-btn layui-inline" lay-submit="" lay-filter="sreach" v-on:click="updatetransactiondetailsfixed(7)">
+                    近周
+                </h1>
+                <h1 class="layui-btn layui-inline" v-on:click="updatetransactiondetailsfixed(30)">
+                    本月
+                </h1>
+                <h1 class="layui-btn layui-inline" v-on:click="updatetransactiondetailsfixed(90)">
+                    3个月
+                </h1>
+                <h1 class="layui-btn layui-inline" v-on:click="updatetransactiondetailsfixed(180)">
+                    6个月
+                </h1>
+                <div class="layui-tab-content edit_member_content">
+                    <div class="layui-tab-item layui-show">
+                        <table lay-even class="layui-table edit_member_table">
+                            <thead>
+                                <tr>
+                                    <th>到账时间</th>
+                                    <th>充值金额</th>
+                                    <th>订单号</th>
+                                    <th>支付平台</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in depositfilter">
+                                    <td>{{ item.orderendtime | standarddate}}</td>
+                                    <td>{{ item.amount | currency}}</td>
+                                    <td>{{ item.b }}</td>
+                                    <td>{{ item.a }}</td>
+                                    <td>
+                                        <span class="layui-badge layui-bg-green" v-if="item.status === 1">到账成功</span>
+                                        <span class="layui-badge layui-bg-gray" v-if="item.status === 0">未到账</span>
+                                        <span class="layui-badge" v-if="item.status === 3">失败</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="layui-tab-item">
+                        <table lay-even class="layui-table edit_member_table">
+                            <thead>
+                                <tr>
+                                    <th>申请时间</th>
+                                    <th>审核时间</th>
+                                    <th>支付时间</th>
+                                    <th>提款金额</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in withdrawfilter">
+                                    <td>{{ item.a | standarddate}}</td>
+                                    <td>{{ item.b | standarddate}}</td>
+                                    <td>{{ item.orderendtime | standarddate }}</td>
+                                    <td>{{ item.amount | currency }}</td>
+                                    <td>
+                                        <span class="layui-badge layui-bg-green" v-if="item.status === 2">支付成功</span>
+                                        <span class="layui-badge layui-bg-gray" v-if="item.status === 0">等待审核</span>
+                                        <span class="layui-badge layui-bg-orange" v-if="item.status === 1">等待支付</span>
+                                        <span class="layui-badge" v-if="item.status === 3">提款取消</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="layui-tab-item">
+                        <table lay-even class="layui-table edit_member_table">
+                            <thead>
+                                <tr>
+                                    <th>申请时间</th>
+                                    <th>到账时间</th>
+                                    <th>转账类型</th>
+                                    <th>金额</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in transferfilter">
+                                    <td>{{ item.a | standarddate }}</td>
+                                    <td>{{ item.orderendtime | standarddate }}</td>
+                                    <td>{{ item.b }}</td>
+                                    <td>{{ item.amount | currency }}</td>
+                                    <td>
+                                        <span class="layui-badge" v-if="item.status === 2">转账失败</span>
+                                        <span class="layui-badge layui-bg-gray" v-if="item.status === 0">转帐中/失败</span>
+                                        <span class="layui-badge layui-bg-green" v-if="item.status === 1">转账成功</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="layui-tab-item">
+                        <table class="layui-table edit_member_table">
+                            <thead>
+                                <tr>
+                                    <th>处理时间</th>
+                                    <th>微调金额</th>
+                                    <th>备注</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in minusfilter">
+                                    <td>{{ item.orderendtime | standarddate }}</td>
+                                    <td>{{ item.amount | currency }}</td>
+                                    <td>{{ item.a }}</td>
+                                    <td>
+                                        <span class="layui-badge layui-bg-gray" v-if="item.status === 0">未审核</span>
+                                        <span class="layui-badge layui-bg-green" v-if="item.status === 1">审核成功</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="layui-tab-item">
+                        <table class="layui-table edit_member_table">
+                            <thead>
+                                <tr>
+                                    <th>审核时间</th>
+                                    <th>赠送金额</th>
+                                    <th>投注倍数</th>
+                                    <th>类型</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in bonuspromofilter">
+                                    <td>{{ item.orderendtime | standarddate }}</td>
+                                    <td>{{ item.amount | currency }}</td>
+                                    <td>{{ item.b }}</td>
+                                    <td>{{ item.a }}</td>
+                                    <td>
+                                        <span class="layui-badge layui-bg-gray" v-if="item.status === 0">未审核</span>
+                                        <span class="layui-badge layui-bg-green" v-if="item.status === 1">审核成功</span>
+                                        <span class="layui-badge" v-if="item.status === 2">取消申请</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="layui-tab-item">
+                        <table class="layui-table edit_member_table">
+                            <thead>
+                                <tr>
+                                    <th>赠送时间</th>
+                                    <th>赠送反水</th>
+                                    <th>游戏平台</th>
+                                    <th>反水时间</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in turnoverfilter">
+                                    <td>{{ item.orderendtime | standarddate }}</td>
+                                    <td>{{ item.amount | currency }}</td>
+                                    <td>{{ item.b }}</td>
+                                    <td>{{ item.a | dateonly}}</td>
+                                    <td>
+                                        <span class="layui-badge layui-bg-gray" v-if="item.status === 0">未审核</span>
+                                        <span class="layui-badge layui-bg-green" v-if="item.status === 1">审核成功</span>
+                                        <span class="layui-badge" v-if="item.status === 2">取消申请</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="layui-tab-item">
+                        <table class="layui-table edit_member_table">
+                            <thead>
+                                <tr>
+                                    <th>微调-到账时间</th>
+                                    <th>微调-充值金额</th>
+                                    <th>微调-订单号</th>
+                                    <th>微调-支付平台</th>
+                                    <th>微调-状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in minusfilter">
+                                    <td>{{ item.orderendtime | standarddate }}</td>
+                                    <td>{{ item.amount | currency }}</td>
+                                    <td>{{ item.b }}</td>
+                                    <td>{{ item.a }}</td>
+                                    <td class="secss">{{ item.status }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="/js/vue.js"></script>
+    <script src="/js/vue-paginate.js"></script>
+    <script src="/js/axios.js"></script>
+    <script src="/js/globalmixin.js"></script>
+    <script src="/lib/layui/layui.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+
+        layui.extend({
+            admin: '{/}/static/js/admin'
+        });
+        layui.use(['form', 'jquery', 'admin', 'layer'], function () {
+            var form = layui.form,
+                $ = layui.jquery,
+                admin = layui.admin,
+                layer = layui.layer;
+        });
+
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                searchmodel: {
+                    startTime: new Date(1573034965080 - 5760000000),
+                    endTime: new Date(),
+                    account: ''
+                },
+                details: {},
+                transactiondata: [],
+                statuslist: [
+                    { id: -1, label: "所有状态" },
+                    { id: 0, label: "冻结" },
+                    { id: 1, label: "正常" }
+                ],
+                password: {
+                    new: '',
+                    confirm: '',
+                },
+                gamecode: [],
+                levellist: [{ "levelnumber": 10001, "levels": "万象会员" }]
+            },
+            computed: {
+                depositfilter: function () {
+                    return this.transactiondata.filter(function (arg) {
+                        //console.log("depositfilter");
+                        //console.log(arg);
+                        return arg.transactionType == 'deposit';
+                    })
+                },
+                withdrawfilter: function () {
+                    return this.transactiondata.filter(function (arg) {
+                        return arg.transactionType == 'withdraw';
+                    })
+                },
+                bonuspromofilter: function () {
+                    return this.transactiondata.filter(function (arg) {
+                        //console.log("bonuspromofilter");
+                        //console.log(arg);
+                        return arg.transactionType == 'bonuspromo';
+                    })
+                },
+                minusfilter: function () {
+                    return this.transactiondata.filter(function (arg) {
+                        return arg.transactionType == 'minus';
+                    })
+                },
+                transferfilter: function () {
+                    return this.transactiondata.filter(function (arg) {
+                        //console.log("transferfilter");
+                        //console.log(arg);
+                        return arg.transactionType == 'transfer';
+                    })
+                },
+                //promotionsfilter: function () {
+                //    return this.transactiondata.filter(function (arg) {
+                //        return arg.transactionType == 'promotions';
+                //    })
+                //},
+                turnoverfilter: function () {
+                    return this.transactiondata.filter(function (arg) {
+                        return arg.transactionType == 'turnover';
+                    })
+                }
+
+            },
+            mounted: function () {
+                // Grab initial data
+                var self = this;
+                this.searchmodel.startTime = this.getdate(this.searchmodel.startTime);
+                this.searchmodel.endTime = this.getdate(this.searchmodel.endTime);
+                this.$nextTick(function () {
+                    var id = this.getParameterByName('id');
+                    this.searchmodel.account = id;
+
+                    this.postwithauth("/Account/LevelList", {}, function (response) {
+                        if (response.status == 200) {
+                            self.levellist = response.data.data;
+                        }
+                    });
+                    this.postwithauth("/System/Code/GameCode", {}, function (response) {
+                        console.info(response);
+
+                        if (response.status == 200 && response.data.code == 1) {
+                            console.info(response.data.data);
+                            console.info(response.data.data.length);
+
+                            for (var i = 0; i < response.data.data.length; i++) {
+                                var x = { code: response.data.data[i], balance: 0 };
+                                console.info(x);
+                                self.gamecode.push(x);
+                            }
+                        }
+                    });
+                    this.postwithauth("/Account/AccountDetails", { account: id }, function (response) {
+                        console.info(response.data);
+
+                        if (response.status == 200) {
+                            self.details = response.data;
+                            self.details.winloss = self.details.withdrawalamount - self.details.depositamount;
+                            self.details.winloss = self.details.winloss.toFixed(2);
+                        }
+                        //alert(JSON.stringify(response));
+                    });
+                });
+            },
+            methods: {
+                updatedata: function () {
+                    alert(this.details.level);
+                },
+                getgamebalance: function (c) {
+                    var self = this;
+                    console.info("GetGameBalance: " + c);
+                    this.postwithauth("/Account/GetGameBalance",
+                        { Account: this.details.account, GameCode: c },
+                        function (response) {
+                            console.info("GetGameBalance: ", response);
+
+                            if (response.status == 200 && response.data.code == 1) {
+                                var gamebalance = response.data.data;
+                                console.info("GetGameBalance [Retreived] gamecode:", c, " balance:", gamebalance);
+                                for (var i = 0; i < self.gamecode.length; i++) {
+                                    console.info("GetGameBalance [AssigningLoop] gamecode:", c, " self.gamecode[i]:", self.gamecode[i]);
+                                    self.gamecode
+                                    if (self.gamecode[i].code == c) {
+                                        self.gamecode[i].balance = gamebalance;
+                                        console.info("GetGameBalance [Update] gamecode:", c, " balance:", gamebalance);
+
+                                    }
+                                }
+                            }
+                        });
+                },
+                deletecard: function (todeletecardindex) {
+                    var self = this;
+                    layer.confirm(this.details.withdrawcards[todeletecardindex], { icon: 0, title: '确认删除卡' }, function (index) {
+                        self.postwithauth("/Account/DeleteWithdrawCard",
+                            { account: self.details.account, cardindex: todeletecardindex },
+                            // SUCCESS
+                            function (response) {
+                                if (response.status == 200 && response.data.code == 1) {
+                                    layer.msg('卡删除成功', {
+                                        icon: 1,
+                                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                                    }, function () {
+                                        self.details.withdrawcards.splice(index, 1);
+                                        // TODO After
+                                    });
+                                }
+                                else {
+                                    layer.msg('卡删除失败', {
+                                        icon: 2,
+                                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                                    }, function () {
+                                        // TODO After
+                                    });
+                                }
+                            },
+                            // ERROR
+                            function (repsonse) {
+                                var errormessage = JSON.stringify(repsonse.data);
+                                layer.msg('更新错误', {
+                                    icon: 2,
+                                    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                                }, function () {
+                                    // TODO After
+                                });
+                            }
+                        );
+
+                        layer.close(index);
+                    });
+
+                    //layer.msg('', {
+                    //    icon: 1,
+                    //    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    //}, function () {
+                    //    // TODO After
+                    //});
+                },
+                changepassword: function () {
+                    var self = this;
+                    if (this.password.new != this.password.confirm) {
+                        layer.alert('密码不一直');
+                        return;
+                    }
+                    layer.confirm('确认修该 ' + this.details.account.toUpperCase() + ' 密码', function (index) {
+                        console.info('密码修该成功');
+                        self.postwithauth("/Account/UpdateAccountPassword",
+                            { account: self.details.account, password: self.password.new },
+                            // SUCCESS
+                            function (response) {
+                                if (response.status == 200 && response.data.code == 1) {
+                                    layer.msg('密码更新', {
+                                        icon: 1,
+                                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                                    }, function () {
+                                        // TODO After
+                                    });
+                                }
+                                else {
+                                    layer.msg('密码更新', {
+                                        icon: 2,
+                                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                                    }, function () {
+                                        // TODO After
+                                    });
+                                }
+                            },
+                            // ERROR
+                            function (repsonse) {
+                                var errormessage = JSON.stringify(repsonse.data);
+                                layer.msg('更新错误', {
+                                    icon: 2,
+                                    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                                }, function () {
+                                    // TODO After
+                                });
+                            }
+                        );
+                    });
+                },
+                updatetransactiondetailsfixed: function (daysbefore) {
+                    var starttime = new Date(Date.now());                    starttime.setDate(starttime.getDate() - daysbefore);
+                    console.info(starttime);
+                    var self = this;
+                    this.searchmodel.startTime = starttime;
+                    //this.searchmodel.endTime = this.getdate(this.searchmodel.endTime);
+                    this.postwithauth("/Account/AccountTransactionDetails",
+                        this.searchmodel,
+                        function (response) {
+                            console.info(response.data.data);
+
+                            if (response.status == 200) {
+                                self.transactiondata = response.data.data;
+
+                                var withdrawcount = 0;
+                                for (var i = 0; i < self.transactiondata.length; i++) {
+                                    if (self.transactiondata[i].transactionType == 'withdraw') withdrawcount++;
+                                }
+                                console.log("WithdrawCount:", withdrawcount);
+                            }
+                            //alert(JSON.stringify(response));
+                        });
+                },
+                updatetransactiondetails: function () {
+                    var self = this;
+                    this.searchmodel.startTime = this.getdate(this.searchmodel.startTime);
+                    this.searchmodel.endTime = this.getdate(this.searchmodel.endTime);
+                    this.postwithauth("/Account/AccountTransactionDetails",
+                        this.searchmodel,
+                        function (response) {
+                            console.info(response.data.data);
+
+                            if (response.status == 200) {
+                                self.transactiondata = response.data.data;
+
+                                var withdrawcount = 0;
+                                for (var i = 0; i < self.transactiondata.length; i++) {
+                                    if (self.transactiondata[i].transactionType == 'withdraw') withdrawcount++;
+                                }
+                                console.log("WithdrawCount:", withdrawcount);
+                            }
+                            //alert(JSON.stringify(response));
+                        });
+                }
+            }
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

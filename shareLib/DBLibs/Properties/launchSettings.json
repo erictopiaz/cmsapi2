@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DBLibs": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:57109;http://localhost:57118"
+    }
+  }
+}
