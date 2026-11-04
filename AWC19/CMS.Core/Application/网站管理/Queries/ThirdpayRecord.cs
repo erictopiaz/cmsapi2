@@ -54,7 +54,7 @@ namespace CMS.Core.Application.网站管理.Queries
 
     public class ThirdpayRecordReturn
     {
-        
+
         public bool regulargroup { get; set; }
         public bool vipgroup { get; set; }
         public bool vip3group { get; set; }
@@ -78,6 +78,7 @@ namespace CMS.Core.Application.网站管理.Queries
         public float totalamountdeposit { get; set; }
         public float totaldepositpercent { get; set; }
         public int totalsuccess { get; set; }
+        public int totalusdt { get; set; }
         public int totalfail { get; set; }
         public int dailyrequestlimit { get; set; }
         public int totaldepositcount { get; set; }
@@ -94,8 +95,8 @@ namespace CMS.Core.Application.网站管理.Queries
         public bool mustterminate { get; set; }
         public bool mustnotbedivisiblebyzero { get; set; }
         public bool deductfee { get; set; }
-        public bool noduplicateamount{ get; set; }
-        public bool newusers{ get; set; }
+        public bool noduplicateamount { get; set; }
+        public bool newusers { get; set; }
         public bool allowedamountinput { get; set; }
         public long classtemp { get; set; }
         [JsonIgnore]
@@ -122,7 +123,7 @@ namespace CMS.Core.Application.网站管理.Queries
     {
         public ThirdpayRecordValidator()
         {
-            RuleFor(x => x.name).CharDigitalChineseNullable(1,10);
+            RuleFor(x => x.name).CharDigitalChineseNullable(1, 10);
             RuleFor(x => x.status).Status();
             RuleFor(x => x.appstatus).Status();
             RuleFor(x => x.currencyType).Status();
@@ -152,12 +153,15 @@ namespace CMS.Core.Application.网站管理.Queries
                 "FETCH NEXT @Next ROWS ONLY");
 
             var currencys = JwtHelper.DESDeCode_ClaimValueByClaimKey(request.token, request.loginkey);
-            if (!currencys.Contains(request.currencyType)) {
+            if (!currencys.Contains(request.currencyType))
+            {
                 //货币类型有误
-                return new ResponseModel<PagingModel<ThirdpayRecordReturn>>() {
+                return new ResponseModel<PagingModel<ThirdpayRecordReturn>>()
+                {
                     code = ShareEntity.Global.ResponseCode.code.FAIL,
                     message = "请选择货币查询",
-                    Data = new PagingModel<ThirdpayRecordReturn>() {
+                    Data = new PagingModel<ThirdpayRecordReturn>()
+                    {
                         Data = new List<ThirdpayRecordReturn>(),
                         TotalItems = 0
                     }
@@ -168,19 +172,23 @@ namespace CMS.Core.Application.网站管理.Queries
             // FILL UP THE WHERE CLAUSE
             if (request.status >= 0)
                 builder.Where("status = @status", new { request.status });
-            else 
+            else
                 builder.Where("status<2");
-            if (request.appstatus >= 0) 
+            if (request.appstatus >= 0)
                 builder.Where("appstatus=@appstatus ", new { request.appstatus });
 
-            if (request.currencyType >= 0) {
+            if (request.currencyType >= 0)
+            {
                 builder.Where("currencyType = @currencyType", new { request.currencyType });
             }
-            else {
-                return new ResponseModel<PagingModel<ThirdpayRecordReturn>>() {
+            else
+            {
+                return new ResponseModel<PagingModel<ThirdpayRecordReturn>>()
+                {
                     code = ShareEntity.Global.ResponseCode.code.FAIL,
                     message = "无数据",
-                    Data = new PagingModel<ThirdpayRecordReturn>() {
+                    Data = new PagingModel<ThirdpayRecordReturn>()
+                    {
                         Data = new List<ThirdpayRecordReturn>(),
                         TotalItems = 0
                     }
@@ -189,23 +197,31 @@ namespace CMS.Core.Application.网站管理.Queries
 
             if (!string.IsNullOrEmpty(request.name))
                 builder.Where("name LIKE @NAMES", new { NAMES = string.Concat("%", request.name, "%") });
-            
+
             if (!request.merchantAccount.Equals("-1"))
             {
                 builder.Where("t_merchantAccounts LIKE @merchantAccount", new { merchantAccount = string.Concat("%", request.merchantAccount, "%") });
-                
+
             }
             if (request.walletType != -1)
             {
                 builder.Where("t_walletType in (@walletType,2)", new { walletType = request.walletType });
-                
+
             }
 
 
             var depositBuilder = new SqlBuilder();
+            //var depositTemplate = depositBuilder.AddTemplate("" +
+            //    "SELECT payplatform AS id, SUM(amount) AS totalamountdeposit, COUNT(*) AS totalsuccess " +
+            //    "FROM ofDeposit WITH(NOLOCK)  " +
+            //    "/**where**/ GROUP BY payplatform");
+
             var depositTemplate = depositBuilder.AddTemplate("" +
-                "SELECT payplatform AS id, SUM(amount) AS totalamountdeposit, COUNT(*) AS totalsuccess " +
-                "FROM ofDeposit WITH(NOLOCK)  " +
+                "SELECT payplatform AS id, " +
+                "SUM(amount) AS totalamountdeposit, " +
+                "SUM(amount / NULLIF(TRY_CAST(JSON_VALUE(CASE WHEN ISJSON(misc) = 1 THEN misc ELSE NULL END, '$.usdt_erc20_xrate') AS DECIMAL(18,8)), 0)) AS totalusdt, " +
+                "COUNT(*) AS totalsuccess " +
+                "FROM ofDeposit WITH(NOLOCK) " +
                 "/**where**/ GROUP BY payplatform");
 
             var depositLogBuilder = new SqlBuilder();
@@ -262,8 +278,9 @@ namespace CMS.Core.Application.网站管理.Queries
             using (SqlConnection connection = new SqlConnection(CMS.Data.MainDB.CONNECTIONSTRING))
             {
                 var depositRows = connection.Query<ThirdpayRecordReturn>(depositTemplate.RawSql, depositTemplate.Parameters);
-                var totalamountDict = depositRows!=null && depositRows.Count()>0 ? depositRows.ToDictionary(x => x.id, x => x.totalamountdeposit) : new Dictionary<long, float>();
+                var totalamountDict = depositRows != null && depositRows.Count() > 0 ? depositRows.ToDictionary(x => x.id, x => x.totalamountdeposit) : new Dictionary<long, float>();
                 var totalsuccessDict = depositRows != null && depositRows.Count() > 0 ? depositRows.ToDictionary(x => x.id, x => x.totalsuccess) : new Dictionary<long, int>();
+                var totalusdtDict = depositRows != null && depositRows.Count() > 0 ? depositRows.ToDictionary(x => x.id, x => x.totalusdt) : new Dictionary<long, int>();
 
                 var depositTotalRows = connection.Query<ThirdpayRecordReturn>(depositTotalTemplate.RawSql, depositTotalTemplate.Parameters);
                 var totalcountDict = depositTotalRows != null && depositTotalRows.Count() > 0 ? depositTotalRows.ToDictionary(x => x.id, x => x.totaldepositcount) : new Dictionary<long, int>();
@@ -278,12 +295,12 @@ namespace CMS.Core.Application.网站管理.Queries
                     idarray.Add(item.Key.ToString());
 
 
-                if(idarray.Count()>0)
+                if (idarray.Count() > 0)
                     builder.OrderBy("CASE WHEN id in (" + string.Join(',', idarray) + ") THEN '1' WHEN status = 1 THEN '0' ELSE id END");
                 else
-                builder.OrderBy("CASE WHEN status = 1 THEN '0' ELSE id END");
+                    builder.OrderBy("CASE WHEN status = 1 THEN '0' ELSE id END");
 
-               
+
 
                 var rows = connection.Query<ThirdpayRecordReturn>(template.RawSql, template.Parameters);
 
@@ -325,7 +342,7 @@ namespace CMS.Core.Application.网站管理.Queries
                             var levels = item.levels.Split(',');
                             var levelname = new List<string>();
                             foreach (var item1 in levels)
-                                if(!string.IsNullOrEmpty(item1))
+                                if (!string.IsNullOrEmpty(item1))
                                     if (CMS.Core.CachedData.LevelNameDict.ContainsKey(int.Parse(item1)))
                                         levelname.Add(CMS.Core.CachedData.LevelNameDict[int.Parse(item1)]);
                             item.levels = string.Join(",", levelname);
@@ -337,6 +354,7 @@ namespace CMS.Core.Application.网站管理.Queries
                             item.totaldepositpercent = (item.totalamountdeposit / CachedData.MAX_DEPOSIT_PER_BANK) * 100;
                             item.totaldepositpercent = (float)Math.Floor(item.totaldepositpercent);
                             item.totalsuccess = (int)totalsuccessDict[item.id];
+                            item.totalusdt = (int)totalusdtDict[item.id];
                         }
 
                         if (totalcountDict.ContainsKey(item.id))
@@ -344,7 +362,8 @@ namespace CMS.Core.Application.网站管理.Queries
                             item.totaldepositcount = (int)totalcountDict[item.id];
                         }
 
-                        if (totalfailDict.ContainsKey(item.id)) {
+                        if (totalfailDict.ContainsKey(item.id))
+                        {
                             item.totalfail = (int)totalfailDict[item.id];
                             item.totaldepositcount += item.totalfail;
 
@@ -369,7 +388,7 @@ namespace CMS.Core.Application.网站管理.Queries
                                 item.requirebank = miscDict.ContainsKey("requirebank") ? miscDict["requirebank"] == 1 : false;
                                 item.requirenote = miscDict.ContainsKey("requirenote") ? miscDict["requirenote"] == 1 : false;
                                 item.requirecardno = miscDict.ContainsKey("requirecardno") ? miscDict["requirecardno"] == 1 : false;
-                                item.requirename = miscDict.ContainsKey("requirename") ? miscDict["requirename"] == 1 : false;                                
+                                item.requirename = miscDict.ContainsKey("requirename") ? miscDict["requirename"] == 1 : false;
                                 item.mustterminate = miscDict.ContainsKey("mustterminate") ? miscDict["mustterminate"] == 1 : false;
                                 item.mustnotbedivisiblebyzero = miscDict.ContainsKey("mustnotbedivisiblebyzero") ? miscDict["mustnotbedivisiblebyzero"] == 1 : false;
                                 item.deductfee = miscDict.ContainsKey("deductfee") ? miscDict["deductfee"] == 1 : false;
