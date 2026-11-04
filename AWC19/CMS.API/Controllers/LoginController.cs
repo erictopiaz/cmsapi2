@@ -27,6 +27,7 @@ using System.Threading.Tasks;
 using UtilsLib;
 using UtilsLib.Cache;
 using UtilsLib.RequestHelper;
+using Newtonsoft.Json;
 
 namespace CMS.API.Controllers
 {
@@ -38,17 +39,19 @@ namespace CMS.API.Controllers
         private IConfiguration _config;
         private IMemoryCache _cache;
         private WriteToDB _writeToDB;
+        private WriteToFile _writeToFile;
         public LoginController(IMapper mapper, 
             IMediator mediator, 
-            ILogger<LoginController> logger, 
+            ILogger<LoginController> logger,
+            WriteToFile writeToFile,
             IHttpContextAccessor accessor, 
             IConfiguration config, IMemoryCache memoryCache, WriteToDB writeToDB) : base(mapper, mediator, logger)
         {
             _accessor = accessor;
             _config = config;
             _cache = memoryCache;
-            this._writeToDB = writeToDB;
-
+            _writeToFile = writeToFile;
+            _writeToDB = writeToDB;
         }
 
 
@@ -86,6 +89,33 @@ namespace CMS.API.Controllers
                 relationAccount = request.Account.Replace("'", "''")
             });
 
+            var keyA = string.Format(@"{0}_f_{1}", request.Account, "pms2Login");
+            var keyIP = string.Format(@"{0}_f_{1}", request.ipaddress, "pms2Login");
+
+            var value = CacheHelper.GetCache(_cache, keyA);
+            var valueIP = CacheHelper.GetCache(_cache, keyIP);
+
+            if (!string.IsNullOrEmpty(value)
+                || !string.IsNullOrEmpty(valueIP))
+            {
+                request.Password = "";
+                _writeToFile.Done("LoginRequestQuery_limit_error_times", "LoginRequestQuery 3 times error ",
+                   string.Format(@"requestdata = {0} 15 min 3 times limit",
+                   JsonConvert.SerializeObject(request)), true);
+
+                return new ForbidResult();
+
+            }
+
+            var valid = await GA.VerifyGoogleAuthCode(request.vCode, _config["jwt:googleLoginKey"]);
+            if (!valid)
+            {
+                //设置失败次数
+                await CacheHelper.SetLoginFailedCountAsync(_cache, request.Account, "pms2Login", 3, 60 * 15, 60);
+                await CacheHelper.SetLoginFailedCountAsync(_cache, request.ipaddress, "pms2Login", 3, 60 * 15, 60);
+
+                return new UnauthorizedResult();
+            }
 
             var result = await _mediator.Send(request);
 

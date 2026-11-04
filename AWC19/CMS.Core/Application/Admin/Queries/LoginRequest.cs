@@ -36,7 +36,7 @@ namespace CMS.Core.Application.Admin.Queries
         [JsonIgnore]
         public string fp { get; set; }
 
-        public int gaCode { set; get; } = 0;
+        public int vCode { set; get; } = 0;
     }
 
     public class LoginRequestReturn
