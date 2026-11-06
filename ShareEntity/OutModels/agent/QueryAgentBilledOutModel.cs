@@ -5,6 +5,9 @@ using System.Text;
 
 namespace ShareEntity.OutModels.agent
 {
+    /// <summary>
+    /// 20261106 新加reg_and_pay_count 记录结算月注册且充值会员计数
+    /// </summary>
     public class QueryAgentBilledOutModel
     {
         public long id { set; get; }
@@ -107,6 +110,10 @@ namespace ShareEntity.OutModels.agent
         }
         public string riskTypeAreadyDesc { set; get; }
         public int riskTypeAready { set; get; }
+        /// <summary>
+        /// 当月注册且充值的会员计数
+        /// </summary>
+        public string reg_and_pay_count { set; get; } = "";
     }
 
     public class ExportAgentBilledOutModel
