@@ -928,6 +928,10 @@ namespace CMS.API.Controllers
         {
             x.Admin = Common.Security.DESDeCode_Name(User.Identity.Name).ToLower().Trim();
             var result = await _mediator.Send(x);
+            //if(result.code == ShareEntity.Global.ResponseCode.code.SUCCESS)
+            //{
+            //    return new UnauthorizedResult();
+            //}
             return Ok(result);
         }
 
