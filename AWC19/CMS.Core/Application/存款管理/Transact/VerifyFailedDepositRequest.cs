@@ -175,20 +175,20 @@ namespace CMS.Core.Application.存款管理.Transact
                             if (miscDict.ContainsKey("feecent") && decimal.TryParse(miscDict["feecent"], out feecent))
                             {
                                 feerate = feecent;
-                                if (feecent >= 5)
-                                {
-                                    _logger.LogCritical("FeeComputation - [Exceeded 5%] feecent:{0}%, merchantno:{1}",
-                                        feecent.ToString("0.00"),
-                                        depositRow.merchantno);
-                                }
-                                else if (feecent <= -5)
-                                {
-                                    _logger.LogCritical("FeeComputation - [Below -5] feecent:{0}%, merchantno:{1}",
-                                        feecent.ToString("0.00"),
-                                        depositRow.merchantno);
-                                }
-                                else
-                                {
+                                //if (feecent >= 50)
+                                //{
+                                //    _logger.LogCritical("FeeComputation - [Exceeded 50%] feecent:{0}%, merchantno:{1}",
+                                //        feecent.ToString("0.00"),
+                                //        depositRow.merchantno);
+                                //}
+                                //else if (feecent <= -50)
+                                //{
+                                //    _logger.LogCritical("FeeComputation - [Below -50] feecent:{0}%, merchantno:{1}",
+                                //        feecent.ToString("0.00"),
+                                //        depositRow.merchantno);
+                                //}
+                                //else
+                                //{
                                     decimal feeFloat = depositRow.amount * (feecent / 100);
                                     _logger.LogCritical("FeeComputation - [Compute] feecent:{0}%, merchantno:{1}, fee:{2}",
                                         feecent.ToString("0.00"),
@@ -198,7 +198,7 @@ namespace CMS.Core.Application.存款管理.Transact
                                     // Verify Fee
                                     fee = feeFloat.ToString("0.00");
                                     //fee = "0";
-                                }
+                                //}
 
                             }
 
