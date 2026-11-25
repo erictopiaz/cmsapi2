@@ -19,6 +19,8 @@ using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using Org.BouncyCastle.Ocsp;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -27,10 +29,14 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 邮箱更新 : IRequest<邮箱更新Return>
     {
+        [MaxLength(20)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
+        [MaxLength(120)]
         public string email { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "adin_format_error")]
         public string Admin { get; set; }
     }
 
@@ -69,7 +75,7 @@ namespace CMS.Core.Application.账号管理.Transact
                         request.Account = accountRow.account;
                 }
                 var userDetail = connection.Get<ofUser>(request.Account);
-                userDetail.email = request.email;
+                userDetail.email = request.email.Replace("'","''");
 
                 bool updateResult = connection.Update<ofUser>(userDetail);
                 return new 邮箱更新Return()

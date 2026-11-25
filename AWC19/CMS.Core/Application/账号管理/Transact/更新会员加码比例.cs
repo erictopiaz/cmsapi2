@@ -19,6 +19,7 @@ using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using DBLibs.WXDapper;
 using System.Data;
+using UtilsLib.ValidationAttr;
 
 
 namespace CMS.Core.Application.账号管理.Transact
@@ -32,6 +33,7 @@ namespace CMS.Core.Application.账号管理.Transact
         /// <summary>
         /// 根据会员id 获取到会员账号
         /// </summary>
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         /// <summary>
         /// 会员id
@@ -41,6 +43,7 @@ namespace CMS.Core.Application.账号管理.Transact
         public object betCodeDetail { set; get; }
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 

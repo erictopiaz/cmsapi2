@@ -19,6 +19,7 @@ using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using Newtonsoft.Json.Linq;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -28,9 +29,11 @@ namespace CMS.Core.Application.账号管理.Transact
     public class 更新标记 : IRequest<更新标记Return>
     {
         public long id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         public string tags { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 
@@ -64,6 +67,7 @@ namespace CMS.Core.Application.账号管理.Transact
             _logger.LogInformation("Admin:{0}, Request:{1}", request.Admin, Newtonsoft.Json.JsonConvert.SerializeObject(request));
             using (SqlConnection connection = new SqlConnection(CMS.Data.MainDB.WITHWRITE_CONNECTIONSTRING))
             {
+                request.tags = request.tags.Replace("'", "''");
 
                 if (request.id > 0)
                 {

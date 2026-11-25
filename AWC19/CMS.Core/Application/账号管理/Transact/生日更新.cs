@@ -18,6 +18,8 @@ using Microsoft.Extensions.Logging;
 using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using ShareEntity.Models;
+using System.ComponentModel.DataAnnotations;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -26,10 +28,14 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 生日更新 : IRequest<生日更新Return>
     {
+        [MaxLength(20)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
+        [MaxLength(25)]
         public string birthday { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 
@@ -68,7 +74,7 @@ namespace CMS.Core.Application.账号管理.Transact
                         request.Account = accountRow.account;
                 }
                 var userDetail = connection.Get<ofUser>(request.Account);
-                userDetail.birthday = request.birthday;
+                userDetail.birthday = request.birthday.Replace("'","''");
                 bool updateResult = connection.Update<ofUser>(userDetail);
                 return new 生日更新Return()
                 {

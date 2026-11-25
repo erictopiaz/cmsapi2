@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using Thirdpay.Crypto;
 using ShareEntity.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.账号管理.Queries
 {
@@ -27,7 +28,9 @@ namespace CMS.Core.Application.账号管理.Queries
     /// </summary>
     public class 等级列表 : PagingModel, IRequest<ResponseModel<IEnumerable<object>>>
     {
+        [MaxLength(10)]
         public string currency { get; set; }
+        [MaxLength(10)]
         public string currencyCode { get; set; }
     }
 

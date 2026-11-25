@@ -18,6 +18,7 @@ using Dapper.Contrib.Extensions;
 using CMS.Data.Models;
 using MongoDB.Driver;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.系统管理.Transact {
     /// <summary>
@@ -27,6 +28,7 @@ namespace CMS.Core.Application.系统管理.Transact {
         
         [MinLength(4)]
         [MaxLength(16)]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
 
         [MaxLength(66)]
@@ -38,6 +40,7 @@ namespace CMS.Core.Application.系统管理.Transact {
         public int ip_status { get; set; }
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
 
         /// <summary>
@@ -70,6 +73,7 @@ namespace CMS.Core.Application.系统管理.Transact {
         protected override 黑白名单更新Return Handle(黑白名单更新 request) {
             _logger.LogInformation("Admin:{0}, Request:{1}", request.Admin, Newtonsoft.Json.JsonConvert.SerializeObject(request));
 
+            
             using (SqlConnection connection = new SqlConnection(CMS.Data.MainDB.CONNECTIONSTRING)) {
 
                 if(request.type == 0) {

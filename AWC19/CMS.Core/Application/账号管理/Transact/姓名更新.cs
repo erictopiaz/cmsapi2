@@ -18,6 +18,8 @@ using Microsoft.Extensions.Logging;
 using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -26,10 +28,14 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 姓名更新 : IRequest<姓名更新Return>
     {
+        [MaxLength(20)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
+        [MaxLength(20)]
         public string realname { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 

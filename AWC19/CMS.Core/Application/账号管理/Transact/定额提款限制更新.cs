@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using ShareEntity.OutputModels;
 using AWC2019.Core.Validation;
 using MongoDB.Driver;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact {
    
@@ -21,6 +22,7 @@ namespace CMS.Core.Application.账号管理.Transact {
     /// </summary>
     public class 定额提款限制更新 : IRequest<定额提款限制更新Return> {
         public int id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         /// <summary>
         /// 是否可以参与，定额的提款：0：可以，1：禁止参与
@@ -33,6 +35,7 @@ namespace CMS.Core.Application.账号管理.Transact {
         public int limitType { get; set; } = 0;
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 

@@ -13,6 +13,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -25,6 +26,7 @@ namespace CMS.Core.Application.账号管理.Transact
         /// <summary>
         /// 会员账号根据id 获取账号
         /// </summary>
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         /// <summary>
         /// 会员id
@@ -41,6 +43,7 @@ namespace CMS.Core.Application.账号管理.Transact
         public string replyVIP { set; get; } = "";
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 
