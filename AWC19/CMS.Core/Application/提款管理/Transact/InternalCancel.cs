@@ -22,6 +22,7 @@ using CMS.Core;
 using NSwag.Annotations;
 using Dapper.Contrib.Extensions;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 //using System.Runtime.Serialization;
 
 namespace CMS.Core.Application.提款管理.Queries
@@ -35,6 +36,7 @@ namespace CMS.Core.Application.提款管理.Queries
         public string cancelreason { get; set; }
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 

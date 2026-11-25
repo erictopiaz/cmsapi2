@@ -24,6 +24,7 @@ using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using Thirdpay.OnePay;
 using System.Net;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 //using System.Runtime.Serialization;
 
 namespace CMS.Core.Application.存款管理.Transact
@@ -37,6 +38,8 @@ namespace CMS.Core.Application.存款管理.Transact
         public decimal amount { get; set; }
         public string comment { get; set; }
         [JsonIgnore]
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 
@@ -85,7 +88,7 @@ namespace CMS.Core.Application.存款管理.Transact
                 depositRow.feemax = temp.feemax;
                 depositRow.deposittype = temp.deposittype;
                 depositRow.depositmethod = temp.depositmethod;
-                depositRow.additional = request.comment.Trim();
+                depositRow.additional = request.comment.Trim().Replace("'","''");
                 depositRow.receiveperson = temp.receiveperson;
                 depositRow.receivecardno = temp.receivecardno;
                 depositRow.deposittime = temp.deposittime;

@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.存款管理.Queries {
     
@@ -24,11 +26,12 @@ namespace CMS.Core.Application.存款管理.Queries {
     /// MediatR Request that returns a List of LBModel
     /// </summary>
     public class 第三方代理QueryBase : PagingModel {
-        //public string password { get; set; }
 
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
+        [MaxLength(36)]
         public string OrderNo { get; set; } //商户单号
-        //public string MerchantOrdernNo { get; set; } // 银行单号
+        [MaxLength(20)]
         public string Platform { get; set; } // 支付类型
         public DateTime? starttime { get; set; }
         public DateTime? endtime { get; set; }
@@ -39,11 +42,17 @@ namespace CMS.Core.Application.存款管理.Queries {
         public int Status { get; set; } // 支付状态
         public int promostatus { get; set; } // 支付状态
         public int depositCategory { get; set; } // 支付状态
+        [MaxLength(20)]
         public string realname { get; set; }  // 存款IP
+        [IpValidate(50, MinimumLength = 8, IsAllowedEmpty = true, ErrorMessage = "ip_format_error")]
         public string ipaddress { get; set; }  // 存款IP
+        [MaxLength(20)]
         public string amount { get; set; }  // 存款IP
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Affiliate { get; set; } // 代理
-        //public int Website { get; set; } = -1; // 网址
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
         // 7	虚拟币
         // 13	C2C钱包

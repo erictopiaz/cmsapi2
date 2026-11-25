@@ -26,6 +26,8 @@ using Newtonsoft.Json.Linq;
 using Org.BouncyCastle.Ocsp;
 using System.Web;
 using Microsoft.IdentityModel.Tokens;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 //using System.Runtime.Serialization;
 
 namespace CMS.Core.Application.存款管理.Transact
@@ -35,12 +37,16 @@ namespace CMS.Core.Application.存款管理.Transact
     /// </summary>
     public class GetThirdpayLinkRequest : IRequest<ResponseModel<GetThirdpayLinkReturn>>
     {
+        [MaxLength(10)]
         public string platform { get; set; }
         public float amount { get; set; }
+        [MaxLength(20)]
         public string bank { get; set; }
+        [MaxLength(20)]
         public string realname { get; set; }
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 

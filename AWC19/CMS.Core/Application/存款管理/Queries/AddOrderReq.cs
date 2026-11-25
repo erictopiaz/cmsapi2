@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UtilsLib;
 using UtilsLib.lang;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.存款管理.Queries
 {
@@ -28,6 +29,8 @@ namespace CMS.Core.Application.存款管理.Queries
     public class AddOrderReq : IRequest<ResponseModel<AddOrderReqReturn>>
     {
         public int merId { get; set; }
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { set; get; }
         public decimal amount { set; get; }
         /// <summary>
@@ -40,6 +43,7 @@ namespace CMS.Core.Application.存款管理.Queries
         public int device { set; get; } = -1;
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 

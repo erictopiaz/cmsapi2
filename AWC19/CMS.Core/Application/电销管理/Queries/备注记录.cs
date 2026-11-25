@@ -18,6 +18,7 @@ using CMS.Core.ViewModel;
 using ShareEntity.OutputModels;
 using Microsoft.Extensions.Logging;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.电销管理.Queries
 {
@@ -26,11 +27,14 @@ namespace CMS.Core.Application.电销管理.Queries
     /// </summary>
     public class 备注记录Query : PagingModel, IRequest<ResponseModel<PagingModel<备注记录Return>>>
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string createperson { get; set; }
         public int status { get; set; } = -1;
         public int contactStatus { get; set; } = -1;
         public string comment { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
         public DateTime? starttime { get; set; }
         public DateTime? endtime { get; set; }
@@ -38,6 +42,7 @@ namespace CMS.Core.Application.电销管理.Queries
 
     public class 备注记录Return : ofCallLog
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string topaccount { get; set; }
         public long TotalItems { get; set; }
         public bool anomally { get; set; }
@@ -103,13 +108,14 @@ namespace CMS.Core.Application.电销管理.Queries
                 request.Page = 0;
                 builder.Where("comment LIKE @comment", new
                 {
-                    comment = string.Concat("%",request.comment, "%")
+                    comment = string.Concat("%",request.comment.Replace("'","''"), "%")
                 });
             }
 
             // FILL UP THE WHERE CLAUSE
             if (!string.IsNullOrEmpty(request.createperson))
             {
+                request.createperson = request.createperson.Replace("'", "''");
                 //request.Page = 0;
                 builder.Where("createperson = @createperson", new { request.createperson });
             }

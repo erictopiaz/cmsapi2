@@ -16,6 +16,7 @@ using System.Linq;
 using System.Text;
 using UtilsLib.lang;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Queries {
     
@@ -27,35 +28,16 @@ namespace CMS.Core.Application.账号管理.Queries {
         [JsonIgnore]
         public List<int> currencys { get; set; }
         public long id { get; set; } = 0;
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         
         public DateTime starttime { get; set; }
         public DateTime endtime { get; set; }
-        //public string telephone { get; set; }
-        //public string email { get; set; }
-        //public string realname { get; set; }
-
-        //public int level { get; set; }
-        //public int currencytype { get; set; }
+        
         public int status { get; set; } = -1;
-        //public string referrerreg { get; set; }
-        //public string affaccount { get; set; }
-        //public string marcode { get; set; }
-        //public string qq { get; set; }
-        //public string bbinaccount { get; set; }
-        //public string birthday { get; set; }
+       
         public float? depositamount { get; set; } = 0;
-        //public string ipaddress { get; set; }
-        //public string withdrawcard { get; set; }
-        //public string anomally { get; set; }
-        ///// <summary>
-        ///// 默认风控
-        ///// </summary>
-        //public int anomaly { set; get; }
-        ///// <summary>
-        ///// 新增风控类型
-        ///// </summary>
-        //public int riskTypesAready { set; get; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
 
     }

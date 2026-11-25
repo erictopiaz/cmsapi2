@@ -19,6 +19,8 @@ using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using CMS.Core.Application.系统管理.Queries;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -27,10 +29,13 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 更新游戏状态 : IRequest<更新游戏状态Return>
     {
+        [MaxLength(10)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
         public int[] allowedGames { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 

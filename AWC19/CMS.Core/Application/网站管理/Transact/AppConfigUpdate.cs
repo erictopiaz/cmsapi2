@@ -60,6 +60,8 @@ namespace CMS.Core.Application.网站管理.Queries
 
         protected override ResponseModel<AppConfigUpdateReturn> Handle(AppConfigUpdate request)
         {
+            request.code = request.code.Replace("'", "''");
+            request.value = request.value.Replace("'", "''");
             using (SqlConnection connection = new SqlConnection(CMS.Data.MainDB.WITHWRITE_CONNECTIONSTRING))
             {
                 var jsonResult = connection.QueryFirstOrDefault<ofSettings>("SELECT * FROM ofSettings WHERE code='APP_SETTINGS'");

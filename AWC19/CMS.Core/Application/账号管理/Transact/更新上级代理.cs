@@ -19,6 +19,7 @@ using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using DBLibs.WXDapper;
 using System.Data;
+using UtilsLib.ValidationAttr;
 
 
 namespace CMS.Core.Application.账号管理.Transact
@@ -32,7 +33,9 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 更新上级代理 : IRequest<更新上级代理Return>
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
 
         public string affaccount { set; get; }
         /// <summary>
@@ -45,6 +48,7 @@ namespace CMS.Core.Application.账号管理.Transact
         public string freezereason { get; set; }
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 
@@ -80,7 +84,7 @@ namespace CMS.Core.Application.账号管理.Transact
             var dp = new DynamicParameters();
             dp.Add("@accountid", request.accountid, DbType.Int32, ParameterDirection.Input);
             dp.Add("@affaccount", request.affaccount, DbType.AnsiString, ParameterDirection.Input, 50);
-            dp.Add("@freezereason", request.freezereason, dbType: DbType.AnsiString, ParameterDirection.Input, 50);
+            dp.Add("@freezereason", request.freezereason.Replace("'","''"), dbType: DbType.AnsiString, ParameterDirection.Input, 50);
 
             var updateResult = DapperBase.ExecuteTransction(sql, param:dp, commandTimeout: 15000,
                 ConnectionString: DapperStringBase.ConnectionString);

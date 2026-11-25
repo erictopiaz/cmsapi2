@@ -18,6 +18,8 @@ using System.Threading.Tasks;
 using UtilsLib;
 using UtilsLib.lang;
 using ShareEntity.InputModels.Pay;
+using System.ComponentModel.DataAnnotations;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.存款管理.Transact {
     /// <summary>
@@ -25,6 +27,7 @@ namespace CMS.Core.Application.存款管理.Transact {
     /// </summary>
     public class ResizeAmount : IRequest<ResponseModel<ResizeAmountReturn>> {
         public long rowid { get; set; }
+        [MaxLength(36)]
         public string orderNo { set; get; }
         public decimal amount { set; get; }
         /// <summary>
@@ -32,6 +35,8 @@ namespace CMS.Core.Application.存款管理.Transact {
         /// </summary>
         public string remarks { set; get; }
         [JsonIgnore]
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 

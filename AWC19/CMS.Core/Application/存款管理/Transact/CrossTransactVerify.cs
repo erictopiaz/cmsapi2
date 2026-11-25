@@ -20,6 +20,7 @@ using System.Data.SqlClient;
 using System.Net;
 using System.Threading.Tasks;
 using System.Transactions;
+using UtilsLib.ValidationAttr;
 //using System.Runtime.Serialization;
 
 namespace CMS.Core.Application.存款管理.Transact
@@ -33,6 +34,8 @@ namespace CMS.Core.Application.存款管理.Transact
         //public decimal fee { get; set; }
 
         [JsonIgnore]
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
 
     }

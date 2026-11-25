@@ -15,12 +15,14 @@ using ShareEntity.Models;
 using ShareEntity.OutputModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using UtilsLib.lang;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.存款管理.Queries
 {
@@ -30,6 +32,7 @@ namespace CMS.Core.Application.存款管理.Queries
         [JsonIgnore]
         public List<int> currencys { get; set; }
         public int walletType { set; get; } = -1;
+        [MaxLength(10)]
         public string? merchantAccount { set; get; } = "";
         public int currencycode { get; set; }
 
@@ -40,11 +43,11 @@ namespace CMS.Core.Application.存款管理.Queries
     /// </summary>
     public class 第三方QueryBase: PagingModel
     {
-        //public string password { get; set; }
-
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
+        [MaxLength(36)]
         public string OrderNo { get; set; } //商户单号
-        //public string MerchantOrdernNo { get; set; } // 银行单号
+        [MaxLength(20)]
         public string Platform { get; set; } // 支付类型
         public DateTime? starttime { get; set; }
         public DateTime? endtime { get; set; }
@@ -55,11 +58,15 @@ namespace CMS.Core.Application.存款管理.Queries
         public int Status { get; set; } // 支付状态
         public int promostatus { get; set; } // 支付状态
         public int depositCategory{ get; set; } // 支付状态
+        [MaxLength(30)]
         public string realname { get; set; }  // 存款IP
+        [IpValidate(50, MinimumLength = 8, IsAllowedEmpty = true, ErrorMessage = "ip_format_error")]
         public string ipaddress { get; set; }  // 存款IP
+        [MaxLength(20)]
         public string amount { get; set; }  // 存款IP
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Affiliate { get; set; } // 代理
-        //public int Website { get; set; } = -1; // 网址
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
         // 7	虚拟币
         // 13	C2C钱包

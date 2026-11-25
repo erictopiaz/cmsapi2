@@ -18,6 +18,8 @@ using CMS.Core.ViewModel;
 using ShareEntity.OutputModels;
 using Microsoft.Extensions.Logging;
 using Dapper.Contrib.Extensions;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.存款管理.Queries
 {
@@ -26,11 +28,13 @@ namespace CMS.Core.Application.存款管理.Queries
     /// </summary>
     public class 第三方超一个月 : 第三方QueryBase, IRequest<ResponseModel<PagingModel<第三方超一个月Return>>>
     {
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "pwd_format_error")]
         public string password { get; set; }
         [JsonIgnore]
         public List<int> currencys { get; set; }
         public int currencycode { get; set; }
-
+        [MaxLength(10)]
         public string? merchantAccount { set; get; } = "";
         //public string Account { get; set; }
         //public string OrderNo { get; set; } //商户单号

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.网站管理.Queries {
 
@@ -20,6 +21,8 @@ namespace CMS.Core.Application.网站管理.Queries {
         public int currencycode { get; set; } = 156;
         public List<int> currencys { get; set; } = new List<int>();
         [JsonIgnore]
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 

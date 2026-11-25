@@ -22,6 +22,7 @@ using CMS.Core;
 using CMS.Core.ViewModel;
 using Dapper.Contrib.Extensions;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 //using System.Runtime.Serialization;
 
 namespace CMS.Core.Application.网站管理.Queries
@@ -31,13 +32,18 @@ namespace CMS.Core.Application.网站管理.Queries
     /// </summary>
     public class NetBankRecord : PagingModel, IRequest<ResponseModel<PagingModel<NetBankRecordReturn>>>
     {
+        [MaxLength(50)]
         public string name { get; set; }
+        [MaxLength(50)]
         public string bank { get; set; }
+        [MaxLength(50)]
         public string realname { get; set; }
+        [MaxLength(100)]
         public string cardno { get; set; }
         public int status { get; set; } = -1;
         public int appstatus { get; set; } = -1;
         public int? _class { get; set; }
+        [MaxLength(100)]
         public string range { get; set; }
         public DateTime starttime { get; set; }
         public DateTime endtime { get; set; }

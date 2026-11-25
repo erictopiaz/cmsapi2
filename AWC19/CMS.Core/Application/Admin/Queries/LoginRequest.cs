@@ -81,26 +81,26 @@ namespace CMS.Core.Application.Admin.Queries
 
                 #region ching add ip account 检测
 
-//                var queryMapIPSql = string.Format(@"select ipaddress from ofManageMapIP with(nolock)
-//where account=@account");
+                var queryMapIPSql = string.Format(@"select ipaddress from ofManageMapIP with(nolock)
+where account=@account");
 
-//                var ips = connection.Query<string>(queryMapIPSql,
-//                    new
-//                    {
-//                        account = request.Account
-//                    });
-//                if (ips != null && ips.Contains(request.ipaddress))
-//                {
-//                    //白名单验证通过
-//                }
-//                else
-//                {
-//                    return Task.FromResult(new LoginRequestReturn()
-//                    {
-//                        Status = 0,
-//                        access = "",
-//                    });
-//                }
+                var ips = connection.Query<string>(queryMapIPSql,
+                    new
+                    {
+                        account = request.Account
+                    });
+                if (ips != null && ips.Contains(request.ipaddress))
+                {
+                    //白名单验证通过
+                }
+                else
+                {
+                    return Task.FromResult(new LoginRequestReturn()
+                    {
+                        Status = 0,
+                        access = "",
+                    });
+                }
 
                 #endregion
 

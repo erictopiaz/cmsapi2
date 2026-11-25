@@ -21,6 +21,7 @@ using Dapper.Contrib.Extensions;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Xml.Schema;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.电销管理.Transact
 {
@@ -29,7 +30,9 @@ namespace CMS.Core.Application.电销管理.Transact
     /// </summary>
     public class 增加备注Query : IRequest<ResponseModel<增加备注Return>>
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         public string comment { get; set; }
         public int cstatus { set; get; } = -1;

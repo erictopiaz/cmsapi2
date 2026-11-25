@@ -23,6 +23,7 @@ using Newtonsoft.Json;
 using Org.BouncyCastle.Utilities.Net;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -33,6 +34,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UtilsLib;
 using UtilsLib.Merchant;
+using UtilsLib.ValidationAttr;
 using static GameLibs.TTG.TTGBLL;
 using static UtilsLib.lang.LangCodes;
 
@@ -43,10 +45,13 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 游戏金额重置 : IRequest<游戏金额重置Return>
     {
+        [MaxLength(20)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
         public string GameCode { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
 
         public WriteToFile writeToFile { get; set; } = null;

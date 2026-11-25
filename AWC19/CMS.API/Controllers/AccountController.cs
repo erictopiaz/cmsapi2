@@ -1014,8 +1014,8 @@ namespace CMS.API.Controllers
         {
 
             Core.Application.账号管理.Queries.获取游戏金额 x = new 获取游戏金额();
-            x.Account = account;
-            x.GameCode = gamecode;
+            x.Account = account.Replace("'","''");
+            x.GameCode = gamecode.Replace("'","''");
             x.id = "";
 
             //x.Admin = Common.Security.DESDeCode_Name(User.Identity.Name).ToLower().Trim();

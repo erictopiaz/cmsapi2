@@ -19,6 +19,8 @@ using ShareEntity.OutputModels;
 using Microsoft.Extensions.Logging;
 using Dapper.Contrib.Extensions;
 using Microsoft.AspNetCore.Http;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.存款管理.Queries
 {
@@ -28,13 +30,20 @@ namespace CMS.Core.Application.存款管理.Queries
     public class 内充列表 : PagingModel, IRequest<ResponseModel<PagingModel<内充Return>>>
     {
         //账户 存款姓名    收款姓名 存款类型   代理 IP 开始时间 结束时间 { 查询/导出 }
-
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
+        [MaxLength(50)]
         public string depositname { get; set; }
+        [MaxLength(50)]
         public string receivename { get; set; }
+        [MaxLength(50)]
         public string deposittype { get; set; }
+        [MaxLength(50)]
         public string depositmethod { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string affaccount { get; set; }
+
+        [IpValidate(50, MinimumLength = 8, IsAllowedEmpty = true, ErrorMessage = "ip_format_error")]
         public string ipaddress { get; set; }
         public DateTime starttime { get; set; }
         public DateTime endtime { get; set; }
