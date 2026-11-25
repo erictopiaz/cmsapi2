@@ -5,6 +5,7 @@ using CMS.API.Middleware;
 using Dapper.FluentMap;
 using DBLibs.WXDapper;
 using FluentValidation.AspNetCore;
+using GoogleAuthenticatorService.Core;
 using LogLib.Config;
 using LogLib.Helper;
 using MediatR;
@@ -169,13 +170,16 @@ namespace CMS.API
               policy => policy.Requirements.Add(new AllowedPath())));
             services.AddSingleton<IAuthorizationHandler, AllowedPath.AllowedPathHandler>();
 
+            #region 谷歌验证单例
+            services.AddSingleton<TwoFactorAuthenticator>();
+            #endregion
+
             #region FluentValidation
             services.AddMvc(
                 option =>
                 {
                     //var policy = new AuthorizationPolicy(Filter.AllowedPath);
                     //option.Filters.Add(new Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter(policy));
-
                     option.EnableEndpointRouting = false;
                     option.Filters.Add(typeof(ValidateModelAttribute));  // Adding this Filter Attrubute to ALL API 
                     //option.Filters.Add(typeof(Filter.AllowedPath));

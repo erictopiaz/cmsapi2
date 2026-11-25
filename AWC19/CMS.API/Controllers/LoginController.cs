@@ -3,8 +3,8 @@ using AutoMapper;
 using CMS.API.BLL;
 using CMS.Core.Application.Admin.Queries;
 using CMS.Core.Application.系统管理.Queries;
-using ShareEntity.OutputModels;
 using GoogleAuth;
+using GoogleAuthenticatorService.Core;
 using LogLib.Helper;
 //using CMS.Filter;
 using MediatR;
@@ -16,6 +16,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using ShareEntity.OutputModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +29,6 @@ using System.Threading.Tasks;
 using UtilsLib;
 using UtilsLib.Cache;
 using UtilsLib.RequestHelper;
-using Newtonsoft.Json;
 
 namespace CMS.API.Controllers
 {
@@ -40,10 +41,12 @@ namespace CMS.API.Controllers
         private IMemoryCache _cache;
         private WriteToDB _writeToDB;
         private WriteToFile _writeToFile;
+        private readonly TwoFactorAuthenticator _tfa;
         public LoginController(IMapper mapper, 
             IMediator mediator, 
             ILogger<LoginController> logger,
             WriteToFile writeToFile,
+            TwoFactorAuthenticator tfa,
             IHttpContextAccessor accessor, 
             IConfiguration config, IMemoryCache memoryCache, WriteToDB writeToDB) : base(mapper, mediator, logger)
         {
@@ -52,6 +55,7 @@ namespace CMS.API.Controllers
             _cache = memoryCache;
             _writeToFile = writeToFile;
             _writeToDB = writeToDB;
+            _tfa = tfa;
         }
 
 
@@ -107,7 +111,7 @@ namespace CMS.API.Controllers
 
             }
 
-            var valid = await GA.VerifyGoogleAuthCode(request.vCode, _config["jwt:googleLoginKey"]);
+            var valid = await GA.VerifyGoogleAuthCode(request.vCode, _config["jwt:googleLoginKey"], _tfa);
             if (!valid)
             {
                 //设置失败次数

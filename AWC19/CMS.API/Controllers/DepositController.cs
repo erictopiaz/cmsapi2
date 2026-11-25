@@ -44,6 +44,20 @@ namespace CMS.API.Controllers
         //    return await Task.FromResult(Ok(result));
         //}
 
+        //
+
+        [HttpPost]
+        [Description("添加支付定单")]
+        [Route("AddOrderRequest")]
+        [ActionName("添加支付定单")]
+        public async Task<IActionResult> AddOrderRequest(AddOrderReq x)
+        {
+           // x.currencys = JwtHelper.DESDeCode_ClaimValueByClaimKey(User).ToList();
+            x.Admin = Common.Security.DESDeCode_Name(User.Identity.Name);
+            var result = await _mediator.Send(x);
+            return await Task.FromResult(Ok(result));
+        }
+
 
 
         [HttpPost]

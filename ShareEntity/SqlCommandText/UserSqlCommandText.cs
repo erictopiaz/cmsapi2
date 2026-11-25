@@ -200,8 +200,11 @@ where u.account=@account ";
         /// </summary>
         public const string QueryUserDataSql = @"select u.id uid,u.account,u.merchantAccount,trynumber,realname,sex,birthday,email,telephone,fb,qq,status, u.lang, ug.levels level,ug.misc_inr,u.phoneCode,
 (u.amountactive + iif(ugw.wallet is not null,ugw.wallet,0)) amount,depositamount,bonuspoints,withdrawcards,CONVERT(VARCHAR(20), createtime, 120) createtime, level level_id,
-u.misc,u.currencyType,amountsuspend,ug.nextLevelNumber,ug.nextLevels,ug.vipIndex,ue.liveUserLevel viplevel,ue.membericon,ue.liveNickname nickname
+u.misc,u.currencyType,amountsuspend,ug.nextLevelNumber,ug.nextLevels,ug.vipIndex,ue.liveUserLevel viplevel,ue.membericon,ue.liveNickname nickname,l.prevlogin prevloginTime
 from ofUser u with(nolock)
+left join (select top 1 account,createtime prevlogin from ofLog with(nolock)
+where account=@account and event_type=11
+order by id desc) l on u.account = l.account
 left join ofUserGroup ug with(nolock) on u.level=ug.levelnumber
 left join ofUserExtention ue with(nolock) on u.account=ue.account
 left join ofUserGameWallet ugw with(nolock) on u.account = ugw.account

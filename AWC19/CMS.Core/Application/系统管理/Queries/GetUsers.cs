@@ -32,7 +32,9 @@ namespace CMS.Core.Application.系统管理.Queries
         public string Admin { get; set; }
 
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class GetUsersReturn
     {
         public long id { get; set; }
@@ -60,6 +62,9 @@ namespace CMS.Core.Application.系统管理.Queries
     /// </summary>
     public class GetUsersValidator : AbstractValidator<GetUsers>
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public GetUsersValidator()
         {
 

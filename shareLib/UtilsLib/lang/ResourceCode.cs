@@ -35,6 +35,16 @@ namespace UtilsLib.lang {
         /// 合营推荐结算比例 【bayo   boss】 + 货币
         /// </summary>
         public static readonly string agent_billed_rate_desc = "agent_billed_rate_desc_{0}_{1}";
+
+        /// <summary>
+        /// 合营推荐结算规则 【bayo   boss】+ 货币
+        /// </summary>
+        public static readonly string agent_billed_rules_desc_v = "agent_billed_rules_desc_v_{0}_{1}";
+        /// <summary>
+        /// 合营推荐结算比例 【bayo   boss】 + 货币
+        /// </summary>
+        public static readonly string agent_billed_rate_desc_v = "agent_billed_rate_desc_v_{0}_{1}";
+
         /// <summary>
         /// 代理页面，佣金规则
         /// </summary>
@@ -140,6 +150,12 @@ namespace UtilsLib.lang {
         /// 查询任务中心 ui，根据货币
         /// </summary>
         public static readonly string query_promo_task_ui = "query_promo_task_ui_{0}";
+
+        /// <summary>
+        /// 查询任务中心 ui，根据货币
+        /// </summary>
+        public static readonly string query_promo_task_ui_v12 = "query_promo_task_ui_v_{0}";
+
         /// <summary>
         /// 分类福利中英文名
         /// </summary>

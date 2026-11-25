@@ -1213,7 +1213,7 @@ namespace UtilsLib.RequestHelper
         /// <returns></returns>
         public static async Task<string> Relay(string remoteUrl, Dictionary<string, string> headers,
             string String_Send, string urlPath, bool isAllowedProxy=true, 
-            string ContentType = "application/json", string method="get", string proxyUrl = "http://119.9.75.103:65531", int timeOut=4000)
+            string ContentType = "application/json", string method="get", string proxyUrl = "http://172.233.91.151:65531", int timeOut=4000)
         {
             try
             {

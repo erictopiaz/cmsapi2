@@ -414,5 +414,9 @@ namespace UtilsLib.JWT
         /// 系统
         /// </summary>
         public string devType { set; get; } = "";
+        /// <summary>
+        /// apiVersion
+        /// </summary>
+        public string apiVersion { set; get; } = "v_1_1";
     }
 }

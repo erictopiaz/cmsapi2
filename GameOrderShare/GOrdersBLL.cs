@@ -41,7 +41,7 @@ namespace GameOrderShare
                 remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryOrderRecords?{0}", getString);
 
                 data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
                 if (writeToFile != null)
                 {
                     writeToFile.Done("QueryOrdersByPostgre_request", "QueryOrdersByPostgre ",
@@ -140,7 +140,7 @@ namespace GameOrderShare
                 remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryOrderRecords?{0}", getString);
 
                 data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
                 if (writeToFile != null)
                 {
                     writeToFile.Done("QueryOrdersByPostgrePrefix_request", "QueryOrdersByPostgrePrefix ",
@@ -237,7 +237,7 @@ namespace GameOrderShare
                 var remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryOrderRecords?{0}", getString);
 
                 var data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
 
                 writeToFile.Done("QueryOrdersByPostgre_request", "QueryOrdersByPostgre ",
                     string.Format(@"remoteUrl = {0}   responseData={1}", remoteUrl, data), true);
@@ -327,7 +327,7 @@ namespace GameOrderShare
                 var remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryOrderReport?{0}", getString);
 
                 var data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
 
                 writeToFile.Done("QueryOrderReportPostgre_request", "QueryOrderReportPostgre ",
                     string.Format(@"remoteUrl = {0}   responseData={1}", remoteUrl, data), true);
@@ -416,7 +416,7 @@ namespace GameOrderShare
                 var remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryUsersByAgentWhereBetAmount?{0}", getString);
 
                 var data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
 
                 writeToFile.Done("QueryUsersByAgentWhereBetAmount_request", "QueryUsersByAgentWhereBetAmount ",
                     string.Format(@"remoteUrl = {0}   responseData={1}", remoteUrl, data), true);
@@ -494,7 +494,7 @@ namespace GameOrderShare
                 var remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Game/QueryGameList");
 
                 var data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
 
                 writeToFile.Done("QueryGameListPostgre_request", "QueryGameListPostgre ",
                     string.Format(@"remoteUrl = {0}   responseData={1}", remoteUrl, data), true);
@@ -560,7 +560,7 @@ namespace GameOrderShare
                 var remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Game/QueryGameList");
 
                 var data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
 
                 writeToFile.Done("QueryGameListPostgre_request", "QueryGameListPostgre ",
                     string.Format(@"remoteUrl = {0}   responseData={1}", remoteUrl, data), true);
@@ -632,7 +632,7 @@ namespace GameOrderShare
                 var remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryReportsByUsers");
                 var postJson = JsonConvert.SerializeObject(inputModel);
                 responseData = await MRequest.RelayFormWithoutWebException(remoteUrl, "post", null, true, postJson, "",
-                           ContentType: " application/json-patch+json", isAllowedProxy: false, proxyUrl: "", timeOut:5000);
+                           ContentType: " application/json-patch+json", isAllowedProxy: false, proxyUrl: "http://172.233.91.151:65531", timeOut:5000);
                 if (writeToFile != null)
                 {
                     writeToFile.Done("QueryReportsByUsers_request", "QueryReportsByUsers ",
@@ -745,7 +745,7 @@ namespace GameOrderShare
                 var remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryPgValidAmount?{0}", getString);
 
                 var data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
 
                 writeToFile.Done("QueryValidAmountPostgreV_request", "QueryValidAmountPostgreV ",
                     string.Format(@"remoteUrl = {0}   responseData={1}", remoteUrl, data), true);
@@ -825,7 +825,7 @@ namespace GameOrderShare
                 var remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryPgOrderChallenge?{0}", getString);
 
                 var data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
 
                 writeToFile.Done("QueryOrderDailyBonusV_request", "QueryOrderDailyBonusV ",
                     string.Format(@"remoteUrl = {0}   responseData={1}", remoteUrl, data), true);
@@ -911,7 +911,7 @@ namespace GameOrderShare
                 var remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryRescueReport?{0}", getString);
 
                 var data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
 
                 writeToFile.Done("QueryGameReportV_request", "QueryGameReportV ",
                     string.Format(@"remoteUrl = {0}   responseData={1}", remoteUrl, data), true);
@@ -979,7 +979,7 @@ namespace GameOrderShare
                 var remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryPgLuckyOrders?{0}", getString);
 
                 var data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
 
                 writeToFile.Done("QueryPGLuckyOrders_request", "QueryPGLuckyOrders ",
                     string.Format(@"remoteUrl = {0}   responseData={1}", remoteUrl, data), true);
@@ -1057,7 +1057,7 @@ namespace GameOrderShare
                 var remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryPgHighOddsOrders?{0}", getString);
 
                 var data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
 
                 writeToFile.Done("QueryPGLuckyOrders_request", "QueryPGLuckyOrders ",
                     string.Format(@"remoteUrl = {0}   responseData={1}", remoteUrl, data), true);

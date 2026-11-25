@@ -12,13 +12,15 @@ namespace GoogleAuth {
         /// </summary>
         /// <param name="cmsAccount">管理员账号</param>
         /// <param name="googleKey">生成谷歌验证码的加密key</param>
+        /// <param name="Authenticator">验证器</param>
         /// <returns></returns>
         public static async Task<GoogleAuthOutModel> LoadGoogleAuthData(string cmsAccount,
-            string googleKey) 
+            string googleKey,
+            TwoFactorAuthenticator Authenticator) 
         {
             try {
                 await Task.Delay(1);
-                var Authenticator = new TwoFactorAuthenticator();
+                //var Authenticator = new TwoFactorAuthenticator();
                 var setupInfo = Authenticator.GenerateSetupCode("AWC CMS GA",
                                                                 cmsAccount,
                                                                 googleKey,
@@ -43,12 +45,13 @@ namespace GoogleAuth {
         /// </summary>
         /// <param name="code">输入的谷歌验证器 显示的代码</param>
         /// <param name="googleKey">生成谷歌验证码的加密key</param>
+        /// <param name="Authenticator">验证器</param>
         /// <returns></returns>
-        public static async Task<bool> VerifyGoogleAuthCode(int code, string googleKey) 
+        public static async Task<bool> VerifyGoogleAuthCode(int code, string googleKey, TwoFactorAuthenticator Authenticator) 
         {
             try {
                 await Task.Delay(1);
-                var Authenticator = new TwoFactorAuthenticator();
+                //var Authenticator = new TwoFactorAuthenticator() ;
                 return Authenticator.ValidateTwoFactorPIN(googleKey, code.ToString());
             }
             catch (Exception ) {
