@@ -4,6 +4,7 @@ using CMS.API.Filter;
 using CMS.API.Middleware;
 using Dapper.FluentMap;
 using DBLibs.WXDapper;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using GoogleAuthenticatorService.Core;
 using LogLib.Config;
@@ -14,7 +15,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -88,6 +91,8 @@ namespace CMS.API
                     });
                 };
             });
+
+           
             #endregion
             #region 读取配置文件  ching 这里配置DAPPER 初始化信息
             DapperStringBase.ConnectionString = Configuration.GetConnectionString("DapperConnection");
@@ -174,7 +179,7 @@ namespace CMS.API
             services.AddSingleton<TwoFactorAuthenticator>();
             #endregion
 
-            #region FluentValidation
+            #region FluentValidation old for vin
             services.AddMvc(
                 option =>
                 {
