@@ -279,7 +279,7 @@ namespace CMS.Core.Application.存款管理.Transact
                                 wcching.Headers[HttpRequestHeader.ContentType] = "application/json";
                                 wcching.Headers[HttpRequestHeader.Authorization] = promoApiToken;
                                 wcching.Encoding = System.Text.Encoding.UTF8;
-                                var result = wcching.UploadString(new Uri("http://awcmgt22-promoservice.azurewebsites.net/api/autopromo/AppDepositPromo"),
+                                var result = wcching.UploadString(new Uri($"{APromoConfig.promoUrl}/api/autopromo/AppDepositPromo"),
                                             Newtonsoft.Json.JsonConvert.SerializeObject(new Dictionary<string, dynamic>() {
                                         { "orderNo", depositRow.merchantno },
                                         { "account", depositRow.account },

@@ -40,8 +40,6 @@ namespace CMS.Core.Application.账号管理.Queries
         public DateTime? endTime { get; set; }
 
 
-
-
     }
 
     public class 交易记录Return

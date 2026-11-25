@@ -343,7 +343,7 @@ namespace CMS.Core.Application.存款管理.Transact
                     wcching.Headers[HttpRequestHeader.Authorization] = notifyChingAutoPromo_Token;
                     wcching.Encoding = System.Text.Encoding.UTF8;
                     //Thread.Sleep(1000);
-                    var result = wcching.UploadString(new Uri("http://awcmgt22-promoservice.azurewebsites.net/api/autopromo/AppDepositPromo"), notifyChingAutoPromo_Data);
+                    var result = wcching.UploadString(new Uri($"{APromoConfig.promoUrl}/api/autopromo/AppDepositPromo"), notifyChingAutoPromo_Data);
                     _logger.LogInformation("ChingAutoPromo - [Notify] orderid:{0}, result:{1}", notifyChingAutoPromo_merchantno, result);
                 }
                 catch (Exception ex)

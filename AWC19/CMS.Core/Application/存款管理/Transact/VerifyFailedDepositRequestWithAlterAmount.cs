@@ -1,29 +1,29 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using AWC2019.Core.Validation;
+using AWC2019.Core.ViewModel;
+using CMS.Core.Application.提款管理;
+using CMS.Data.Models;
+using Dapper;
+using Dapper.Contrib.Extensions;
+using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using NSwag.Annotations; 
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
+using ShareEntity.Models;
+using ShareEntity.OutputModels;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Net;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
-using AutoMapper;
-using CMS.Data.Models;
-using AWC2019.Core.ViewModel;
-using FluentValidation;
-using System.Data.SqlClient;
-using Dapper;
-using AWC2019.Core.Validation;
-using Newtonsoft.Json;
-using CMS.Core.Application.提款管理;
-using ShareEntity.OutputModels;
-using System.Runtime.Serialization;
 using System.Transactions;
-using Microsoft.Extensions.Logging;
-using NSwag.Annotations; 
-using Dapper.Contrib.Extensions;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using Thirdpay.OnePay;
-using System.Net;
-using ShareEntity.Models;
 using UtilsLib.ValidationAttr;
 //using System.Runtime.Serialization;
 
@@ -286,8 +286,7 @@ namespace CMS.Core.Application.存款管理.Transact
                                 wcching.Headers[HttpRequestHeader.Authorization] = promoApiToken;
                                 wcching.Encoding = System.Text.Encoding.UTF8;
                                 Thread.Sleep(1000);
-
-                                var result = wcching.UploadString(new Uri("http://awcmgt22-promoservice.azurewebsites.net/api/autopromo/AppDepositPromo"),
+                                var result = wcching.UploadString(new Uri($"{APromoConfig.promoUrl}/api/autopromo/AppDepositPromo"),
                                             Newtonsoft.Json.JsonConvert.SerializeObject(new Dictionary<string, dynamic>() {
                                         { "orderNo", depositRowToCancel.merchantno },
                                         { "account", depositRowToCancel.account },

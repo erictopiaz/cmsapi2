@@ -17,6 +17,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.系统管理.Queries
 {
@@ -25,12 +26,13 @@ namespace CMS.Core.Application.系统管理.Queries
     /// </summary>
     public class GetUsers : PagingModel, IRequest<ResponseModel<PagingModel<GetUsersReturn>>>
     {
-        [MaxLength(25)]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         public string belongs { get; set; }
         public int status { get; set; } = -1;
         public int online { get; set; } = -1;
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
 
     }

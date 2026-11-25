@@ -228,42 +228,7 @@ namespace CMS.Core.Application.提款管理.Queries
                             ["account"] = withdrawRow.account,
                             ["id"] = withdrawRow.id
                         }.ToString(Formatting.None));
-                        //try
-                        //{
-                        //    var promoApiToken = Common.Security.GetToken3(withdrawRow.account, 0, "77.66.77.66",
-                        //        DateTime.UtcNow.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss"), "/api/autopromo/AppWithdrawPromo", Guid.NewGuid().ToString());
-                        //    /*
-                        //    {
-                        //      "wid": 0,
-                        //      "account": "string",
-                        //      "ipaddress": "string",
-                        //      "macaddress": "string",
-                        //      "promoType": 0,
-                        //      "device": 0
-                        //    }
-                        //     */
-
-                        //    WebClient wcching = new WebClient();
-                        //    wcching.Headers[HttpRequestHeader.ContentType] = "application/json";
-                        //    wcching.Headers[HttpRequestHeader.Authorization] = promoApiToken;
-                        //    wcching.Encoding = System.Text.Encoding.UTF8;
-                        //    var result = wcching.UploadString(new Uri("http://awcmgt22-promoservice.azurewebsites.net/api/autopromo/AppWithdrawPromo"),
-                        //                Newtonsoft.Json.JsonConvert.SerializeObject(new Dictionary<string, dynamic>() {
-                        //                    { "wid", withdrawRow.id },
-                        //                    { "account", withdrawRow.account },
-                        //                    { "ipaddress", "77.66.77.66"},
-                        //                    { "macaddress", "none"},
-                        //                    { "promoType",10},
-                        //                    { "device", 0},
-                        //                })
-                        //            );
-                        //    _logger.LogInformation("ChingAutoPromo - [Notify] WithdrawID:{0}, result:{1}", withdrawRow.id, result);
-
-                        //}
-                        //catch (Exception ex)
-                        //{
-                        //    _logger.LogError("ChingAutoPromo - [Exception] WithdrawID:{0}, message:{1}", withdrawRow.id, ex.Message);
-                        //}
+                       
 
                     }
 

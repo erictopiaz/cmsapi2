@@ -62,7 +62,7 @@ namespace CMS.Core.Application.账号管理.Queries
         /// <summary>
         /// 来源网址
         /// </summary>
-        [UrlValidate(150, MinimumLength = 10, IsAllowedEmpty = false, ErrorMessage = "referrer rule error")]
+        [UrlValidate(150, MinimumLength = 10, IsAllowedEmpty = true, ErrorMessage = "referrer rule error")]
         public string referrerreg { get; set; }
         [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string affaccount { get; set; }
