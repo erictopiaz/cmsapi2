@@ -21,6 +21,7 @@ using ShareEntity.Models;
 using ShareEntity.OutputModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -312,13 +313,21 @@ namespace CMS.Core.Application.账号管理.Queries
     /// </summary>
     public class 关联搜索 : PagingModel, IRequest<ResponseModel<PagingModel<关联搜索Return>>>
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
+        [IpValidate(50, MinimumLength = 8, IsAllowedEmpty = true, ErrorMessage = "ip_format_error")]
         public string ip { get; set; }
+        [MaxLength(20)]
         public string uid { get; set; }
+        [MaxLength(50)]
         public string location { get; set; }
+        [MaxLength(50)]
         public string fingerprintlist { get; set; }
         public DateTime createtime { get; set; }
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
+        [MaxLength(150)]
         public string remark { get; set; }
         public List<int> currencys { get; set; }
         public int currencycode { get; set; }

@@ -22,6 +22,7 @@ using UtilsLib;
 using static Dapper.SqlBuilder;
 using CMS.Core.Application.Account.Queries;
 using System.ComponentModel.DataAnnotations;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Queries
 {
@@ -33,12 +34,15 @@ namespace CMS.Core.Application.账号管理.Queries
         public List<int> currencys { get; set; }
         public int currencycode { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
 
+        [MaxLength(20)]
         public string uid { get; set; }
-        [MaxLength(30)]
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "aff_account_format_error")]
         public string affaccount { set; get; } = "";
     }
 

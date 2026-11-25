@@ -16,6 +16,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.系统管理.Queries
 {
@@ -24,6 +25,7 @@ namespace CMS.Core.Application.系统管理.Queries
     /// </summary>
     public class GetUsers : PagingModel, IRequest<ResponseModel<PagingModel<GetUsersReturn>>>
     {
+        [MaxLength(25)]
         public string account { get; set; }
         public string belongs { get; set; }
         public int status { get; set; } = -1;

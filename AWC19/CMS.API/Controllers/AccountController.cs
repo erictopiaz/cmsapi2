@@ -197,38 +197,38 @@ namespace CMS.API.Controllers
             return await Task.FromResult(Ok(result));
         }
 
-        [HttpPost]
-        [Description("邮件发送-导入")]
-        [Route("ImportSendMail")]
-        [ActionName("邮件发送-导入")]
-        public async Task<IActionResult> 导入邮件(邮件发送_导入 x)
-        {
-            x.Admin = Common.Security.DESDeCode_Name(User.Identity.Name).ToLower().Trim();
-            var result = await _mediator.Send(x);
-            return await Task.FromResult(Ok(result));
-        }
+        //[HttpPost]
+        //[Description("邮件发送-导入")]
+        //[Route("ImportSendMail")]
+        //[ActionName("邮件发送-导入")]
+        //public async Task<IActionResult> 导入邮件(邮件发送_导入 x)
+        //{
+        //    x.Admin = Common.Security.DESDeCode_Name(User.Identity.Name).ToLower().Trim();
+        //    var result = await _mediator.Send(x);
+        //    return await Task.FromResult(Ok(result));
+        //}
 
-        [HttpPost]
-        [Description("邮件发送-发送")]
-        [Route("SetMailToSend")]
-        [ActionName("邮件发送-发送")]
-        public async Task<IActionResult> 发送邮件(邮件发送_改状态 x)
-        {
-            x.status = 2;
-            var result = await _mediator.Send(x);
-            return await Task.FromResult(Ok(result));
-        }
+        //[HttpPost]
+        //[Description("邮件发送-发送")]
+        //[Route("SetMailToSend")]
+        //[ActionName("邮件发送-发送")]
+        //public async Task<IActionResult> 发送邮件(邮件发送_改状态 x)
+        //{
+        //    x.status = 2;
+        //    var result = await _mediator.Send(x);
+        //    return await Task.FromResult(Ok(result));
+        //}
 
-        [HttpPost]
-        [Description("邮件发送-取消")]
-        [Route("CancelSendMail")]
-        [ActionName("邮件发送-取消")]
-        public async Task<IActionResult> 取消邮件(邮件发送_改状态 x)
-        {
-            x.status = 3;
-            var result = await _mediator.Send(x);
-            return await Task.FromResult(Ok(result));
-        }
+        //[HttpPost]
+        //[Description("邮件发送-取消")]
+        //[Route("CancelSendMail")]
+        //[ActionName("邮件发送-取消")]
+        //public async Task<IActionResult> 取消邮件(邮件发送_改状态 x)
+        //{
+        //    x.status = 3;
+        //    var result = await _mediator.Send(x);
+        //    return await Task.FromResult(Ok(result));
+        //}
 
 
         [HttpPost]
@@ -243,18 +243,18 @@ namespace CMS.API.Controllers
             return await Task.FromResult(Ok(result));
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        [Description("TEST")]
-        [Route("TEST")]
-        [ActionName("TEST")]
-        public async Task<IActionResult> TEST(TestFluent x)
-        {
-            //x.Admin = Common.Security.DESDeCode_Name(User.Identity.Name).ToLower().Trim();
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[Description("TEST")]
+        //[Route("TEST")]
+        //[ActionName("TEST")]
+        //public async Task<IActionResult> TEST(TestFluent x)
+        //{
+        //    //x.Admin = Common.Security.DESDeCode_Name(User.Identity.Name).ToLower().Trim();
 
-            var result = await _mediator.Send(x);
-            return await Task.FromResult(Ok(result));
-        }
+        //    var result = await _mediator.Send(x);
+        //    return await Task.FromResult(Ok(result));
+        //}
 
 
         [HttpPost]

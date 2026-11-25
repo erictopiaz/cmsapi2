@@ -20,6 +20,8 @@ using ShareEntity.OutputModels;
 using Org.BouncyCastle.Ocsp;
 using Newtonsoft.Json.Linq;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -29,12 +31,17 @@ namespace CMS.Core.Application.账号管理.Transact
     public class 邮件发送_新增 : IRequest<邮件发送_新增Return>
     {
         public string id{ get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
+        [MaxLength(150)]
         public string template { get; set; }
+
+        [MaxLength(150)]
         public string remark { get; set; }
-        //[JsonIgnore]
+        [MaxLength(150)]
         public string templatedata{ get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
 
     }
