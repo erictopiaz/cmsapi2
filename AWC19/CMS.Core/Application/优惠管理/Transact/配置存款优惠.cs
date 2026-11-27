@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.优惠管理.Transact
 {
@@ -20,10 +21,12 @@ namespace CMS.Core.Application.优惠管理.Transact
     /// </summary>
     public class 配置存款优惠 : IRequest<配置存款优惠Return>
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         public List<int> specialPromo { set; get; }
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 

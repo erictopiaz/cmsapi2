@@ -30,11 +30,13 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 查询会员加码比例 : IRequest<查询会员加码比例Return>
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
 
         public int? id { set; get; }
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 

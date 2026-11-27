@@ -17,6 +17,7 @@ using CMS.Core.Application.提款管理;
 using CMS.Core.ViewModel;
 using ShareEntity.OutputModels;
 using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.存款管理.Queries
 {
@@ -30,6 +31,7 @@ namespace CMS.Core.Application.存款管理.Queries
     public class 第三方平台Return
     {
         public long id { get; set; }
+        [MaxLength(30)]
         public string name { get; set; } 
 
     }

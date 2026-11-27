@@ -12,18 +12,24 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.账号管理.Transact {
    
     /// <summary>
     /// MediatR Request that returns a List of LBModel
     /// </summary>
-    public class 更新会员充值实名 : IRequest<更新会员充值实名Return> {
+    public class 更新会员充值实名 : IRequest<更新会员充值实名Return> 
+    {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         public int id { set; get; }
+        [MaxLength(20)]
         public string realNames { set; get; }
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 

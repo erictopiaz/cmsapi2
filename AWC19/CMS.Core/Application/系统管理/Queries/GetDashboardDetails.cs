@@ -21,6 +21,7 @@ using System.Text;
 using UtilsLib.JWT;
 using UtilsLib;
 using System.Security.Cryptography.Xml;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.系统管理.Queries
 {
@@ -33,6 +34,8 @@ namespace CMS.Core.Application.系统管理.Queries
         /// 市场管理人员账号（区分首页统计数据使用）
         /// </summary>
         [JsonIgnore]
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
 
         public string loginKey { set; get; } = "";

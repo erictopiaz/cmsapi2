@@ -17,6 +17,7 @@ using CMS.Core.Application.账号管理;
 using Microsoft.Extensions.Logging;
 using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -26,8 +27,10 @@ namespace CMS.Core.Application.账号管理.Transact
     public class AccountLoginUnlock : IRequest<AccountLoginUnlockReturn>
     {
         public long id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 

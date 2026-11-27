@@ -18,6 +18,8 @@ using Microsoft.Extensions.Logging;
 using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -26,10 +28,13 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 绑定卡删除 : IRequest<绑定卡删除Return>
     {
+        [MaxLength(10)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
         public int CardIndex { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 

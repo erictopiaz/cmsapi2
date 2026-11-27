@@ -20,6 +20,7 @@ using ShareEntity.OutputModels;
 using Microsoft.Extensions.Logging;
 using Dapper.Contrib.Extensions;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.系统管理.Queries
 {
@@ -28,10 +29,14 @@ namespace CMS.Core.Application.系统管理.Queries
     /// </summary>
     public class GetApiAccessList : IRequest<ResponseModel<IEnumerable<GetApiAccessListReturn>>>
     {
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         [JsonIgnore]
         public Dictionary<string, string> ApiList { get; set; }
         [JsonIgnore]
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
 
     }

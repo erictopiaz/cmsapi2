@@ -82,8 +82,8 @@ WHERE account=@account and amountactive-@amount>=0 ";
         /// 记录提款记录
         /// </summary>
         public const string InsertWithdrawSql = @"
-INSERT INTO OFWITHDRAWAL(currencycode, currency, account, realname,  amount,fee,  cardno, cardaddress, cardbank, requesttime, requestip, requestaddress, status,balance,referrer,referrerreg,level,referenceguid,gametype,affaccount,misc,saler,wid,delayToTime,fixWithdrawP,pid,verify_guid)
-                 VALUES (@currencycode,@currency,@account,@cardname,@amount,@fee,@cardno,@cardaddress,@cardbank,@requesttime,@requestip,@requestaddress,@status,@balance,@referrer,@referrerreg,@level,@referenceguid,@gametype,@affaccount,@misc,@saler,@wid,@delaytotime,@fixwithdrawp,@pid,@verify_guid)";
+INSERT INTO OFWITHDRAWAL(currencycode, currency, account, realname,  amount,fee,  cardno, cardaddress, cardbank, requesttime, requestip, requestaddress, status,balance,referrer,referrerreg,level,referenceguid,gametype,affaccount,misc,saler,wid,delayToTime,fixWithdrawP,pid,verify_guid,checkperson)
+                 VALUES (@currencycode,@currency,@account,@cardname,@amount,@fee,@cardno,@cardaddress,@cardbank,@requesttime,@requestip,@requestaddress,@status,@balance,@referrer,@referrerreg,@level,@referenceguid,@gametype,@affaccount,@misc,@saler,@wid,@delaytotime,@fixwithdrawp,@pid,@verify_guid,@checkperson)";
 
 
         /// <summary>
@@ -109,7 +109,8 @@ WHERE account=@account and id=@id and status=1";
             using (SqlConnection connection = new SqlConnection(CMS.Data.MainDB.WITHWRITE_CONNECTIONSTRING))
             {
                 var withdrawRow = connection.Get<ofWithdrawal>(request.Id);
-                if (withdrawRow.wid != 1)
+                if (withdrawRow.wid != 1 
+                    && withdrawRow.wid !=3)
                 {
                     return new ResponseModel<SplitWithdrawOrderReturn>()
                     {
@@ -117,6 +118,19 @@ WHERE account=@account and id=@id and status=1";
                         message = "非网银提示，金额不让切割",
                         Data = null
                     };
+                }
+
+                if(withdrawRow.wid == 3)
+                {
+                    if (withdrawRow.checkperson.Contains("lockedby|"))
+                    {
+                        return new ResponseModel<SplitWithdrawOrderReturn>()
+                        {
+                            code = ShareEntity.Global.ResponseCode.code.FAIL,
+                            message = "定额提款锁定，金额不让切割",
+                            Data = null
+                        };
+                    }
                 }
 
                 if (withdrawRow.status != 1)
@@ -208,7 +222,8 @@ WHERE account=@account and id=@id and status=1";
                         delaytotime = withdrawRow.delayToTime, //fixWithdrawDelayTime,
                         fixwithdrawp = withdrawRow.fixWithdrawP, //fixWithdrawPromo_p,
                         pid = withdrawRow.pid, // model.pid,
-                        verify_guid = string.Format(@"{0}{1}{2}", withdrawRow.currency, UtilsLib.Common.GuidToLong(), orderIndx) //
+                        verify_guid = string.Format(@"{0}{1}{2}", withdrawRow.currency, UtilsLib.Common.GuidToLong(), orderIndx), //
+                        checkperson = withdrawRow.checkperson //如果有锁住 这里也要标记一下
                     });
                     ++orderIndx;
                 }

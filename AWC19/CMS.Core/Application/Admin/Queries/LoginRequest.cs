@@ -22,18 +22,23 @@ using JWT;
 using LogLib.Helper;
 using System.Net;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.Admin.Queries
 {
     public class LoginRequestQuery : IRequest<LoginRequestReturn>
     {
-        [Description("用户账号")]
+        [CharAndDigitalAndUnderScore(16, MinimumLength = 3, IsAllowedEmpty = true, ErrorMessage = "format_error")]
         public string Account { get; set; }
-        [Description("用户密码")]
+
+        [CharAndDigitalAndUnderScore(16, MinimumLength = 3, IsAllowedEmpty = true, ErrorMessage = "format_error")]
         public string Password { get; set; }
         [JsonIgnore]
-        public string ipaddress { get; set; }
+        [IpValidate(50, MinimumLength = 8, IsAllowedEmpty = true, ErrorMessage = "ip_format_error")]
+        public string ipaddress { get; set; } = "";
         [JsonIgnore]
+        [MaxLength(64)]
         public string fp { get; set; }
 
         public int vCode { set; get; } = 0;

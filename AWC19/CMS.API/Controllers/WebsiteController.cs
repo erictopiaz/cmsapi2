@@ -152,25 +152,25 @@ namespace CMS.API.Controllers
 
 
 
-        [HttpPost]
-        [Description("APP优惠图片列表")]
-        [Route("AppBanner")]
-        [ActionName("APP优惠图片列表")]
-        public async Task<IActionResult> AppBanner()
-        {
-            var result = await _mediator.Send(new AppBanner());
-            return await Task.FromResult(Ok(result));
-        }
+        //[HttpPost]
+        //[Description("APP优惠图片列表")]
+        //[Route("AppBanner")]
+        //[ActionName("APP优惠图片列表")]
+        //public async Task<IActionResult> AppBanner()
+        //{
+        //    var result = await _mediator.Send(new AppBanner());
+        //    return await Task.FromResult(Ok(result));
+        //}
 
-        [HttpPost]
-        [Description("APP优惠图片【更新】")]
-        [Route("AppBannerUpdate")]
-        [ActionName("APP优惠图片【更新】")]
-        public async Task<IActionResult> AppBannerUpdate(AppBannerUpdate x)
-        {
-            var result = await _mediator.Send(x);
-            return await Task.FromResult(Ok(result));
-        }
+        //[HttpPost]
+        //[Description("APP优惠图片【更新】")]
+        //[Route("AppBannerUpdate")]
+        //[ActionName("APP优惠图片【更新】")]
+        //public async Task<IActionResult> AppBannerUpdate(AppBannerUpdate x)
+        //{
+        //    var result = await _mediator.Send(x);
+        //    return await Task.FromResult(Ok(result));
+        //}
         
         [HttpPost]
         [Description("网站链接设置")]
@@ -236,27 +236,27 @@ namespace CMS.API.Controllers
         }
 
 
-        [HttpPost]
-        [Description("增加银行卡")]
-        [Route("BankCardAdd")]
-        [ActionName("增加银行卡")]
-        public async Task<IActionResult> 增加银行卡(NetBankAdd x)
-        {
-            x.Admin = Common.Security.DESDeCode_Name(User.Identity.Name).ToLower().Trim();
-            var result = await _mediator.Send(x);
-            return await Task.FromResult(Ok(result));
-        }
+        //[HttpPost]
+        //[Description("增加银行卡")]
+        //[Route("BankCardAdd")]
+        //[ActionName("增加银行卡")]
+        //public async Task<IActionResult> 增加银行卡(NetBankAdd x)
+        //{
+        //    x.Admin = Common.Security.DESDeCode_Name(User.Identity.Name).ToLower().Trim();
+        //    var result = await _mediator.Send(x);
+        //    return await Task.FromResult(Ok(result));
+        //}
 
-        [HttpPost]
-        [Description("银行卡禁用")]
-        [Route("BankCardDisable")]
-        [ActionName("银行卡禁用")]
-        public async Task<IActionResult> BankCardDisable(NetBankDisable x)
-        {
-            x.Admin = Common.Security.DESDeCode_Name(User.Identity.Name).ToLower().Trim();
-            var result = await _mediator.Send(x);
-            return await Task.FromResult(Ok(result));
-        }
+        //[HttpPost]
+        //[Description("银行卡禁用")]
+        //[Route("BankCardDisable")]
+        //[ActionName("银行卡禁用")]
+        //public async Task<IActionResult> BankCardDisable(NetBankDisable x)
+        //{
+        //    x.Admin = Common.Security.DESDeCode_Name(User.Identity.Name).ToLower().Trim();
+        //    var result = await _mediator.Send(x);
+        //    return await Task.FromResult(Ok(result));
+        //}
 
         [HttpPost]
         [Description("第三方商户禁用")]

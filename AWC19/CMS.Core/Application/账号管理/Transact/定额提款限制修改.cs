@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Text.Json.Serialization;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact {
   
@@ -21,6 +22,7 @@ namespace CMS.Core.Application.账号管理.Transact {
         /// <summary>
         /// 会员账号根据id 获取账号
         /// </summary>
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         /// <summary>
         /// 会员id
@@ -33,6 +35,7 @@ namespace CMS.Core.Application.账号管理.Transact {
 
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 

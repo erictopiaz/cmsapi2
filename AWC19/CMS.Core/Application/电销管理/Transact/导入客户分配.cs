@@ -21,6 +21,7 @@ using Dapper.Contrib.Extensions;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Xml.Schema;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.电销管理.Queries
 {
@@ -29,6 +30,7 @@ namespace CMS.Core.Application.电销管理.Queries
     /// </summary>
     public class 导入客户分配Query : IRequest<ResponseModel<导入客户分配Return>>
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
         public string accountassignment { get; set; }
     }
@@ -65,7 +67,7 @@ namespace CMS.Core.Application.电销管理.Queries
         protected override ResponseModel<导入客户分配Return> Handle(导入客户分配Query request)
         {
             // Verify the Accounts and Admins
-            List<string> assignmentList = new List<string>(request.accountassignment.Split('\n'));
+            List<string> assignmentList = new List<string>(request.accountassignment.Replace("'","''").Split('\n'));
             List<string[]> singleAssignment = new List<string[]>();
 
             List<string> accountList = new List<string>();

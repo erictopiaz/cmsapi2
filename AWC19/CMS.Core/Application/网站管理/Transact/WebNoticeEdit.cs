@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using UtilsLib.Merchant;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 //using System.Runtime.Serialization;
 
 namespace CMS.Core.Application.网站管理.Queries
@@ -37,6 +38,8 @@ namespace CMS.Core.Application.网站管理.Queries
         public int currencycode { get; set; } = 156;
         public DateTime? ExpireDate{ get; set; }
         [JsonIgnore]
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
         /// <summary>
         /// 品牌
@@ -85,7 +88,7 @@ namespace CMS.Core.Application.网站管理.Queries
 
             #region 解析出多语系
 
-            var contents = request.Content.Split("###");//0：中，1:英，2：越南，3：印度
+            var contents = request.Content.Replace("'","''").Split("###");//0：中，1:英，2：越南，3：印度
             var langModels = new List<LangModel>() {
                 new LangModel() {
                     lang = 1,

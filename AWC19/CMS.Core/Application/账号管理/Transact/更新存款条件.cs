@@ -20,6 +20,7 @@ using ShareEntity.OutputModels;
 using Newtonsoft.Json.Linq;
 using MongoDB.Driver;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -29,6 +30,7 @@ namespace CMS.Core.Application.账号管理.Transact
     public class 更新存款条件 : IRequest<更新存款条件Return>
     {
         public long id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         public string[] depositrules { get; set; }
         /// <summary>
@@ -37,6 +39,7 @@ namespace CMS.Core.Application.账号管理.Transact
         /// </summary>
         public int limitType { get; set; } = 0;
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 
@@ -116,13 +119,13 @@ namespace CMS.Core.Application.账号管理.Transact
                         miscDict.Add("depositrules", string.Join(",", request.depositrules));
 
                     string miscReconvert = Newtonsoft.Json.JsonConvert.SerializeObject(miscDict);
-                    userDetail.misc = miscReconvert;
+                    userDetail.misc = miscReconvert.Replace("'","''");
                 }
                 else {
                     string miscReconvert = Newtonsoft.Json.JsonConvert.SerializeObject(new Dictionary<string, string>() {
                         { "depositrules", string.Join(",", request.depositrules) }
                     });
-                    userDetail.misc = miscReconvert;
+                    userDetail.misc = miscReconvert.Replace("'","''");
                 }
 
                 bool updateResult = connection.Update<ofUser>(userDetail);

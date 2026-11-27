@@ -15,12 +15,14 @@ using ShareEntity.Models;
 using ShareEntity.SqlCommandText;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Queries
 {
@@ -32,12 +34,15 @@ namespace CMS.Core.Application.账号管理.Queries
         /// <summary>
         /// 会员id
         /// </summary>
+        [MaxLength(20)]
         public string id { get; set; }
         /// <summary>
         /// 会员账号
         /// </summary>
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
         public int allowedToManageAgent { get; set; }
     }

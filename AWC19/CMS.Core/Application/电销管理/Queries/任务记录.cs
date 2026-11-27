@@ -20,6 +20,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using CMS.Data;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.电销管理.Queries
 {
@@ -28,7 +29,9 @@ namespace CMS.Core.Application.电销管理.Queries
     /// </summary>
     public class 电销任务Query : PagingModel, IRequest<ResponseModel<PagingModel<电销任务Return>>>
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
         public DateTime? starttime { get; set; }
         public DateTime? endtime { get; set; }

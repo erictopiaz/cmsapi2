@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Queries
 {
@@ -21,6 +22,7 @@ namespace CMS.Core.Application.账号管理.Queries
     /// </summary>
     public class 邮件发送列表 : PagingModel, IRequest<ResponseModel<PagingModel<邮件发送列表Return>>>
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         public int status { get; set; }
         public DateTime createtime { get; set; }

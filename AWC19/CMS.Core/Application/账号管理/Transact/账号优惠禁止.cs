@@ -19,6 +19,8 @@ using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using ShareEntity.InputModels.Promo;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -27,11 +29,15 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 账号优惠禁止 : IRequest<账号优惠禁止Return>
     {
+        [MaxLength(20)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
+        [MaxLength(120)]
         public string promodisabled { get; set; } = "";
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 

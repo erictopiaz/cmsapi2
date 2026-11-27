@@ -37,7 +37,7 @@ namespace CMS.Core
                     wcching.Headers[HttpRequestHeader.ContentType] = "application/json";
                     wcching.Headers[HttpRequestHeader.Authorization] = promoApiToken;
                     wcching.Encoding = System.Text.Encoding.UTF8;
-                    fqdn = string.Concat("http://awcmgt22-promoservice.azurewebsites.net" + api);
+                    fqdn = string.Concat($"{APromoConfig.promoUrl}" + api);
                     var result = wcching.UploadString(new Uri(fqdn),
                         jsonData);
 

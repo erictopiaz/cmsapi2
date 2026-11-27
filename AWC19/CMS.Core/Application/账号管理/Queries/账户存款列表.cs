@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Queries
 {
@@ -23,9 +24,11 @@ namespace CMS.Core.Application.账号管理.Queries
     /// </summary>
     public class 账户存款列表 : PagingModel, IRequest<ResponseModel<PagingModel<账户存款列表Return>>>
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         public DateTime startdate { get; set; }
         public DateTime enddate { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
         public int currencycode { get; set; } = 156;
 

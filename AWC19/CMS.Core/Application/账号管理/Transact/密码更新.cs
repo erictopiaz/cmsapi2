@@ -14,11 +14,13 @@ using ShareEntity.Models;
 using ShareEntity.OutputModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -27,10 +29,14 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 密码更新 : IRequest<密码更新Return>
     {
+        [MaxLength(20)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "pwd_format_error")]
         public string Password { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 

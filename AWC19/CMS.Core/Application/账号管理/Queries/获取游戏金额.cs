@@ -24,6 +24,7 @@ using ShareEntity.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -34,6 +35,7 @@ using System.Threading.Tasks;
 using UtilsLib;
 using UtilsLib.lang;
 using UtilsLib.Merchant;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Queries
 {
@@ -42,10 +44,13 @@ namespace CMS.Core.Application.账号管理.Queries
     /// </summary>
     public class 获取游戏金额 : IRequest<获取游戏金额Return>
     {
+        [MaxLength(10)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
         public string GameCode { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
 
         public int currencyType { set; get; } = 156;

@@ -19,6 +19,8 @@ using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using ShareEntity.InputModels.Promo;
 using ShareEntity.Models;
+using System.ComponentModel.DataAnnotations;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -27,7 +29,9 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 账号详细Update : IRequest<账号详细UpdateReturn>
     {
+        [MaxLength(20)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
         public int level { get; set; } = -1;
         public int sex { get; set; } = -1;
@@ -86,7 +90,7 @@ namespace CMS.Core.Application.账号管理.Transact
                 if (request.status >= 0) userDetail.status = request.status;
                 if (request.sex >= 0) userDetail.sex = request.sex;
 
-                if (!string.IsNullOrEmpty(request.freezereason)) userDetail.freezereason = request.freezereason;
+                if (!string.IsNullOrEmpty(request.freezereason)) userDetail.freezereason = request.freezereason.Replace("'","''");
 
                 if (!string.IsNullOrEmpty(userDetail.misc))
                 {
@@ -96,6 +100,7 @@ namespace CMS.Core.Application.账号管理.Transact
 
                     if (!string.IsNullOrEmpty(request.promodisabled))
                     {
+                        request.promodisabled = request.promodisabled.Replace("'","''");
                         if (!request.promodisabled.StartsWith("[") && !request.promodisabled.StartsWith("]"))
                             request.promodisabled = string.Concat("[", request.promodisabled, "]");
                     }

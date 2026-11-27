@@ -43,7 +43,7 @@ namespace ShareEntity.InputModels.Bonus
         /// </summary>
         public int currencyType { set; get; } = 156;
         public int walletType { set; get; } = -1;
-
+        [MaxLength(10)]
         public string merchantAccount { set; get; } = "-1";
     }
 }

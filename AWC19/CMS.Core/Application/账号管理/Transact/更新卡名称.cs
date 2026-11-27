@@ -19,6 +19,8 @@ using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using System.Net;
 using ShareEntity.Models;
+using System.ComponentModel.DataAnnotations;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -27,11 +29,14 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 更新卡名称 : IRequest<更新卡名称Return>
     {
+        [MaxLength(20)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
         public int CardIndex { get; set; }
         public string CardName { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 
@@ -99,12 +104,12 @@ namespace CMS.Core.Application.账号管理.Transact
                 if (cardtosearch_splitted.Count == 3)
                 {
                     // INSERT the new name
-                    cardtosearch_splitted.Add(request.CardName);
+                    cardtosearch_splitted.Add(request.CardName.Replace("'","''"));
                 }
                 else if (cardtosearch_splitted.Count == 4)
                 { 
                     // UPDATE
-                    cardtosearch_splitted[3] = request.CardName;
+                    cardtosearch_splitted[3] = request.CardName.Replace("'","''");
                 }
 
                 withdrawCardList[request.CardIndex] = string.Join(',', cardtosearch_splitted);

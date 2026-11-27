@@ -64,6 +64,10 @@ namespace CMS.Core.Application.网站管理.Queries
             //return null;
             //_logger.LogInformation("Admin:{0}, Request:{1}", request.Admin, Newtonsoft.Json.JsonConvert.SerializeObject(request));
 
+            request.code = request.code.Replace("'", "''");
+            request.value = request.value.Replace("'", "''");
+            request.type = request.type.Replace("'", "''");
+
             using (SqlConnection connection = new SqlConnection(CMS.Data.MainDB.WITHWRITE_CONNECTIONSTRING))
             {
                 var jsonResult = connection.Get<ofSettings>("WEB_LINKS");

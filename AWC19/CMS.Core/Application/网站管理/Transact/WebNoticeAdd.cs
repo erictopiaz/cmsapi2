@@ -26,6 +26,8 @@ using UtilsLib;
 using UtilsLib.JWT;
 using UtilsLib.Merchant;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 //using System.Runtime.Serialization;
 
 namespace CMS.Core.Application.网站管理.Queries
@@ -45,11 +47,14 @@ namespace CMS.Core.Application.网站管理.Queries
         /// </summary>
         public int Type { get; set; } = -1;
         [JsonIgnore]
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; } = null;
         public int currencycode { get; set; } = 156;
         /// <summary>
         /// 品牌
         /// </summary>
+        [MaxLength(10)]
         public string merchantAccount { get; set; } = "-1";
     }
 

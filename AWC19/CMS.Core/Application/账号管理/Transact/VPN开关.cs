@@ -18,6 +18,8 @@ using Microsoft.Extensions.Logging;
 using Dapper.Contrib.Extensions;
 using ShareEntity.OutputModels;
 using ShareEntity.Models;
+using System.ComponentModel.DataAnnotations;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -26,10 +28,13 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class VPN开关 : IRequest<VPN开关Return>
     {
+        [MaxLength(10)]
         public string id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Account { get; set; }
         public int status { get; set; }
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 

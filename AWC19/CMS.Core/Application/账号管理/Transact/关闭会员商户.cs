@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Transact
 {
@@ -22,11 +23,13 @@ namespace CMS.Core.Application.账号管理.Transact
     /// </summary>
     public class 关闭会员商户 : IRequest<关闭会员商户Return>
     {
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         public int id { set; get; }
         public string disableMids { set; get; }
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 
@@ -72,7 +75,7 @@ namespace CMS.Core.Application.账号管理.Transact
 
             var code = (queryResult != null && queryResult.Count == 1);
             var requestMidDict = new Dictionary<int, string>();
-            var mids = request.disableMids.Split(',');
+            var mids = request.disableMids.Replace("'","''").Split(',');
             foreach (var mid in mids)
             {
                 var merchantId = 0;

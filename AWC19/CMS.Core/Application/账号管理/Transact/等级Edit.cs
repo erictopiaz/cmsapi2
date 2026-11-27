@@ -24,6 +24,8 @@ using Newtonsoft.Json.Linq;
 using CMS.Core.Application.账号管理.Queries;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 using ShareEntity.Models;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 //using System.Runtime.Serialization;
 
 namespace CMS.Core.Application.账号管理.Transact
@@ -34,9 +36,11 @@ namespace CMS.Core.Application.账号管理.Transact
     public class 等级Edit : 等级列表Return, IRequest<等级EditReturn>
     {
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "adin_format_error")]
         public string Admin { get; set; }
+        [MaxLength(10)]
         public string? currencyCode { get; set; }
-
+        [MaxLength(10)]
         public string currency { get; set; }
         
 

@@ -21,6 +21,7 @@ using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 using Dapper.Contrib.Extensions;
 using System.Net;
+using UtilsLib.ValidationAttr;
 //using System.Runtime.Serialization;
 
 namespace CMS.Core.Application.存款管理.Transact
@@ -34,6 +35,8 @@ namespace CMS.Core.Application.存款管理.Transact
         //public decimal fee { get; set; }
 
         [JsonIgnore]
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
     }
 
@@ -276,7 +279,7 @@ namespace CMS.Core.Application.存款管理.Transact
                                 wcching.Headers[HttpRequestHeader.ContentType] = "application/json";
                                 wcching.Headers[HttpRequestHeader.Authorization] = promoApiToken;
                                 wcching.Encoding = System.Text.Encoding.UTF8;
-                                var result = wcching.UploadString(new Uri("http://awcmgt22-promoservice.azurewebsites.net/api/autopromo/AppDepositPromo"),
+                                var result = wcching.UploadString(new Uri($"{APromoConfig.promoUrl}/api/autopromo/AppDepositPromo"),
                                             Newtonsoft.Json.JsonConvert.SerializeObject(new Dictionary<string, dynamic>() {
                                         { "orderNo", depositRow.merchantno },
                                         { "account", depositRow.account },

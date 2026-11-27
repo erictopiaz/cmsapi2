@@ -18,6 +18,8 @@ using CMS.Core.ViewModel;
 using ShareEntity.OutputModels;
 using Microsoft.Extensions.Logging;
 using Dapper.Contrib.Extensions;
+using UtilsLib.ValidationAttr;
+using System.ComponentModel.DataAnnotations;
 
 namespace CMS.Core.Application.存款管理.Queries
 {
@@ -27,23 +29,26 @@ namespace CMS.Core.Application.存款管理.Queries
     public class CrossTransactList : PagingModel, IRequest<ResponseModel<PagingModel<CrossTransactListReturn>>>
     {
         public int walletType { set; get; } = -1;
+        [MaxLength(10)]
         public string? merchantAccount { set; get; } = "";
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         public string withdrawaccount { get; set; }
         public float depositamount { get; set; }
         public float withdrawamount { get; set; }
+        [MaxLength(36)]
         public string orderid { get; set; } //商户单号
-        //public string MerchantOrdernNo { get; set; } // 银行单号
-        //public string Platform { get; set; } // 支付类型
         public DateTime? starttime { get; set; }
         public DateTime? endtime { get; set; }
         public int? level { get; set; } = -1;
 
         public int Status { get; set; } // 支付状态
 
+        [IpValidate(50, MinimumLength = 9, IsAllowedEmpty = true, ErrorMessage = "ip_format_error")]
         public string ipaddress { get; set; }  // 存款IP
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Affiliate { get; set; } // 代理
-        //public int Website { get; set; } = -1; // 网址
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
         [JsonIgnore]
         public List<int> currencys { get; set; }

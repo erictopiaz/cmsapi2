@@ -115,7 +115,7 @@ namespace CMS.API.BLL.Game {
 
                 remoteUrl = string.Format(@"http://103.102.47.69:19071/api/Order/QueryDayReport?{0}", getString);
                 data = await MRequest.Relay(remoteUrl, headers: null, "", "",
-                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "", timeOut: 4000);
+                    isAllowedProxy: true, ContentType: "application/json; charset=utf-8", method: "get", proxyUrl: "http://172.233.91.151:65531", timeOut: 4000);
                 if (writeToFile != null)
                 {
                     writeToFile.Done("QueryDailyGameReportByPlatAccunt_request", "QueryDailyGameReportByPlatAccunt ",

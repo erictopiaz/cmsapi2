@@ -32,13 +32,12 @@ namespace CMS.Core.Application.账号管理.Queries
     public class 交易记录 : IRequest<ResponseModel<IEnumerable<交易记录Return>>>
     {
         public long id { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
 
 
         public DateTime? startTime { get; set; }
         public DateTime? endTime { get; set; }
-
-
 
 
     }

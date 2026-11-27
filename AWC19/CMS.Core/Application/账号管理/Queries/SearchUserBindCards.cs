@@ -17,6 +17,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Queries
 {
@@ -28,12 +29,14 @@ namespace CMS.Core.Application.账号管理.Queries
         /// <summary>
         /// 会员账号
         /// </summary>
+       [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         /// <summary>
         /// 当前登录账号，可空
         /// </summary>
 
         [JsonIgnore]
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "admin_format_error")]
         public string Admin { get; set; }
     }
 

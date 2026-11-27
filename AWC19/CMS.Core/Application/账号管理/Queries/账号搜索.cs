@@ -18,6 +18,8 @@ using System.Linq;
 using System.Text;
 using UtilsLib.lang;
 using ShareEntity.Models;
+using System.ComponentModel.DataAnnotations;
+using UtilsLib.ValidationAttr;
 
 namespace CMS.Core.Application.账号管理.Queries
 {
@@ -35,28 +37,49 @@ namespace CMS.Core.Application.账号管理.Queries
         /// inr:  bayo+ofUser.id
         /// awc:  awc+ofUser.id
         /// </summary>
-        public string uid { get; set; } 
+        [MaxLength(19)]
+        public string uid { get; set; }
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string account { get; set; }
         
         public DateTime starttime { get; set; }
         public DateTime endtime { get; set; }
+        /// <summary>
+        /// 电话号码
+        /// </summary>
+        [DigitalValidate(20, MinimumLength = 5, IsAllowedEmpty = true, ErrorMessage = "phone number error")]
         public string telephone { get; set; }
+
+        [MaxLength(50)]
         public string email { get; set; }
+        [MaxLength(20)]
         public string realname { get; set; }
 
         public int level { get; set; }
         public int currencytype { get; set; }
         public int status { get; set; } = -1;
+        /// <summary>
+        /// 来源网址
+        /// </summary>
+        [UrlValidate(150, MinimumLength = 10, IsAllowedEmpty = true, ErrorMessage = "referrer rule error")]
         public string referrerreg { get; set; }
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string affaccount { get; set; }
+        [MaxLength(20)]
         public string marcode { get; set; }
+        [MaxLength(12)]
         public string qq { get; set; }
-        //public int trynumber { get; set; }
+        [MaxLength(25)]
         public string bbinaccount { get; set; }
+        [MaxLength(20)]
         public string birthday { get; set; }
         public float? depositamount { get; set; } = -1;
+        [IpValidate(50, MinimumLength = 8, IsAllowedEmpty = true, ErrorMessage = "ip_format_error")]
         public string ipaddress { get; set; }
+        [MaxLength(50)]
         public string withdrawcard { get; set; }
+        [MaxLength(20)]
         public string anomally { get; set; }
         /// <summary>
         /// 默认风控
@@ -71,8 +94,9 @@ namespace CMS.Core.Application.账号管理.Queries
         /// </summary>
         public int vipTypeAready { set; get; } = -1;
         public int walletType { set; get; } = -1;
+        [MaxLength(5)]
         public string? merchantAccount { set; get; } = "";
-
+        [MaxLength(12)]
         public string Admin { get; set; }
 
     }

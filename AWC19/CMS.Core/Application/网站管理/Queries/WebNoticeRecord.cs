@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using UtilsLib;
 using UtilsLib.JWT;
 using UtilsLib.Merchant;
+using System.ComponentModel.DataAnnotations;
 //using System.Runtime.Serialization;
 
 namespace CMS.Core.Application.网站管理.Queries
@@ -54,6 +55,7 @@ namespace CMS.Core.Application.网站管理.Queries
         /// <summary>
         /// 品牌
         /// </summary>
+        [MaxLength(10)]
         public string merchantAccount { set; get; } = "-1";
     }
 
@@ -119,7 +121,7 @@ namespace CMS.Core.Application.网站管理.Queries
                 "FETCH NEXT @Next ROWS ONLY");
 
             // FILL UP THE WHERE CLAUSE
-            if (!string.IsNullOrEmpty(request.Content)) builder.Where("body LIKE @CONTENT", new { CONTENT = string.Concat("%", request.Content, "%") });
+            if (!string.IsNullOrEmpty(request.Content)) builder.Where("body LIKE @CONTENT", new { CONTENT = string.Concat("%", request.Content.Replace("'","''"), "%") });
             if (request.Status >= 0) builder.Where("status=@STATUS", new { STATUS = request.Status });
             if (request.Type >= 0) builder.Where("type=@TYPE", new { TYPE = request.Type });
             if (request.currencycode >= 0) builder.Where("currencyType=@currencycode", new { currencycode = request.currencycode });

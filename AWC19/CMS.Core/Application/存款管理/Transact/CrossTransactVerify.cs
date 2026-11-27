@@ -20,6 +20,7 @@ using System.Data.SqlClient;
 using System.Net;
 using System.Threading.Tasks;
 using System.Transactions;
+using UtilsLib.ValidationAttr;
 //using System.Runtime.Serialization;
 
 namespace CMS.Core.Application.存款管理.Transact
@@ -33,6 +34,8 @@ namespace CMS.Core.Application.存款管理.Transact
         //public decimal fee { get; set; }
 
         [JsonIgnore]
+
+        [CharAndDigitalAndUnderScore(20, MinimumLength = 4, IsAllowedEmpty = true, ErrorMessage = "account_format_error")]
         public string Admin { get; set; }
 
     }
@@ -324,178 +327,6 @@ namespace CMS.Core.Application.存款管理.Transact
                         };
                     }
 
-                    #region trash
-
-                    //// Gets the FEE and REBATE
-                    //var thirdpayRow = connection.Get<ofThirdpay>("10530");
-                    //var fee = depositRow.fee.ToString();
-                    //string misc = thirdpayRow.misc;
-                    //decimal rebatePercentage = 0;
-                    //string rebate = "0";
-                    //// COMPUTE FOR THE FEE AND REBATE
-                    //decimal feerate = 0;
-                    //try
-                    //{
-                    //    if (!string.IsNullOrEmpty(misc))
-                    //    {
-                    //        var miscDict = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(misc);
-                    //        decimal feecent = 0;
-                    //        if (miscDict.ContainsKey("feecent") && decimal.TryParse(miscDict["feecent"], out feecent))
-                    //        {
-                    //            feerate = feecent;
-                    //            if (feecent >= 5)
-                    //            {
-                    //                _logger.LogCritical("FeeComputation - [Exceeded 5%] feecent:{0}%, merchantno:{1}",
-                    //                    feecent.ToString("0.00"),
-                    //                    depositRow.merchantno);
-                    //            }
-                    //            else if (feecent <= -5)
-                    //            {
-                    //                _logger.LogCritical("FeeComputation - [Below -5] feecent:{0}%, merchantno:{1}",
-                    //                    feecent.ToString("0.00"),
-                    //                    depositRow.merchantno);
-                    //            }
-                    //            else
-                    //            {
-                    //                decimal feeFloat = depositRow.amount * (feecent / 100);
-                    //                _logger.LogCritical("FeeComputation - [Compute] feecent:{0}%, merchantno:{1}, fee:{2}",
-                    //                    feecent.ToString("0.00"),
-                    //                    depositRow.merchantno,
-                    //                    feeFloat.ToString("0.00"));
-
-                    //                // Verify Fee
-                    //                fee = feeFloat.ToString("0.00");
-                    //                //fee = "0";
-                    //            }
-
-                    //        }
-
-                    //        if (miscDict.ContainsKey("rebate") && decimal.TryParse(miscDict["rebate"], out rebatePercentage))
-                    //        {
-                    //            if (rebatePercentage >= 5)
-                    //            {
-                    //                _logger.LogError("RebateComputation - [Exceeded 5%] rebate:{0}%, merchantno:{1}",
-                    //                    rebatePercentage.ToString("0.00"),
-                    //                    depositRow.merchantno);
-                    //            }
-                    //            else if (rebatePercentage < 0)
-                    //            {
-                    //                _logger.LogError("RebateComputation - [Below 0] rebate:{0}%, merchantno:{1}",
-                    //                    rebatePercentage.ToString("0.00"),
-                    //                    depositRow.merchantno);
-                    //            }
-                    //            else
-                    //            {
-                    //                rebate = (depositRow.amount * (rebatePercentage / 100)).ToString("0.00");
-                    //                _logger.LogError("RebateComputation - [Compute] rebate:{0}%, merchantno:{1}, computedrebate:{2}",
-                    //                    rebatePercentage.ToString("0.00"), depositRow.merchantno, rebate);
-                    //            }
-
-                    //        }
-                    //    }
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    _logger.LogCritical("FeeComputation, RebateComputation - [Exception] message :{0}", ex.Message);
-                    //    fee = "0";
-                    //    rebate = "0";
-                    //}
-
-
-
-
-                    //if (depositRow.status != 0)
-                    //    return new ResponseModel<CrossTransactVerifyReturn>()
-                    //    {
-                    //        code = ShareEntity.Global.ResponseCode.code.FAIL,
-                    //        message = "已经处理过了",
-                    //        Data = null
-                    //    };
-
-                    //var rebate_float = decimal.Parse(rebate);
-                    //var fee_float = decimal.Parse(fee);
-                    //var depositAccountRow = connection.Get<ofUser>(depositRow.account);
-
-                    //#region ofPaymentRecord
-                    //var depositPaymentRecord = new ofPaymentRecord()
-                    //{
-                    //    currency = "CNY",
-                    //    account = depositRow.account,
-                    //    createtime = Common.CurrentTime,
-                    //    referenceguid = depositRow.referenceguid,
-                    //    transactiontype = 1,
-                    //    status = 1,
-                    //    summaryType = 1,
-                    //    preBalance = depositAccountRow.amountactive,
-                    //    bonus = depositRow.amount + rebate_float,
-                    //    afterBalance = depositAccountRow.amountactive + depositRow.amount + rebate_float,
-                    //    summary = "存款",
-                    //};
-                    //connection.Insert<ofPaymentRecord>(paymentRecord);
-                    //#endregion
-
-                    //depositAccountRow.amountactive += depositRow.amount + rebate_float;
-                    //depositAccountRow.depositamount += depositRow.amount;
-                    //depositAccountRow.depositnumber = depositAccountRow.depositnumber + 1;
-
-                    //depositRow.status = 1;
-                    //depositRow.reviewtime = Common.CurrentTime;
-                    //depositRow.orderendtime = Common.CurrentTime;
-                    //depositRow.fee = fee_float;
-                    //depositRow.rebate = rebate_float;
-
-                    //depositRow.reviewperson = request.Admin;
-                    //var depositResult = connection.Update(depositRow);
-                    //var accountResult = connection.Update(depositAccountRow);
-                    //scope.Complete();
-
-                    //if (depositResult && accountResult)
-                    //{
-
-                    //    if (depositRow.bonuspromocode > 0)
-                    //    {
-                    //        try
-                    //        {
-                    //            var promoApiToken = Common.Security.GetToken3(depositRow.account, 0, depositRow.ipaddress,
-                    //                DateTime.UtcNow.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss"), "/api/autopromo/AppDepositPromo", Guid.NewGuid().ToString());
-
-
-                    //            WebClient wcching = new WebClient();
-                    //            wcching.Headers[HttpRequestHeader.ContentType] = "application/json";
-                    //            wcching.Headers[HttpRequestHeader.Authorization] = promoApiToken;
-                    //            wcching.Encoding = System.Text.Encoding.UTF8;
-                    //            var result = wcching.UploadString(new Uri("http://awcmgt22-promoservice.azurewebsites.net/api/autopromo/AppDepositPromo"),
-                    //                        Newtonsoft.Json.JsonConvert.SerializeObject(new Dictionary<string, dynamic>() {
-                    //                    { "orderNo", depositRow.merchantno },
-                    //                    { "account", depositRow.account },
-                    //                    { "amount", 0},
-                    //                    { "ipaddress", depositRow.ipaddress},
-                    //                        })
-                    //                    );
-                    //            _logger.LogInformation("ChingAutoPromo - [Notify] orderid:{0}, result:{1}", depositRow.merchantno, result);
-
-                    //        }
-                    //        catch (Exception ex)
-                    //        {
-                    //            _logger.LogError("ChingAutoPromo - [Exception] orderid:{0}, message:{1}", depositRow.merchantno, ex.Message);
-                    //        }
-                    //    }
-
-                    //    return new ResponseModel<CrossTransactVerifyReturn>()
-                    //    {
-                    //        code = ShareEntity.Global.ResponseCode.code.SUCCESS,
-                    //        message = "",
-                    //        Data = null
-                    //    };
-                    //}
-                    //else
-                    //    return new ResponseModel<CrossTransactVerifyReturn>()
-                    //    {
-                    //        code = ShareEntity.Global.ResponseCode.code.SUCCESS,
-                    //        message = "",
-                    //        Data = null
-                    //    }; 
-                    #endregion
                 }
                 catch (Exception ex)
                 {
