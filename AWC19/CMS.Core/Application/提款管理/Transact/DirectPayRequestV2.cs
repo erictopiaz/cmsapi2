@@ -626,6 +626,9 @@ namespace CMS.Core.Application.提款管理.Queries
                             }.ToString(Formatting.None), "paytaskq");
                             break;
                         default:
+                            _logger.LogInformation("代付 pre-push - connString:{5} [{0}] account:{1}, amount:{2} withdrawId:{3}, level:{4}",
+                                                                      targetPlatform, itemToProces.account, itemToProces.amount, itemToProces.id, accountLevel, MemCache.REDIS_CONNSTRING);
+
                             payTaskQueue = MemCache.PushQueue(new JObject()
                             {
                                 ["task"] = "payout",
@@ -633,6 +636,10 @@ namespace CMS.Core.Application.提款管理.Queries
                                 ["gw"] = targetPlatform,
                                 ["usdtxrate"] = usdt_xrate
                             }.ToString(Formatting.None), "paytaskq");
+
+                            _logger.LogInformation("代付 pushed - payTaskQueue:{5} [{0}] account:{1}, amount:{2} withdrawId:{3}, level:{4}",
+                                                targetPlatform, itemToProces.account, itemToProces.amount, itemToProces.id, accountLevel, payTaskQueue);
+
 
                             break;
                     }
