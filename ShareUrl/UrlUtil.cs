@@ -97,6 +97,10 @@ namespace ShareUrl
             }
             return gameIconUrl_inr.First().Value;
         }
+
+
+        public static readonly string vin_pay_srv_url = "http://awcsvc-ea-aoirvnads3faswe3fa.azurewebsites.net";
+        //public static readonly string vin_pay_srv_url = "http://awcsvc-ea-stg3.azurewebsites.net";
     }
 
     public class WebLink
